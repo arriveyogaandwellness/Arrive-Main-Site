@@ -6,26 +6,34 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Alex+Brush&display=swap');
 
-:root {
-  /* Default: Couture Noir & Champagne Gold */
-  --bg-primary: #09090b;
-  --bg-surface: #121216;
-  --bg-card: #18181f;
-  --bg-card-hover: #22222b;
-  --text-primary: #fdfbf7;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+:root,
+[data-theme="tropical-sunshine"] {
+  /* Default: Tropical Sunshine & Rainbow Paradise (Client's Vibrant Palette) */
+  --bg-primary: #fffdf9;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff8f3;
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --text-muted: #78716c;
   
-  --accent-gold: #e2b774;
-  --accent-gold-light: #f5e4c3;
-  --accent-gold-dark: #b88d44;
-  --accent-glow: rgba(226, 183, 116, 0.25);
+  --accent-gold: #ff7a00;
+  --accent-gold-light: #ffae19;
+  --accent-gold-dark: #d9480f;
+  --accent-glow: rgba(255, 122, 0, 0.25);
   
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(226, 183, 116, 0.4);
+  --accent-pink: #ff3366;
+  --accent-coral: #ff6b4a;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-turquoise: #06b6d4;
+  --accent-purple: #8b5cf6;
   
-  --glass-bg: rgba(18, 18, 22, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 122, 0, 0.18);
+  --border-active: #ff3366;
+  
+  --glass-bg: rgba(255, 253, 249, 0.94);
+  --glass-border: rgba(255, 122, 0, 0.2);
   
   --font-serif: 'Playfair Display', serif;
   --font-editorial: 'Cormorant Garamond', serif;
@@ -33,13 +41,33 @@
   --font-mono: 'Space Grotesk', monospace;
   --font-script: 'Alex Brush', cursive;
   
-  --radius-sm: 4px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 6px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
   
-  --shadow-luxe: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(226, 183, 116, 0.05);
+  --shadow-luxe: 0 15px 35px -5px rgba(255, 107, 74, 0.12), 0 5px 15px rgba(0, 0, 0, 0.04);
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Theme: Couture Noir & Champagne Gold (Evening Mode) */
+[data-theme="noir-gold"] {
+  --bg-primary: #09090b;
+  --bg-surface: #121216;
+  --bg-card: #18181f;
+  --bg-card-hover: #22222b;
+  --text-primary: #fdfbf7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-gold: #e2b774;
+  --accent-gold-light: #f5e4c3;
+  --accent-gold-dark: #b88d44;
+  --accent-glow: rgba(226, 183, 116, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(226, 183, 116, 0.4);
+  --glass-bg: rgba(18, 18, 22, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow-luxe: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(226, 183, 116, 0.05);
 }
 
 /* Theme 2: Biophilic Rainforest Emerald */
@@ -137,6 +165,288 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   position: relative;
+}
+
+/* ==========================================================================
+   BRIGHT, HAPPY & COLORFUL TROPICAL SUNSHINE STYLING (Default Experience)
+   Inspired by Client's Artwork: Rainbow Lotus, Chakra Tree & Costa Rica Sunshine
+   ========================================================================== */
+
+/* Universal Happy Ambient Background */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]),
+[data-theme="tropical-sunshine"] {
+  background-color: #fffdf9;
+  background-image: 
+    radial-gradient(at 5% 5%, rgba(255, 51, 102, 0.07) 0px, transparent 40%),
+    radial-gradient(at 95% 5%, rgba(255, 174, 25, 0.09) 0px, transparent 45%),
+    radial-gradient(at 50% 40%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+    radial-gradient(at 95% 95%, rgba(6, 182, 212, 0.08) 0px, transparent 45%),
+    radial-gradient(at 5% 95%, rgba(139, 92, 246, 0.07) 0px, transparent 45%);
+  background-attachment: fixed;
+  color: #1c1917;
+}
+
+/* Radiant Rainbow Brand Text */
+.text-rainbow,
+.brand-rainbow-title {
+  background: linear-gradient(135deg, #ff3366 0%, #ff7a00 25%, #f59e0b 50%, #10b981 75%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 800;
+}
+
+.text-sunset {
+  background: linear-gradient(135deg, #ff3366 0%, #ff7a00 60%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-ocean {
+  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 60%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Happy Rainbow Badges & Pills */
+.badge-rainbow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #fff0f5, #fff8eb, #f0fdf9, #f0f9ff);
+  border: 1.5px solid #ff7a00;
+  color: #d9480f;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 122, 0, 0.12);
+}
+
+.rainbow-ribbon {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff3366 0%, #ff7a00 25%, #f59e0b 50%, #10b981 75%, #06b6d4 100%);
+}
+
+/* Bright Mode Section & Card Overrides */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .bg-noir-950,
+[data-theme="tropical-sunshine"] .bg-noir-950 {
+  background-color: #fffdf9 !important;
+  color: #292524 !important;
+  border-color: rgba(255, 122, 0, 0.16) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .bg-noir-900,
+[data-theme="tropical-sunshine"] .bg-noir-900 {
+  background-color: #ffffff !important;
+  color: #1c1917 !important;
+  border-color: rgba(255, 122, 0, 0.18) !important;
+  box-shadow: 0 10px 30px -5px rgba(255, 122, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .bg-noir-800,
+[data-theme="tropical-sunshine"] .bg-noir-800 {
+  background-color: #fffaf5 !important;
+  color: #1c1917 !important;
+  border-color: rgba(255, 122, 0, 0.16) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .bg-gradient-to-b.from-noir-950.to-black,
+[data-theme="tropical-sunshine"] .bg-gradient-to-b.from-noir-950.to-black {
+  background: linear-gradient(180deg, #fffdf9 0%, #fff2ea 100%) !important;
+}
+
+/* Text Overrides in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-white:not(.text-white-force):not(.btn-luxe):not(.btn-luxe *):not(.badge-rainbow):not(.badge-rainbow *),
+[data-theme="tropical-sunshine"] .text-white:not(.text-white-force):not(.btn-luxe):not(.btn-luxe *):not(.badge-rainbow):not(.badge-rainbow *) {
+  color: #1c1917 !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-slate-200,
+[data-theme="tropical-sunshine"] .text-slate-200 {
+  color: #292524 !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-slate-300,
+[data-theme="tropical-sunshine"] .text-slate-300 {
+  color: #44403c !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-slate-400,
+[data-theme="tropical-sunshine"] .text-slate-400 {
+  color: #57534e !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-slate-500,
+[data-theme="tropical-sunshine"] .text-slate-500 {
+  color: #78716c !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-gold-400,
+[data-theme="tropical-sunshine"] .text-gold-400 {
+  color: #d9480f !important;
+  font-weight: 700;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .text-gold-300,
+[data-theme="tropical-sunshine"] .text-gold-300 {
+  color: #b45309 !important;
+}
+
+/* Borders in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .border-white\/10,
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .border-white\/5,
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .border-white\/20,
+[data-theme="tropical-sunshine"] .border-white\/10,
+[data-theme="tropical-sunshine"] .border-white\/5,
+[data-theme="tropical-sunshine"] .border-white\/20 {
+  border-color: rgba(255, 122, 0, 0.18) !important;
+}
+
+/* Cards in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-card,
+[data-theme="tropical-sunshine"] .luxe-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(255, 122, 0, 0.2) !important;
+  border-top: 4px solid #ff7a00 !important;
+  box-shadow: 0 15px 35px -5px rgba(255, 107, 74, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-card:hover,
+[data-theme="tropical-sunshine"] .luxe-card:hover {
+  background: #fffdfb !important;
+  border-color: #ff3366 !important;
+  border-top-color: #ff3366 !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -5px rgba(255, 51, 102, 0.15), 0 8px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Happy Vibrant Buttons */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .btn-luxe,
+[data-theme="tropical-sunshine"] .btn-luxe {
+  background: linear-gradient(135deg, #ff3366 0%, #ff7a00 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 8px 25px rgba(255, 51, 102, 0.35) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .btn-luxe:hover,
+[data-theme="tropical-sunshine"] .btn-luxe:hover {
+  background: linear-gradient(135deg, #ff1a53 0%, #ff6600 100%) !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 51, 102, 0.45) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .btn-outline-luxe,
+[data-theme="tropical-sunshine"] .btn-outline-luxe {
+  background: #ffffff !important;
+  color: #d9480f !important;
+  border: 2px solid #ff7a00 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(255, 122, 0, 0.12) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .btn-outline-luxe:hover,
+[data-theme="tropical-sunshine"] .btn-outline-luxe:hover {
+  background: linear-gradient(135deg, #ff7a00, #ff3366) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Tagline Pills in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .tagline-pill,
+[data-theme="tropical-sunshine"] .tagline-pill {
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.08), rgba(255, 122, 0, 0.12)) !important;
+  color: #d9480f !important;
+  border: 1.5px solid rgba(255, 122, 0, 0.35) !important;
+  font-weight: 700 !important;
+}
+
+/* Navbar in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .sanctuary-nav,
+[data-theme="tropical-sunshine"] .sanctuary-nav {
+  background: rgba(255, 253, 249, 0.94) !important;
+  border-bottom: 1.5px solid rgba(255, 122, 0, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(255, 122, 0, 0.06);
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .nav-link,
+[data-theme="tropical-sunshine"] .nav-link {
+  color: #44403c !important;
+  font-weight: 600;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .nav-link:hover,
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .nav-link.active,
+[data-theme="tropical-sunshine"] .nav-link:hover,
+[data-theme="tropical-sunshine"] .nav-link.active {
+  color: #ff3366 !important;
+}
+
+/* Form Inputs in Bright Mode */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-input,
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-select,
+[data-theme="tropical-sunshine"] .luxe-input,
+[data-theme="tropical-sunshine"] .luxe-select {
+  background: #ffffff !important;
+  color: #1c1917 !important;
+  border: 1.5px solid rgba(255, 122, 0, 0.25) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-input:focus,
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) .luxe-select:focus,
+[data-theme="tropical-sunshine"] .luxe-input:focus,
+[data-theme="tropical-sunshine"] .luxe-select:focus {
+  border-color: #ff3366 !important;
+  box-shadow: 0 0 0 4px rgba(255, 51, 102, 0.15) !important;
+}
+
+/* Element Days in Itinerary (Bright Tropical Vibrancy) */
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day1"],
+[data-theme="tropical-sunshine"] [data-day-content="day1"] {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%) !important;
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day2"],
+[data-theme="tropical-sunshine"] [data-day-content="day2"] {
+  background: linear-gradient(135deg, #ecfeff 0%, #ffffff 100%) !important;
+  border: 2px solid #06b6d4 !important;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day3"],
+[data-theme="tropical-sunshine"] [data-day-content="day3"] {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
+  border: 2px solid #ff7a00 !important;
+  box-shadow: 0 10px 30px rgba(255, 122, 0, 0.1) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day4"],
+[data-theme="tropical-sunshine"] [data-day-content="day4"] {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%) !important;
+  border: 2px solid #a855f7 !important;
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day5"],
+[data-theme="tropical-sunshine"] [data-day-content="day5"] {
+  background: linear-gradient(135deg, #fff1f2 0%, #fffbeb 50%, #f0fdfa 100%) !important;
+  border: 2px solid #ec4899 !important;
+  box-shadow: 0 12px 35px rgba(236, 72, 153, 0.18) !important;
+}
+
+:root:not([data-theme="noir-gold"]):not([data-theme="biophilic-emerald"]):not([data-theme="sunset-terracotta"]) [data-day-content="day6"],
+[data-theme="tropical-sunshine"] [data-day-content="day6"] {
+  background: linear-gradient(135deg, #fffdf7 0%, #ffffff 100%) !important;
+  border: 2px solid #f59e0b !important;
 }
 
 /* Typography Utilities */

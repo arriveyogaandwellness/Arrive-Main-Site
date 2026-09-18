@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
    1. Luxury Theme Engine
    ========================================================================== */
 function initThemeEngine() {
-  const savedTheme = localStorage.getItem('arrive_sanctuary_theme') || 'noir-gold';
+  const savedTheme = localStorage.getItem('arrive_sanctuary_theme') || 'tropical-sunshine';
   setTheme(savedTheme);
 
   const themeButtons = document.querySelectorAll('[data-set-theme]');
