@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="noir-gold" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWAY Restaurant &amp; Gastronomy | The Art of Arrival Retreat</title>
+  <meta name="description" content="Discover gourmet dining at SWAY Restaurant & Lounge in Playa Hermosa, Costa Rica. All meals included, vegan, gluten-free, detox options, and fresh juice bar." />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
+            gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="selection:bg-gold-500 selection:text-black bg-noir-950 text-slate-200">
+
+  <!-- Nav -->
+  <header class="sanctuary-nav">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <span class="brand-title">ARRIVE.</span>
+        <span class="brand-tag">SWAY Restaurant</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/about.html" class="nav-link">About Carly</a>
+        <a href="/accommodations.html" class="nav-link">Suites &amp; Estates</a>
+        <a href="/itinerary.html" class="nav-link">Itinerary</a>
+        <a href="/dining.html" class="nav-link active">SWAY Dining</a>
+        <a href="/method.html" class="nav-link">The Method</a>
+        <a href="/pricing.html" class="nav-link">Packages</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/pricing.html#builder" class="btn-luxe py-2.5 px-5 text-xs">
+          Reserve Sanctuary ($500)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="py-24 border-b border-white/10 bg-noir-900/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="tagline-pill mb-4">SWAY Restaurant &amp; Lounge</span>
+      <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
+        Nourishment That Delights the Senses
+      </h1>
+      <p class="text-slate-300 font-light text-xl max-w-3xl leading-relaxed">
+        Our dining service celebrates the art of healthy, flavorful, chef-crafted dining — celebrating fresh, locally-sourced Costa Rican produce that balances nutrition, vitality, and culinary artistry.
+      </p>
+    </div>
+  </section>
+
+  <!-- Key Highlights -->
+  <section class="section-wrapper space-y-16">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+      <div class="p-6 bg-noir-900 border border-white/10 rounded-xl space-y-2">
+        <i data-lucide="utensils" class="w-6 h-6 text-gold-400 mx-auto"></i>
+        <h4 class="font-serif text-lg text-white">All Meals Included</h4>
+        <p class="text-xs text-slate-400 font-light">Plated dining and gourmet bountiful buffets for breakfast, lunch, and dinner.</p>
+      </div>
+      <div class="p-6 bg-noir-900 border border-white/10 rounded-xl space-y-2">
+        <i data-lucide="leaf" class="w-6 h-6 text-gold-400 mx-auto"></i>
+        <h4 class="font-serif text-lg text-white">Custom Meal Plans</h4>
+        <p class="text-xs text-slate-400 font-light">100% Vegan, Vegetarian, Gluten-Free, Dairy-Free, and Detox-friendly recipes.</p>
+      </div>
+      <div class="p-6 bg-noir-900 border border-white/10 rounded-xl space-y-2">
+        <i data-lucide="glass-water" class="w-6 h-6 text-gold-400 mx-auto"></i>
+        <h4 class="font-serif text-lg text-white">Fresh Juice &amp; Smoothie Bar</h4>
+        <p class="text-xs text-slate-400 font-light">Daily cold-pressed tropical juices, ginger tonics, and coconut hydration.</p>
+      </div>
+      <div class="p-6 bg-noir-900 border border-white/10 rounded-xl space-y-2">
+        <i data-lucide="sparkles" class="w-6 h-6 text-gold-400 mx-auto"></i>
+        <h4 class="font-serif text-lg text-white">Themed Evening Feasts</h4>
+        <p class="text-xs text-slate-400 font-light">Culinary pairings that echo each day’s elemental somatic workshop.</p>
+      </div>
+    </div>
+
+    <!-- Chef & Images Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+        <img src="/assets/dining/dining-menu-1.jpg" alt="Chef Prepared Dish" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
+        <img src="/assets/dining/dining-menu-2.jpg" alt="Salad and Organic Fresh Bowls" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
+      </div>
+      <div class="lg:col-span-6 space-y-6 text-sm text-slate-300 font-light leading-relaxed">
+        <span class="badge-tag gold">Farm-To-Table Philosophy</span>
+        <h2 class="font-serif text-4xl text-white">World-Class Chefs &amp; Dynamic Menus</h2>
+        <p>
+          We believe that food should not just sustain the body — it should delight the senses and awaken vital energy. Prepared with passion by our esteemed team of culinary artists, each plate celebrates organic Costa Rican farmers, fishermen, and fruit orchards.
+        </p>
+        <p>
+          Whether you are savoring a sunrise cappuccino on the <strong>Café Terrace</strong>, relaxing with an organic passionfruit elixir at <strong>SWAY Lounge</strong>, or feasting on whole grilled local fish under canopy string lights, every bite is an invitation into presence.
+        </p>
+        <div class="p-4 bg-noir-900 border border-white/10 rounded-lg text-xs font-mono">
+          <p class="text-gold-400 font-bold mb-1">Dietary Preferences Welcomed:</p>
+          <p>Please note any food allergies, sensitivities, or dietary guidelines during registration so our kitchen can prepare personalized provisions for you.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
+    <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
+    <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
