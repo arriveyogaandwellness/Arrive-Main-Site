@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initStripeStatus();
   initMobileNav();
+  initNewsletter();
 });
 
 /* ==========================================================================
@@ -563,4 +564,48 @@ function initMobileNav() {
   if (closeBtn && drawer) {
     closeBtn.addEventListener('click', () => drawer.classList.add('hidden'));
   }
+}
+
+/* ==========================================================================
+   10. Newsletter & Lead Magnet (The Arrive Reset)
+   ========================================================================== */
+function initNewsletter() {
+  const form = document.getElementById('newsletter-form');
+  const successMsg = document.getElementById('newsletter-success');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nameInput = document.getElementById('newsletter-name');
+    const emailInput = document.getElementById('newsletter-email');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+
+    if (!email) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining...';
+    }
+
+    try {
+      await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          type: 'Newsletter',
+          message: 'Requested The Arrive Reset lead magnet guide'
+        })
+      });
+    } catch (err) {
+      console.log('Newsletter registered locally');
+    }
+
+    form.classList.add('hidden');
+    if (successMsg) successMsg.classList.remove('hidden');
+  });
 }

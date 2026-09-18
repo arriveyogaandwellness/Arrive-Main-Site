@@ -10,5 +10,13 @@
     "isDeposit": true,
     "status": "simulated_test_checkout",
     "createdAt": "2026-09-18T21:23:13.597Z"
+  },
+  {
+    "id": "inq_1789767465172",
+    "name": "Elena Rostova",
+    "email": "elena@voguemag.com",
+    "type": "Newsletter",
+    "message": "Requested The Arrive Reset lead magnet guide",
+    "receivedAt": "2026-09-18T21:37:45.172Z"
   }
 ]

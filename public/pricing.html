@@ -37,11 +37,14 @@
       <nav class="nav-links">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About Carly</a>
-        <a href="/accommodations.html" class="nav-link">Suites &amp; Estates</a>
-        <a href="/itinerary.html" class="nav-link">Itinerary</a>
-        <a href="/dining.html" class="nav-link">SWAY Dining</a>
+        <a href="/retreat.html" class="nav-link">The Retreat</a>
         <a href="/method.html" class="nav-link">The Method</a>
-        <a href="/pricing.html" class="nav-link active">Packages</a>
+        <a href="/accommodations.html" class="nav-link">Suites</a>
+        <a href="/itinerary.html" class="nav-link">Itinerary</a>
+        <a href="/dining.html" class="nav-link">Dining</a>
+        <a href="/pricing.html" class="nav-link active">Pricing</a>
+        <a href="/consulting.html" class="nav-link">Consulting</a>
+        <a href="/contact.html" class="nav-link">Contact</a>
       </nav>
       <div class="nav-actions">
         <a href="#builder" class="btn-luxe py-2.5 px-5 text-xs">
@@ -234,12 +237,24 @@
               <span class="text-gold-400">+$100</span>
             </label>
             <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="60" data-name="Waterfall Rappelling Add-on" /> Waterfall Rappelling Add-on</span>
+              <span class="text-gold-400">+$60</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="70" data-name="Jungle Horseback Riding" /> Jungle &amp; Beach Horseback</span>
               <span class="text-gold-400">+$70</span>
             </label>
             <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="80" data-name="Temazcal Sweat Lodge" /> Temazcal Sweat Lodge</span>
               <span class="text-gold-400">+$80</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="60" data-name="Monkey Mangrove River Cruise" /> Monkey Mangrove River Cruise</span>
+              <span class="text-gold-400">+$60</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="25" data-name="Butterfly Gardens Sanctuary" /> Butterfly Gardens Sanctuary</span>
+              <span class="text-gold-400">+$25</span>
             </label>
             <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="75" data-name="Canopy Ziplining" /> Canopy Ziplining</span>
@@ -266,6 +281,29 @@
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="50" data-name="Beachfront Reflexology" /> 30-Min Beachfront Reflexology</span>
                 <span class="text-gold-400">+$50</span>
               </label>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+                <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="100" data-name="Mani & Pedi Duo" /> Manicure &amp; Pedicure Duo</span>
+                <span class="text-gold-400">+$100</span>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+                <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="85" data-name="Customized Facial" /> Customized Botanical Facial</span>
+                <span class="text-gold-400">+$85</span>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+                <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="85" data-name="Bamboo Therapy" /> Deep Bamboo Therapy</span>
+                <span class="text-gold-400">+$85</span>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+                <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="100" data-name="Body Scrub Exfoliation" /> Exfoliating Organic Body Scrub</span>
+                <span class="text-gold-400">+$100</span>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+                <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="150" data-name="Signature Spa Experience" /> Signature Sanctuary Spa Ritual</span>
+                <span class="text-gold-400">+$150</span>
+              </label>
+              <p class="text-[10px] text-slate-400 font-sans italic pt-1">
+                *Spa services must be reserved at least 7 to 10 days in advance.
+              </p>
             </div>
 
             <div class="p-4 bg-noir-900 rounded-lg border border-white/5 space-y-2">
@@ -323,10 +361,101 @@
     </form>
   </section>
 
+  <!-- =========================================================================
+       FLIGHT SUPPORT, TRANSPORTATION FLEET & INCLUSIONS (Master Manuscript 7.4-7.9)
+       ========================================================================= -->
+  <section class="section-wrapper border-t border-b border-white/10 bg-noir-900/30">
+    <div class="max-w-5xl mx-auto space-y-12">
+      
+      <!-- Inclusions & Exclusions Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="luxe-card space-y-4">
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+            <h3 class="font-serif text-2xl text-white">What's Included In All Paths</h3>
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-slate-300">
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> 5 Nights luxury lodging at Amanti Sanctuary</li>
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Daily Art of Arrival yoga, somatic movement &amp; breathwork</li>
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Elemental workshops, sound journeys &amp; group reflection circles</li>
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> All farm-fresh organic meals, brunch, and fresh juice bar by SWAY chefs</li>
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Opening Beach Bonfire &amp; Closing Gratitude Gala</li>
+            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Curated community integration &amp; pre/post retreat support resources</li>
+          </ul>
+        </div>
+
+        <div class="luxe-card space-y-4">
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3">
+            <i data-lucide="info" class="w-5 h-5 text-gold-400"></i>
+            <h3 class="font-serif text-2xl text-white">What's Not Included</h3>
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-slate-300">
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Flights to Costa Rica (SJO Airport) — flight guidance available</li>
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Comprehensive travel insurance (strongly recommended)</li>
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Spa treatments &amp; bodywork (unless added to package)</li>
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Additional custom excursions beyond selected itinerary</li>
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Alcoholic beverages (available for separate purchase at SWAY Lounge)</li>
+            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Personal shopping &amp; gratuities</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- High-Touch Flight Support & Fleet Logistics -->
+      <div class="luxe-card space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-4">
+          <div>
+            <span class="tagline-pill mb-2">High-Touch Guest Support</span>
+            <h3 class="font-serif text-2xl text-white">Flight Guidance &amp; Private Shuttles</h3>
+          </div>
+          <span class="text-xs font-mono text-gold-400">Fly into Juan Santamaría Airport (SJO)</span>
+        </div>
+
+        <p class="text-slate-300 text-sm font-light leading-relaxed">
+          While flights are booked individually by each guest, our concierge provides high-touch flight support to assist in identifying the most cost-effective and time-efficient itineraries to SJO. Private, air-conditioned transportation from the airport directly to Amanti Sanctuary can be arranged seamlessly.
+        </p>
+
+        <!-- Fleet Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+          <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
+            <strong class="text-white block">Mercedes Sprinter 1</strong>
+            <span class="text-gold-400 block">Up to 14 passengers</span>
+            <span class="text-slate-400 text-[11px] block">Or 9 guests with extensive luggage</span>
+          </div>
+          <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
+            <strong class="text-white block">Mercedes Sprinter 2</strong>
+            <span class="text-gold-400 block">Up to 17 passengers</span>
+            <span class="text-slate-400 text-[11px] block">Or 12 guests with luggage</span>
+          </div>
+          <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
+            <strong class="text-white block">Executive Coach 1</strong>
+            <span class="text-gold-400 block">Up to 24 passengers</span>
+            <span class="text-slate-400 text-[11px] block">Climate-controlled, under-bus storage</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-noir-950/80 rounded-lg border border-gold-500/30 text-xs font-mono text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <strong class="text-gold-400 block">Airport Shuttle Pricing Route:</strong>
+            <span>Estimated $150 per airport run for up to 4 guests (plus tax), and approx. $25 per additional guest.</span>
+          </div>
+          <a href="/terms.html" class="btn-outline-luxe text-xs whitespace-nowrap py-2 px-4 text-center">
+            View Policies &amp; Terms ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
     <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
     <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
+    <div class="pt-4 flex justify-center gap-6 text-[11px] text-slate-400">
+      <a href="/terms.html" class="hover:text-gold-400">Terms &amp; Cancellation Policy</a>
+      <a href="/contact.html" class="hover:text-gold-400">Concierge Inquiries</a>
+      <a href="/stripe-setup.html" class="hover:text-gold-400">Stripe Portal</a>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
