@@ -34,30 +34,194 @@
         <span class="brand-title brand-rainbow-title">ARRIVE.</span>
         <span class="brand-tag">The 6-Day Journey</span>
       </a>
-      <nav class="nav-links">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About Carly</a>
-        <a href="/retreat.html" class="nav-link">The Retreat</a>
-        <a href="/method.html" class="nav-link">The Method</a>
-        <a href="/accommodations.html" class="nav-link">Suites</a>
-        <a href="/itinerary.html" class="nav-link active">Itinerary</a>
-        <a href="/dining.html" class="nav-link">Dining</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/consulting.html" class="nav-link">Consulting</a>
-        <a href="/contact.html" class="nav-link">Contact</a>
+            <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+      <nav class="nav-icon-menu" aria-label="Main Navigation">
+        <div class="nav-icon-item">
+          <a href="/index.html" class="nav-icon-btn" aria-label="Home">
+            <i data-lucide="home"></i>
+            <span class="nav-tooltip">Home<span class="nav-tooltip-sub">Sanctuary Entrance</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/about.html" class="nav-icon-btn" aria-label="About Carly">
+            <i data-lucide="sparkles"></i>
+            <span class="nav-tooltip">About Carly<span class="nav-tooltip-sub">Founder & Artist</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/retreat.html" class="nav-icon-btn" aria-label="The Retreat">
+            <i data-lucide="palmtree"></i>
+            <span class="nav-tooltip">The Retreat<span class="nav-tooltip-sub">Art of Arrival</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/method.html" class="nav-icon-btn" aria-label="The Method">
+            <i data-lucide="activity"></i>
+            <span class="nav-tooltip">The Method<span class="nav-tooltip-sub">Somatic Science</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/accommodations.html" class="nav-icon-btn" aria-label="Suites & Villas">
+            <i data-lucide="bed-double"></i>
+            <span class="nav-tooltip">Suites & Villas<span class="nav-tooltip-sub">Luxury Estates</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/itinerary.html" class="nav-icon-btn active" aria-label="6-Day Journey">
+            <i data-lucide="calendar-days"></i>
+            <span class="nav-tooltip">6-Day Journey<span class="nav-tooltip-sub">Elemental Pathway</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/dining.html" class="nav-icon-btn" aria-label="SWAY Dining">
+            <i data-lucide="utensils"></i>
+            <span class="nav-tooltip">SWAY Dining<span class="nav-tooltip-sub">Farm-To-Table</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/pricing.html" class="nav-icon-btn" aria-label="Packages & Pricing">
+            <i data-lucide="gem"></i>
+            <span class="nav-tooltip">Packages & Pricing<span class="nav-tooltip-sub">Custom Builder</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/consulting.html" class="nav-icon-btn" aria-label="Consulting">
+            <i data-lucide="briefcase"></i>
+            <span class="nav-tooltip">Consulting<span class="nav-tooltip-sub">Brand & Advisory</span></span>
+          </a>
+        </div>
+        <div class="nav-icon-item">
+          <a href="/contact.html" class="nav-icon-btn" aria-label="Contact">
+            <i data-lucide="mail"></i>
+            <span class="nav-tooltip">Contact<span class="nav-tooltip-sub">Concierge & Inquiries</span></span>
+          </a>
+        </div>
       </nav>
       <div class="nav-actions">
         <a href="/pricing.html#builder" class="btn-luxe py-2.5 px-5 text-xs">
           Reserve Sanctuary ($500)
         </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
       </div>
     </div>
   </header>
 
+  <!-- Mobile Touch-Friendly Drawer -->
+  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] bg-stone-950/95 backdrop-blur-2xl p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <a href="/index.html" class="font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <button id="close-mobile-nav" class="text-white p-2" aria-label="Close menu">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6">
+        <a href="/index.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Home</strong>
+            <span class="text-xs text-slate-400">Sanctuary Entrance</span>
+          </div>
+        </a>
+        <a href="/about.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">About Carly Anne</strong>
+            <span class="text-xs text-slate-400">Founder, Artist & Model</span>
+          </div>
+        </a>
+        <a href="/retreat.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="palmtree" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Retreat</strong>
+            <span class="text-xs text-slate-400">The Art of Arrival</span>
+          </div>
+        </a>
+        <a href="/method.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Arrive Method™</strong>
+            <span class="text-xs text-slate-400">Somatic Science</span>
+          </div>
+        </a>
+        <a href="/accommodations.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="bed-double" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Suites & Villas</strong>
+            <span class="text-xs text-slate-400">Luxury Accommodations</span>
+          </div>
+        </a>
+        <a href="/itinerary.html" class="mobile-nav-item active">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="calendar-days" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">6-Day Itinerary</strong>
+            <span class="text-xs text-slate-400">The Elemental Journey</span>
+          </div>
+        </a>
+        <a href="/dining.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="utensils" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">SWAY Dining</strong>
+            <span class="text-xs text-slate-400">Farm-To-Table</span>
+          </div>
+        </a>
+        <a href="/pricing.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="gem" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Packages & Pricing</strong>
+            <span class="text-xs text-slate-400">Custom Builder & Reserve</span>
+          </div>
+        </a>
+        <a href="/consulting.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Consulting</strong>
+            <span class="text-xs text-slate-400">Strategic Advisory</span>
+          </div>
+        </a>
+        <a href="/contact.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Contact</strong>
+            <span class="text-xs text-slate-400">Concierge Inquiries</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
+      <a href="/pricing.html#builder" class="btn-luxe w-full text-center py-3">
+        Reserve Sanctuary ($500 Deposit) ↗
+      </a>
+      <a href="/stripe-setup.html" class="text-center font-mono text-xs text-amber-400">Stripe Merchant Portal ↗</a>
+    </div>
+  </div>
+
   <!-- Hero Header -->
   <section class="py-24 border-b border-white/10 bg-noir-900/50">
     <div class="max-w-6xl mx-auto px-6">
-      <span class="badge-rainbow mb-4">April 22–26, 2026 • The Elemental Pathway</span>
+      <span class="badge-rainbow mb-4">The 6-Day Elemental Pathway • Dates To Be Announced Soon</span>
       <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
         The 6-Day Retreat Experience
       </h1>
@@ -77,7 +241,7 @@
           <span class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-lg">01</span>
           <div>
             <h2 class="font-serif text-3xl text-white">Day 1: EARTH — Arrival &amp; Grounding</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Wednesday, April 22, 2026 • Anchor into the body &amp; regulate nervous system</p>
+            <p class="text-xs font-mono text-gold-400 font-bold">Day 1 • Earth Element: Anchor into the body &amp; regulate nervous system</p>
           </div>
         </div>
         <span class="px-3 py-1 rounded bg-emerald-950 border border-emerald-800 text-xs font-mono text-emerald-300">
@@ -99,6 +263,14 @@
           <p><strong>7:30 PM+:</strong> Beach Bonfire &amp; Workshop: <em>"From Root to Rise — The Foundations of Self"</em>.</p>
         </div>
       </div>
+
+      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
+        <img src="/assets/pages/itinerary/bonfire-circle.jpeg" alt="Beach Bonfire &amp; Grounding" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-emerald-500/30 shadow-md" data-lightbox />
+        <div class="text-xs font-light text-slate-300">
+          <strong class="text-emerald-400 font-mono block uppercase">Day 1 Highlight: Beach Bonfire &amp; Grounding</strong>
+          <p class="mt-1">Anchor your nervous system into Costa Rica's black sand beaches with mindful fire ceremony and connection circles.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Day 2 -->
@@ -108,7 +280,7 @@
           <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center text-lg">02</span>
           <div>
             <h2 class="font-serif text-3xl text-white">Day 2: WATER — Seeds of Hope &amp; Flow</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Thursday, April 23, 2026 • Fluid strength &amp; emotional softening</p>
+            <p class="text-xs font-mono text-gold-400 font-bold">Day 2 • Water Element: Fluid strength &amp; emotional softening</p>
           </div>
         </div>
         <span class="px-3 py-1 rounded bg-blue-950 border border-blue-800 text-xs font-mono text-blue-300">
@@ -139,7 +311,7 @@
           <span class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center text-lg">03</span>
           <div>
             <h2 class="font-serif text-3xl text-white">Day 3: FIRE — Ignite, Transform &amp; Lead</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Friday, April 24, 2026 • Courage, breakthrough &amp; sovereign passion</p>
+            <p class="text-xs font-mono text-gold-400 font-bold">Day 3 • Fire Element: Courage, breakthrough &amp; sovereign passion</p>
           </div>
         </div>
         <span class="px-3 py-1 rounded bg-amber-950 border border-amber-800 text-xs font-mono text-amber-300">
@@ -161,6 +333,14 @@
           <p><strong>7:00–8:30 PM:</strong> Themed Dinner: <em>"Crouching Yogi, Hidden Lion"</em>.</p>
         </div>
       </div>
+
+      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
+        <img src="/assets/pages/itinerary/somatic-alignment.jpg" alt="Somatic Alignment Flow" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-amber-500/30 shadow-md" data-lightbox />
+        <div class="text-xs font-light text-slate-300">
+          <strong class="text-amber-400 font-mono block uppercase">Day 3 Highlight: Power Yoga &amp; Functional Core</strong>
+          <p class="mt-1">Move from prevention through pain to sovereign power under Carly's expert guidance.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Day 4 -->
@@ -170,7 +350,7 @@
           <span class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center text-lg">04</span>
           <div>
             <h2 class="font-serif text-3xl text-white">Day 4: AIR — Inner Realms &amp; The Space Between Thoughts</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Saturday, April 25, 2026 • Breath mastery, mental spaciousness &amp; Haute White Party</p>
+            <p class="text-xs font-mono text-gold-400 font-bold">Day 4 • Air Element: Breath mastery, mental spaciousness &amp; Haute White Party</p>
           </div>
         </div>
         <span class="px-3 py-1 rounded bg-purple-950 border border-purple-800 text-xs font-mono text-purple-300">
@@ -195,6 +375,14 @@
           </p>
         </div>
       </div>
+
+      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
+        <img src="/assets/pages/itinerary/jungle-deck-yoga.jpg" alt="Sky Deck Jungle Yoga" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-purple-500/30 shadow-md" data-lightbox />
+        <div class="text-xs font-light text-slate-300">
+          <strong class="text-purple-400 font-mono block uppercase">Day 4 Highlight: Ocean-View Canopy &amp; Sky Decks</strong>
+          <p class="mt-1">Master breathwork and open your voice immersed in 360-degree views of the rainforest canopy.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Day 5 -->
@@ -204,7 +392,7 @@
           <span class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 font-mono font-bold flex items-center justify-center text-lg">05</span>
           <div>
             <h2 class="font-serif text-3xl text-white">Day 5: UNLOCK THE AVATAR STATE</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Sunday, April 26, 2026 • Tortuga Island catamaran, Gratitude Gala &amp; DJ Aphasia celebration</p>
+            <p class="text-xs font-mono text-gold-400 font-bold">Day 5 • Avatar State: Tortuga Island catamaran, Gratitude Gala &amp; DJ Aphasia celebration</p>
           </div>
         </div>
         <span class="px-3 py-1 rounded bg-gold-950 border border-gold-800 text-xs font-mono text-gold-300">
@@ -223,6 +411,14 @@
           <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Gratitude Gala &amp; Celebration</h4>
           <p><strong>7:00–8:00 PM:</strong> Final Feast: <em>"Gratitude Gala"</em> Celebration Dinner.</p>
           <p><strong>8:30 PM+:</strong> Closing Ceremony, Reflection Circle, and Live Music Performance by <strong>DJ Aphasia</strong>. Optional rooftop stargazing and night pool dip.</p>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
+        <img src="/assets/pages/itinerary/art-of-arrival-poster.png" alt="Avatar State Celebration" class="w-24 h-24 sm:w-32 sm:h-32 object-contain bg-stone-900 rounded-xl border border-gold-500/30 shadow-md p-1" data-lightbox />
+        <div class="text-xs font-light text-slate-300">
+          <strong class="text-gold-400 font-mono block uppercase">Day 5 Highlight: Gratitude Gala &amp; Celebration</strong>
+          <p class="mt-1">Private catamaran sailing to Tortuga Island followed by sunset DJ Aphasia feasting and celebration.</p>
         </div>
       </div>
     </div>

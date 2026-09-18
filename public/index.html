@@ -9,7 +9,7 @@
   <!-- Open Graph Meta -->
   <meta property="og:title" content="The Art of Arrival | Luxury Wellness Retreat Costa Rica" />
   <meta property="og:description" content="Experience trauma-informed somatic yoga, private villa estates, elemental adventures, and haute-couture wellness. Hosted by Carly Anne Kasinpila." />
-  <meta property="og:image" content="/assets/carly/carly-editorial-1.jpg" />
+  <meta property="og:image" content="/assets/pages/home/carly-editorial-1.jpg" />
   
   <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -52,17 +52,87 @@
         <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About Carly</a>
-        <a href="/retreat.html" class="nav-link text-gold-400">The Retreat</a>
-        <a href="/method.html" class="nav-link">The Method</a>
-        <a href="/accommodations.html" class="nav-link">Suites</a>
-        <a href="/itinerary.html" class="nav-link">Itinerary</a>
-        <a href="/dining.html" class="nav-link">SWAY Dining</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/consulting.html" class="nav-link">Consulting</a>
-        <a href="/contact.html" class="nav-link">Contact</a>
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+      <nav class="nav-icon-menu" aria-label="Main Navigation">
+        <!-- 1. Home -->
+        <div class="nav-icon-item">
+          <a href="/index.html" class="nav-icon-btn active" aria-label="Home">
+            <i data-lucide="home"></i>
+            <span class="nav-tooltip">Home<span class="nav-tooltip-sub">Sanctuary Entrance</span></span>
+          </a>
+        </div>
+
+        <!-- 2. About Carly -->
+        <div class="nav-icon-item">
+          <a href="/about.html" class="nav-icon-btn" aria-label="About Carly">
+            <i data-lucide="sparkles"></i>
+            <span class="nav-tooltip">About Carly<span class="nav-tooltip-sub">Founder &amp; Artist</span></span>
+          </a>
+        </div>
+
+        <!-- 3. The Retreat -->
+        <div class="nav-icon-item">
+          <a href="/retreat.html" class="nav-icon-btn" aria-label="The Retreat">
+            <i data-lucide="palmtree"></i>
+            <span class="nav-tooltip">The Retreat<span class="nav-tooltip-sub">Art of Arrival</span></span>
+          </a>
+        </div>
+
+        <!-- 4. The Method -->
+        <div class="nav-icon-item">
+          <a href="/method.html" class="nav-icon-btn" aria-label="The Method">
+            <i data-lucide="activity"></i>
+            <span class="nav-tooltip">The Method<span class="nav-tooltip-sub">Somatic Science</span></span>
+          </a>
+        </div>
+
+        <!-- 5. Suites & Villas -->
+        <div class="nav-icon-item">
+          <a href="/accommodations.html" class="nav-icon-btn" aria-label="Suites &amp; Villas">
+            <i data-lucide="bed-double"></i>
+            <span class="nav-tooltip">Suites &amp; Villas<span class="nav-tooltip-sub">Luxury Estates</span></span>
+          </a>
+        </div>
+
+        <!-- 6. Itinerary -->
+        <div class="nav-icon-item">
+          <a href="/itinerary.html" class="nav-icon-btn" aria-label="6-Day Itinerary">
+            <i data-lucide="calendar-days"></i>
+            <span class="nav-tooltip">6-Day Journey<span class="nav-tooltip-sub">Elemental Pathway</span></span>
+          </a>
+        </div>
+
+        <!-- 7. SWAY Dining -->
+        <div class="nav-icon-item">
+          <a href="/dining.html" class="nav-icon-btn" aria-label="SWAY Dining">
+            <i data-lucide="utensils"></i>
+            <span class="nav-tooltip">SWAY Dining<span class="nav-tooltip-sub">Farm-To-Table</span></span>
+          </a>
+        </div>
+
+        <!-- 8. Pricing & Packages -->
+        <div class="nav-icon-item">
+          <a href="/pricing.html" class="nav-icon-btn" aria-label="Packages &amp; Pricing">
+            <i data-lucide="gem"></i>
+            <span class="nav-tooltip">Packages &amp; Pricing<span class="nav-tooltip-sub">Custom Builder</span></span>
+          </a>
+        </div>
+
+        <!-- 9. Consulting -->
+        <div class="nav-icon-item">
+          <a href="/consulting.html" class="nav-icon-btn" aria-label="Consulting">
+            <i data-lucide="briefcase"></i>
+            <span class="nav-tooltip">Consulting<span class="nav-tooltip-sub">Brand &amp; Advisory</span></span>
+          </a>
+        </div>
+
+        <!-- 10. Contact -->
+        <div class="nav-icon-item">
+          <a href="/contact.html" class="nav-icon-btn" aria-label="Contact">
+            <i data-lucide="mail"></i>
+            <span class="nav-tooltip">Contact<span class="nav-tooltip-sub">Concierge &amp; Inquiries</span></span>
+          </a>
+        </div>
       </nav>
 
       <div class="nav-actions">
@@ -84,39 +154,128 @@
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-toggle" class="mobile-menu-btn hidden text-white p-2" aria-label="Open menu">
+        <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[150] bg-noir-950/95 backdrop-blur-2xl p-8 flex flex-col justify-between">
+  <!-- Mobile Touch-Friendly Drawer -->
+    <!-- Mobile Touch-Friendly Drawer -->
+  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] bg-stone-950/95 backdrop-blur-2xl p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
-        <span class="font-serif text-2xl font-bold tracking-tight text-white">ARRIVE.</span>
-        <button id="close-mobile-nav" class="text-white p-2">
+        <a href="/index.html" class="font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <button id="close-mobile-nav" class="text-white p-2" aria-label="Close menu">
           <i data-lucide="x" class="w-6 h-6"></i>
         </button>
       </div>
-      <div class="flex flex-col gap-5 pt-8 text-sm font-mono uppercase tracking-widest text-slate-300">
-        <a href="#letter" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">Manifesto</a>
-        <a href="#method" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">The Arrive Method</a>
-        <a href="#itinerary" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">6-Day Elemental Journey</a>
-        <a href="#villas" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">Estates & Room Specs</a>
-        <a href="#dining" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">SWAY Restaurant & Lounge</a>
-        <a href="#pricing" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">Packages & Inclusions</a>
-        <a href="#builder" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="text-gold-500 font-bold">Custom Retreat Builder & Stripe</a>
-        <a href="#curator" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">Meet Carly Anne Kasinpila</a>
-        <a href="#faq" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')">FAQ</a>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6">
+        <a href="/index.html" class="mobile-nav-item active">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Home</strong>
+            <span class="text-xs text-slate-400">Sanctuary Entrance</span>
+          </div>
+        </a>
+        <a href="/about.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">About Carly Anne</strong>
+            <span class="text-xs text-slate-400">Founder, Artist & Model</span>
+          </div>
+        </a>
+        <a href="/retreat.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="palmtree" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Retreat</strong>
+            <span class="text-xs text-slate-400">The Art of Arrival</span>
+          </div>
+        </a>
+        <a href="/method.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Arrive Method™</strong>
+            <span class="text-xs text-slate-400">Somatic Science</span>
+          </div>
+        </a>
+        <a href="/accommodations.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="bed-double" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Suites & Villas</strong>
+            <span class="text-xs text-slate-400">Luxury Accommodations</span>
+          </div>
+        </a>
+        <a href="/itinerary.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="calendar-days" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">6-Day Itinerary</strong>
+            <span class="text-xs text-slate-400">The Elemental Journey</span>
+          </div>
+        </a>
+        <a href="/dining.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="utensils" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">SWAY Dining</strong>
+            <span class="text-xs text-slate-400">Farm-To-Table</span>
+          </div>
+        </a>
+        <a href="/pricing.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="gem" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Packages & Pricing</strong>
+            <span class="text-xs text-slate-400">Custom Builder & Reserve</span>
+          </div>
+        </a>
+        <a href="/consulting.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Consulting</strong>
+            <span class="text-xs text-slate-400">Strategic Advisory</span>
+          </div>
+        </a>
+        <a href="/contact.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Contact</strong>
+            <span class="text-xs text-slate-400">Concierge Inquiries</span>
+          </div>
+        </a>
       </div>
     </div>
     <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
-      <a href="#builder" onclick="document.getElementById('mobile-nav-drawer').classList.add('hidden')" class="btn-luxe w-full text-center">
-        Reserve Sanctuary ($500 Deposit)
+      <a href="/pricing.html#builder" class="btn-luxe w-full text-center py-3">
+        Reserve Sanctuary ($500 Deposit) ↗
       </a>
-      <a href="/stripe-setup.html" class="text-center font-mono text-xs text-gold-400">Manage Stripe Merchant Keys ↗</a>
+      <a href="/stripe-setup.html" class="text-center font-mono text-xs text-amber-400">Stripe Merchant Portal ↗</a>
+    </div>
+  </div>
+    <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
+      <a href="#builder" class="btn-luxe w-full text-center py-3">
+        Reserve Sanctuary ($500 Deposit) ↗
+      </a>
+      <a href="/stripe-setup.html" class="text-center font-mono text-xs text-amber-400">Stripe Merchant Portal ↗</a>
     </div>
   </div>
 
@@ -140,7 +299,7 @@
   <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-white/10 pt-16 pb-24">
     <!-- Video / Background Canvas -->
     <div class="absolute inset-0 z-0">
-      <img src="/assets/resort/hero-sanctuary.png" alt="Amanti Sanctuary Costa Rica" class="w-full h-full object-cover object-center opacity-30 filter brightness-90 contrast-110" />
+      <img src="/assets/pages/home/hero-sanctuary.png" alt="Amanti Sanctuary Costa Rica" class="w-full h-full object-cover object-center opacity-30 filter brightness-90 contrast-110" />
       <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent"></div>
       <div class="absolute inset-0 bg-radial-gradient from-transparent via-[var(--bg-primary)]/40 to-[var(--bg-primary)]"></div>
     </div>
@@ -152,9 +311,9 @@
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-pink-500"></i>
           Root Down • Rise Up • NamaSLAY
         </span>
-        <span class="tagline-pill">
+        <span class="badge-rainbow">
           <i data-lucide="calendar" class="w-3.5 h-3.5 text-pink-500"></i>
-          Official Dates: April 22–26, 2026
+          Next Retreat: Dates To Be Announced Soon
         </span>
         <span class="tagline-pill">
           <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500"></i>
@@ -184,7 +343,7 @@
           Build Your Retreat &amp; Reserve ($500 Deposit)
         </a>
         <a href="/retreat.html" class="btn-outline-luxe text-xs sm:text-sm py-4 px-8">
-          Explore The Retreat (April 22–26)
+          Explore The Retreat (Dates TBA Soon)
         </a>
         <button data-open-quiz class="btn-outline-luxe text-xs sm:text-sm py-4 px-6 text-orange-600 border-orange-500/60 hover:bg-orange-50">
           <i data-lucide="compass" class="w-4 h-4"></i>
@@ -227,8 +386,8 @@
     <!-- Client's Signature Artwork Showcase Banner -->
     <div class="mb-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white border border-orange-200/80 rounded-3xl p-6 sm:p-10 shadow-lg">
       <div class="md:col-span-4 flex justify-center">
-        <div class="relative group cursor-pointer" data-lightbox data-lightbox-src="/assets/art/arrive-chakra-tree.png" data-lightbox-caption="Arrive Yoga &amp; Wellness Center — Every Body Is A Yoga Body (Original Chakra Tree Artwork)">
-          <img src="/assets/art/arrive-chakra-tree.png" alt="Arrive Chakra Tree" class="w-full max-w-[280px] h-auto object-contain rounded-2xl shadow-md transition-transform duration-500 group-hover:scale-105" />
+        <div class="relative group cursor-pointer" data-lightbox data-lightbox-src="/assets/pages/home/arrive-chakra-tree.png" data-lightbox-caption="Arrive Yoga &amp; Wellness Center — Every Body Is A Yoga Body (Original Chakra Tree Artwork)">
+          <img src="/assets/pages/home/arrive-chakra-tree.png" alt="Arrive Chakra Tree" class="w-full max-w-[280px] h-auto object-contain rounded-2xl shadow-md transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute bottom-2 right-2 p-2 bg-white/90 rounded-full text-pink-600 shadow-md">
             <i data-lucide="zoom-in" class="w-4 h-4"></i>
           </div>
@@ -273,7 +432,7 @@
           <div class="space-y-4">
             <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-800 border border-pink-300 text-xs font-mono font-bold uppercase">The Flagship Retreat</span>
             <h4 class="font-serif text-2xl text-slate-900">The Art of Arrival Retreat</h4>
-            <p class="text-xs font-mono text-pink-600 font-bold">April 22–26, 2026 • Costa Rica</p>
+            <p class="text-xs font-mono text-pink-600 font-bold">Dates Announced Soon • Costa Rica</p>
             <p class="text-xs text-slate-700 font-light leading-relaxed">
               Immersive retreat experiences designed to help you reset, reconnect, and rise. These curated journeys blend movement, reflection, nature, wellness, and meaningful connection in unforgettable settings.
             </p>
@@ -324,7 +483,7 @@
       <!-- Left Column: Editorial Photo of Carly Anne -->
       <div class="lg:col-span-5 relative">
         <div class="relative p-2 bg-noir-900 border border-white/10 shadow-2xl">
-          <img src="/assets/carly/carly-portrait-1.jpg" alt="Carly Anne Kasinpila" class="w-full h-[580px] object-cover filter contrast-110" />
+          <img src="/assets/pages/home/carly-portrait-1.jpg" alt="Carly Anne Kasinpila" class="w-full h-[580px] object-cover filter contrast-110" />
           <div class="absolute bottom-6 left-6 right-6 p-4 bg-noir-950/90 backdrop-blur-md border border-white/10">
             <span class="text-[10px] uppercase font-mono tracking-widest text-gold-400 block">Founder &amp; Retreat Curator</span>
             <h3 class="font-serif text-xl text-white">Carly Anne Kasinpila</h3>
@@ -620,7 +779,7 @@
             <span class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold">01</span>
             <div>
               <h3 class="font-serif text-2xl text-white">Day 1: EARTH — Arrival &amp; Grounding</h3>
-              <span class="text-xs font-mono text-gold-400 block font-bold">Wednesday, April 22, 2026</span>
+              <span class="text-xs font-mono text-gold-400 block font-bold">Day 1 • Arrival, Grounding &amp; Beach Bonfire</span>
             </div>
           </div>
           <div class="flex items-center gap-3 text-xs font-mono text-emerald-300">
@@ -654,7 +813,7 @@
             <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-mono text-sm flex items-center justify-center font-bold">02</span>
             <div>
               <h3 class="font-serif text-2xl text-white">Day 2: WATER — Seeds of Hope &amp; Fluid Grace</h3>
-              <span class="text-xs font-mono text-gold-400 block font-bold">Thursday, April 23, 2026</span>
+              <span class="text-xs font-mono text-gold-400 block font-bold">Day 2 • Waterfall Jump, Somatics &amp; Emotional Flow</span>
             </div>
           </div>
           <div class="flex items-center gap-3 text-xs font-mono text-blue-300">
@@ -688,7 +847,7 @@
             <span class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-mono text-sm flex items-center justify-center font-bold">03</span>
             <div>
               <h3 class="font-serif text-2xl text-white">Day 3: FIRE — Ignite, Transform &amp; Lead</h3>
-              <span class="text-xs font-mono text-gold-400 block font-bold">Friday, April 24, 2026</span>
+              <span class="text-xs font-mono text-gold-400 block font-bold">Day 3 • Power Yoga, Horseback Riding &amp; Temazcal</span>
             </div>
           </div>
           <div class="flex items-center gap-3 text-xs font-mono text-amber-300">
@@ -720,7 +879,7 @@
             <span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-mono text-sm flex items-center justify-center font-bold">04</span>
             <div>
               <h3 class="font-serif text-2xl text-white">Day 4: AIR — Inner Realms &amp; The Space Between Thoughts</h3>
-              <span class="text-xs font-mono text-gold-400 block font-bold">Saturday, April 25, 2026</span>
+              <span class="text-xs font-mono text-gold-400 block font-bold">Day 4 • Canopy Ziplining, Breath Mastery &amp; White Party</span>
             </div>
           </div>
           <div class="flex items-center gap-3 text-xs font-mono text-purple-300">
@@ -753,7 +912,7 @@
             <span class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 font-mono text-sm flex items-center justify-center font-bold">05</span>
             <div>
               <h3 class="font-serif text-2xl text-white">Day 5: AVATAR STATE — Integration &amp; Gratitude Gala</h3>
-              <span class="text-xs font-mono text-gold-400 block font-bold">Sunday, April 26, 2026</span>
+              <span class="text-xs font-mono text-gold-400 block font-bold">Day 5 • Catamaran, Gratitude Gala &amp; DJ Aphasia Celebration</span>
             </div>
           </div>
           <div class="flex items-center gap-3 text-xs font-mono text-gold-300">
@@ -829,7 +988,7 @@
       <!-- 1. Amapola 5-Bedroom Luxury House -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/amapola-outside-1.jpg" alt="Amapola 5 Bedroom House" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/amapola-outside-1.jpg" alt="Amapola 5 Bedroom House" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             Sleeps up to 10
           </div>
@@ -859,7 +1018,7 @@
       <!-- 2. Toucan Villa (1,301 sq ft) -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/toucan-villa-1.jpg" alt="Toucan Villa" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/toucan-villa-1.jpg" alt="Toucan Villa" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             1,301 ft² • 2-3 Bed
           </div>
@@ -889,7 +1048,7 @@
       <!-- 3. Honeymoon Suite (431 sq ft) -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/honeymoon-suite-1.jpg" alt="Honeymoon Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/honeymoon-suite-1.jpg" alt="Honeymoon Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             431 ft² • Private Sanctuary
           </div>
@@ -919,7 +1078,7 @@
       <!-- 4. Macaw Villa (1,076 sq ft) -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/villa-interior-1.jpg" alt="Macaw Villa" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/villa-interior-1.jpg" alt="Macaw Villa" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             1,076 ft² • 2 Bedroom
           </div>
@@ -949,7 +1108,7 @@
       <!-- 5. Queen Suite (Cozy & Functional) -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/queen-suite-1.jpg" alt="Queen Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/queen-suite-1.jpg" alt="Queen Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             Standard Included
           </div>
@@ -979,7 +1138,7 @@
       <!-- 6. Family Studio Suite (431 sq ft) -->
       <div class="luxe-card p-0 overflow-hidden flex flex-col justify-between">
         <div class="h-64 relative overflow-hidden">
-          <img src="/assets/rooms/villa-exterior-1.jpg" alt="Family Studio Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
+          <img src="/assets/pages/home/villa-exterior-1.jpg" alt="Family Studio Suite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-lightbox />
           <div class="absolute top-4 right-4 bg-noir-950/80 backdrop-blur-md px-3 py-1 rounded text-gold-400 font-mono text-xs border border-white/10">
             431 ft² • 2 Queen Beds
           </div>
@@ -1074,8 +1233,8 @@
       </div>
 
       <div class="lg:col-span-6 grid grid-cols-2 gap-4">
-        <img src="/assets/dining/dining-menu-1.jpg" alt="Chef Prepared Dining" class="w-full h-80 object-cover rounded-md border border-white/10" data-lightbox />
-        <img src="/assets/dining/dining-menu-2.jpg" alt="Fresh Juice & Salad Bar" class="w-full h-80 object-cover rounded-md border border-white/10" data-lightbox />
+        <img src="/assets/pages/home/dining-menu-1.jpg" alt="Chef Prepared Dining" class="w-full h-80 object-cover rounded-md border border-white/10" data-lightbox />
+        <img src="/assets/pages/home/dining-menu-2.jpg" alt="Fresh Juice & Salad Bar" class="w-full h-80 object-cover rounded-md border border-white/10" data-lightbox />
       </div>
     </div>
   </section>
@@ -1536,12 +1695,12 @@
       <!-- Carly Anne Editorial Images Grid -->
       <div class="lg:col-span-6 grid grid-cols-2 gap-4">
         <div class="space-y-4">
-          <img src="/assets/carly/carly-editorial-1.jpg" alt="Carly Anne Kasinpila Editorial" class="w-full h-72 object-cover rounded-md border border-white/10" data-lightbox />
-          <img src="/assets/carly/carly-yoga-1.jpg" alt="Carly Anne Yoga Embodiment" class="w-full h-52 object-cover rounded-md border border-white/10" data-lightbox />
+          <img src="/assets/pages/home/carly-editorial-1.jpg" alt="Carly Anne Kasinpila Editorial" class="w-full h-72 object-cover rounded-md border border-white/10" data-lightbox />
+          <img src="/assets/pages/home/carly-yoga-1.jpg" alt="Carly Anne Yoga Embodiment" class="w-full h-52 object-cover rounded-md border border-white/10" data-lightbox />
         </div>
         <div class="space-y-4 pt-8">
-          <img src="/assets/carly/carly-fashion-1.jpg" alt="Carly Anne Fashion Model NYFW" class="w-full h-52 object-cover rounded-md border border-white/10" data-lightbox />
-          <img src="/assets/carly/carly-editorial-2.jpg" alt="Carly Anne Kasinpila High Fashion" class="w-full h-72 object-cover rounded-md border border-white/10" data-lightbox />
+          <img src="/assets/pages/home/carly-fashion-1.jpg" alt="Carly Anne Fashion Model NYFW" class="w-full h-52 object-cover rounded-md border border-white/10" data-lightbox />
+          <img src="/assets/pages/home/carly-editorial-2.jpg" alt="Carly Anne Kasinpila High Fashion" class="w-full h-72 object-cover rounded-md border border-white/10" data-lightbox />
         </div>
       </div>
 
@@ -1618,48 +1777,48 @@
     </div>
 
     <div class="gallery-grid">
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/carly/carly-fashion-2.jpg" data-lightbox-caption="Editorial Vogue — Runway and haute couture aesthetics">
-        <img src="/assets/carly/carly-fashion-2.jpg" alt="Editorial Fashion" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/carly-fashion-2.jpg" data-lightbox-caption="Editorial Vogue — Runway and haute couture aesthetics">
+        <img src="/assets/pages/home/carly-fashion-2.jpg" alt="Editorial Fashion" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">Editorial Fashion</span>
           <span class="font-serif text-lg text-white">Haute Couture Embodiment</span>
         </div>
       </div>
 
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/resort/resort-pool-day.jpg" data-lightbox-caption="Amanti Sanctuary — Sunlit saltwater pool and jungle gardens">
-        <img src="/assets/resort/resort-pool-day.jpg" alt="Amanti Pool" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/resort-pool-day.jpg" data-lightbox-caption="Amanti Sanctuary — Sunlit saltwater pool and jungle gardens">
+        <img src="/assets/pages/home/resort-pool-day.jpg" alt="Amanti Pool" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">Amanti Grounds</span>
           <span class="font-serif text-lg text-white">Saltwater Pool Sanctuary</span>
         </div>
       </div>
 
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/carly/carly-editorial-3.jpg" data-lightbox-caption="Carly Anne Kasinpila — Artist and Curator">
-        <img src="/assets/carly/carly-editorial-3.jpg" alt="Carly Anne Editorial" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/carly-editorial-3.jpg" data-lightbox-caption="Carly Anne Kasinpila — Artist and Curator">
+        <img src="/assets/pages/home/carly-editorial-3.jpg" alt="Carly Anne Editorial" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">The Curator</span>
           <span class="font-serif text-lg text-white">Presence Over Performance</span>
         </div>
       </div>
 
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/rooms/toucan-villa-2.jpg" data-lightbox-caption="Toucan Villa — Rooftop terrace and tropical architecture">
-        <img src="/assets/rooms/toucan-villa-2.jpg" alt="Toucan Villa Interior" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/toucan-villa-2.jpg" data-lightbox-caption="Toucan Villa — Rooftop terrace and tropical architecture">
+        <img src="/assets/pages/home/toucan-villa-2.jpg" alt="Toucan Villa Interior" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">Estates &amp; Suites</span>
           <span class="font-serif text-lg text-white">Toucan Villa Seclusion</span>
         </div>
       </div>
 
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/carly/carly-fashion-4.jpg" data-lightbox-caption="Haute Model Portfolio — New York Style Guide & CFDA representation">
-        <img src="/assets/carly/carly-fashion-4.jpg" alt="Haute Model Portfolio" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/carly-fashion-4.jpg" data-lightbox-caption="Haute Model Portfolio — New York Style Guide & CFDA representation">
+        <img src="/assets/pages/home/carly-fashion-4.jpg" alt="Haute Model Portfolio" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">Model Portfolio</span>
           <span class="font-serif text-lg text-white">Diamond Cut Entertainment</span>
         </div>
       </div>
 
-      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/resort/resort-jungle-deck.jpg" data-lightbox-caption="Sky Yoga Decks — Canopy views and morning breeze">
-        <img src="/assets/resort/resort-jungle-deck.jpg" alt="Sky Yoga Decks" />
+      <div class="gallery-item" data-lightbox data-lightbox-src="/assets/pages/home/resort-jungle-deck.jpg" data-lightbox-caption="Sky Yoga Decks — Canopy views and morning breeze">
+        <img src="/assets/pages/home/resort-jungle-deck.jpg" alt="Sky Yoga Decks" />
         <div class="gallery-overlay">
           <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400">Sky Decks</span>
           <span class="font-serif text-lg text-white">Open Canopy Movement</span>

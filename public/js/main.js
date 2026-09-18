@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeEngine();
+  initIconNavTooltips();
   initAudioAmbience();
   initLetterSwitcher();
   initItineraryTabs();
@@ -551,7 +552,7 @@ async function initStripeStatus() {
 }
 
 /* ==========================================================================
-   9. Mobile Navigation Drawer
+   9. Mobile Navigation Drawer & Touch Tooltips
    ========================================================================== */
 function initMobileNav() {
   const toggle = document.getElementById('mobile-menu-toggle');
@@ -564,6 +565,57 @@ function initMobileNav() {
   if (closeBtn && drawer) {
     closeBtn.addEventListener('click', () => drawer.classList.add('hidden'));
   }
+
+  // Auto-close on link click
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => drawer.classList.add('hidden'));
+    });
+  }
+}
+
+function initIconNavTooltips() {
+  const iconItems = document.querySelectorAll('.nav-icon-item');
+  if (!iconItems.length) return;
+
+  iconItems.forEach(item => {
+    const btn = item.querySelector('.nav-icon-btn');
+    if (!btn) return;
+
+    // Handle touch event for mobile / tablet devices
+    let touchMoved = false;
+    btn.addEventListener('touchmove', () => { touchMoved = true; }, { passive: true });
+
+    btn.addEventListener('touchend', (e) => {
+      if (touchMoved) {
+        touchMoved = false;
+        return;
+      }
+      
+      const isOpen = item.classList.contains('touch-open');
+      // If not yet open, show tooltip on first touch
+      if (!isOpen) {
+        iconItems.forEach(other => other.classList.remove('touch-open'));
+        item.classList.add('touch-open');
+        // If they want to navigate, allow navigation after brief feedback
+      }
+    });
+
+    // Handle mouse enter / leave for desktop hover
+    item.addEventListener('mouseenter', () => {
+      item.classList.add('touch-open');
+    });
+    item.addEventListener('mouseleave', () => {
+      item.classList.remove('touch-open');
+    });
+  });
+
+  // Tap outside closes any active tooltip
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.nav-icon-item')) {
+      iconItems.forEach(item => item.classList.remove('touch-open'));
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
