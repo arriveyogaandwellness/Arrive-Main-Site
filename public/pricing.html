@@ -8,7 +8,58 @@
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Custom Design System Stylesheet with Cache Buster -->
+  <link rel="stylesheet" href="css/style.css?v=3.0" />
+  <style>
+    /* Critical Navigation & Tooltip Fail-Safes */
+    .nav-tooltip {
+      display: none !important;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 500;
+    }
+    .nav-icon-item:hover .nav-tooltip,
+    .nav-icon-btn:focus-visible .nav-tooltip,
+    .nav-icon-item.touch-open .nav-tooltip {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(-50%) translateY(0);
+    }
+    #mobile-nav-drawer {
+      display: none !important;
+    }
+    #mobile-nav-drawer.is-open {
+      display: flex !important;
+    }
+    @media (max-width: 1199px) {
+      .nav-icon-menu {
+        display: none !important;
+      }
+      #stripe-status-badge {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+    }
+    @media (min-width: 1200px) {
+      .nav-icon-menu {
+        display: inline-flex !important;
+      }
+      .mobile-menu-btn {
+        display: none !important;
+      }
+      #mobile-nav-drawer {
+        display: none !important;
+      }
+    }
+  </style>
   
   <script>
     tailwind.config = {
@@ -159,7 +210,7 @@
   </header>
 
     <!-- Mobile Touch-Friendly Drawer -->
-  <div id="mobile-nav-drawer" class="fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto">
+  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
         <a href="/index.html" class="font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
@@ -692,6 +743,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3.0"></script>
 </body>
 </html>

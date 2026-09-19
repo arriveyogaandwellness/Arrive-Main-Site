@@ -562,18 +562,38 @@ function initMobileNav() {
   const drawer = document.getElementById('mobile-nav-drawer');
   const closeBtn = document.getElementById('close-mobile-nav');
 
+  const closeDrawer = () => {
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    drawer.classList.add('hidden');
+    drawer.style.display = 'none';
+    document.body.classList.remove('overflow-hidden');
+  };
+
+  const openDrawer = () => {
+    if (!drawer) return;
+    drawer.classList.add('is-open');
+    drawer.classList.remove('hidden');
+    drawer.style.display = 'flex';
+    document.body.classList.add('overflow-hidden');
+  };
+
   if (toggle && drawer) {
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      const willOpen = !drawer.classList.contains('is-open');
-      drawer.classList.toggle('is-open', willOpen);
-      document.body.classList.toggle('overflow-hidden', willOpen);
+      const isOpen = drawer.classList.contains('is-open') || drawer.style.display === 'flex';
+      if (isOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
   }
+
   if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('is-open');
-      document.body.classList.remove('overflow-hidden');
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeDrawer();
     });
   }
 
@@ -581,11 +601,15 @@ function initMobileNav() {
   if (drawer) {
     drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        drawer.classList.remove('is-open');
-        document.body.classList.remove('overflow-hidden');
+        closeDrawer();
       });
     });
   }
+
+  // Escape key closes drawer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
 }
 
 function initIconNavTooltips() {
