@@ -2,14 +2,16 @@
 <html lang="en" data-theme="tropical-sunshine" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estates, Villas &amp; Suites | The Art of Arrival Sanctuary • Costa Rica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Estates, Villas &amp; Sanctuary Suites • ARRIVE.</title>
   <meta name="description" content="Explore luxury accommodations in Playa Hermosa, Costa Rica: Amapola 5-Bedroom House, Toucan Villa, Macaw Villa, Honeymoon Queen Suite, and Family Studios." />
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom Design System Stylesheet with Cache Buster -->
+  
+  <!-- Custom Design System Stylesheet with Cache Buster -->
   <link rel="stylesheet" href="css/style.css?v=3.0" />
+  
   <style>
     /* Critical Navigation & Tooltip Fail-Safes */
     .nav-tooltip {
@@ -60,7 +62,7 @@
       }
     }
   </style>
-  
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -69,6 +71,13 @@
           colors: {
             noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
             gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            script: ['"Alex Brush"', 'cursive']
           }
         }
       }
@@ -76,16 +85,19 @@
   </script>
 </head>
 
-<body class="selection:bg-gold-500 selection:text-black bg-noir-950 text-slate-200">
+<body class="selection:bg-pink-500 selection:text-white">
 
-  <!-- Nav -->
+  <!-- =========================================================================
+       1. NAVIGATION: LUXURY EDITORIAL HEADER (Universal Across All Pages)
+       ========================================================================= -->
   <header class="sanctuary-nav">
     <div class="nav-container">
       <a href="/index.html" class="nav-brand">
         <span class="brand-title brand-rainbow-title">ARRIVE.</span>
-        <span class="brand-tag">Estates &amp; Suites</span>
+        <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
       </a>
-            <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
       <nav class="nav-icon-menu" aria-label="Main Navigation">
         <!-- 1. Home -->
         <div class="nav-icon-item">
@@ -131,7 +143,7 @@
           </a>
         </div>
 
-        <!-- 5. Suites & Villas -->
+        <!-- 5. Suites & Villas (ACTIVE) -->
         <div class="nav-icon-item">
           <a href="/accommodations.html" class="nav-icon-btn active" aria-label="Suites &amp; Villas — Luxury Estates">
             <i data-lucide="bed-double"></i>
@@ -142,7 +154,7 @@
           </a>
         </div>
 
-        <!-- 6. 6-Day Journey -->
+        <!-- 6. Itinerary -->
         <div class="nav-icon-item">
           <a href="/itinerary.html" class="nav-icon-btn" aria-label="6-Day Journey — Elemental Pathway">
             <i data-lucide="calendar-days"></i>
@@ -196,12 +208,27 @@
             </span>
           </a>
         </div>
-
       </nav>
+
       <div class="nav-actions">
-        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">
-          Reserve Sanctuary ($500)
+        <!-- Stripe Live Status Pill -->
+        <div id="stripe-status-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse"></span>
+          <span class="text-amber-300 font-mono text-[10px] tracking-wider uppercase">Stripe Initializing</span>
+        </div>
+
+        <!-- Theme Drawer Trigger -->
+        <button id="open-theme-drawer" class="control-pill hidden md:inline-flex" title="Switch Haute Couture Visual Theme">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i>
+          <span class="hidden md:inline">Theme</span>
+        </button>
+
+        <!-- CTA Book Spot -->
+        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-[11px]">
+          Reserve Spot ($500)
         </a>
+
+        <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
@@ -209,7 +236,7 @@
     </div>
   </header>
 
-    <!-- Mobile Touch-Friendly Drawer -->
+  <!-- Mobile Touch-Friendly Drawer -->
   <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
@@ -322,190 +349,420 @@
     </div>
   </div>
 
-  <!-- Hero Header -->
-  <section class="py-24 border-b border-white/10 bg-noir-900/50">
-    <div class="max-w-6xl mx-auto px-6">
-      <span class="badge-rainbow mb-4">Playa Hermosa, Costa Rica • Private Sanctuary</span>
-      <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
-        Estates, Villas &amp; Sanctuary Suites
-      </h1>
-      <p class="text-slate-300 font-light text-xl max-w-3xl leading-relaxed">
-        A boutique ocean-side retreat sanctuary featuring 22+ bedrooms and 36 beds nestled between virgin rainforest canopy and Pacific black sand shores.
-      </p>
+  <!-- Audio Ambient Floating Dock -->
+  <div class="audio-dock">
+    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+      <div class="sound-wave paused">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       2. HERO SECTION — EDITORIAL VOGUE & COSTA RICA BIOPHILIC SANCTUARY
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-[55vh] flex flex-col items-center justify-start sm:justify-center overflow-hidden border-b border-orange-200/50 pt-8 sm:pt-16 pb-16 sm:pb-20">
+    <!-- Background Canvas -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/assets/pages/accommodations/guanacaste-king-suite.jpg" alt="Amanti Sanctuary Luxury Suites &amp; Villas" class="w-full h-full object-cover object-center opacity-25 filter brightness-95 contrast-105" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-[var(--bg-primary)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/90 via-white/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- High Fashion Badges -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-full px-2">
+        <span class="badge-rainbow">
+          <i data-lucide="bed-double" class="w-3.5 h-3.5 text-blue-500"></i>
+          22+ Luxury Bedrooms • 36 Beds
+        </span>
+        <span class="badge-rainbow">
+          <i data-lucide="trees" class="w-3.5 h-3.5 text-emerald-500"></i>
+          Rainforest Canopy &amp; Ocean Sanctuary
+        </span>
+        <span class="tagline-pill">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+          Playa Hermosa, Costa Rica
+        </span>
+      </div>
+
+      <!-- Haute-Couture Sanctuary Editorial Card -->
+      <div class="hero-manifesto-card max-w-4xl mx-auto p-6 sm:p-10 md:p-12 rounded-3xl backdrop-blur-md bg-white/92 border border-orange-200/60 shadow-[0_20px_60px_-15px_rgba(255,122,0,0.16),0_4px_25px_rgba(0,0,0,0.05)] mb-8 text-center">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-stone-950 leading-[1.12] tracking-tight mb-4">
+          Estates, Villas &amp; <span class="italic font-bold font-editorial text-rainbow inline-block py-1">Suites</span>
+        </h1>
+
+        <!-- Rainbow Ribbon -->
+        <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-pink-500 via-amber-400 to-teal-400 mx-auto rounded-full mb-6"></div>
+
+        <p class="font-editorial text-lg sm:text-2xl text-stone-800 italic leading-relaxed max-w-2xl mx-auto mb-4">
+          "True rest requires total sensory replenishment: silent cool air, memory foam clouds, and the ocean rhythm."
+        </p>
+
+        <p class="text-stone-600 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          A boutique ocean-side sanctuary compound nestled between virgin rainforest canopy and Pacific black sand shores, equipped with private plunge pools, expansive balconies, and hand-carved Guanacaste hardwoods.
+        </p>
+      </div>
+
+      <!-- Action Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-md mx-auto">
+        <a href="/pricing.html#builder" class="btn-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          Reserve Spot ($500 Deposit)
+        </a>
+        <a href="/pricing.html" class="btn-outline-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          View Package Pricing
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Universal Amenities Grid -->
-  <section class="py-12 border-b border-white/10 bg-noir-950">
+  <!-- =========================================================================
+       3. UNIVERSAL AMENITIES GRID
+       ========================================================================= -->
+  <section class="py-12 border-b border-orange-200/40 bg-white/70">
     <div class="max-w-6xl mx-auto px-6">
-      <h3 class="font-mono text-xs uppercase tracking-widest text-gold-400 mb-6 text-center">Included Across All Accommodations</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono text-slate-300">
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> Memory Foam Bed Toppers
+      <h3 class="font-mono text-xs uppercase tracking-widest text-amber-700 font-bold mb-6 text-center">
+        Included Across All Accommodations
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono text-stone-800">
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>Memory Foam Bed Toppers</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> On-Demand Silent AC
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>On-Demand Silent AC</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> En-Suite Kitchenette
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>En-Suite Kitchenette</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> Ultra-Quality Linens
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>Ultra-Quality Linens</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> Smart TVs &amp; Free Wi-Fi
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>Smart TVs &amp; Free Wi-Fi</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> Custom Botanical Art
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>Custom Botanical Art</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> In-Room Coffee Station
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>In-Room Coffee Station</span>
         </div>
-        <div class="p-3 bg-noir-900 border border-white/5 rounded flex items-center gap-2">
-          <i data-lucide="check" class="w-4 h-4 text-gold-400"></i> Daily Spa Housekeeping
+        <div class="p-4 bg-white border border-orange-200/60 rounded-xl shadow-sm flex items-center gap-2.5">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+          <span>Daily Spa Housekeeping</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Deep Dive Showcase -->
-  <section class="section-wrapper space-y-24">
+  <!-- =========================================================================
+       4. DEEP DIVE SHOWCASE — VILLAS & SUITES
+       ========================================================================= -->
+  <section class="section-wrapper space-y-20 border-b border-orange-200/40">
 
     <!-- 1. Amapola House -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-7 grid grid-cols-2 gap-4">
-        <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Amapola House Exterior" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
-        <img src="/assets/pages/accommodations/amapola-upstairs.jpg" alt="Amapola Upstairs Suite" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Amapola House Exterior" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Private Compound Veranda</span>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/amapola-upstairs.jpg" alt="Amapola Upstairs Suite" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Upper Balcony Lounge</span>
+          </div>
+        </div>
       </div>
       <div class="lg:col-span-5 space-y-4">
-        <span class="badge-tag gold">Private Sanctuary Compound</span>
-        <h2 class="font-serif text-4xl text-white">Amapola 5-Bedroom House</h2>
-        <p class="text-slate-300 text-sm font-light leading-relaxed">
+        <span class="badge-rainbow">Private Sanctuary Compound</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold">Amapola 5-Bedroom House</h2>
+        <p class="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
           The ultimate private compound. Sleeps up to 10 guests in pure luxury with 5 private bedrooms, 3 spa bathrooms, 2 fully appointed chef kitchens, 2 dining salons, 2 living rooms, a dedicated foosball gaming salon, private swimming pool, and an expansive balcony terrace overlooking lush canopy palms.
         </p>
-        <div class="text-xs font-mono text-slate-400 space-y-1 border-t border-white/10 pt-4">
-          <p>• 5 King / Queen Bedrooms • 3 Bathrooms</p>
-          <p>• 2 Full Kitchens • Private Swimming Pool &amp; Terrace</p>
-          <p>• Foosball Table • On-Demand AC • High-Speed Starlink</p>
+        <div class="text-xs font-mono text-stone-700 space-y-1.5 border-t border-orange-200/50 pt-4">
+          <p>• 5 King / Queen Bedrooms • 3 Spa Bathrooms</p>
+          <p>• 2 Full Chef Kitchens • Private Swimming Pool &amp; Terrace</p>
+          <p>• Foosball Salon • Silent AC • High-Speed Starlink</p>
         </div>
-        <div class="pt-4">
-          <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">Reserve Amapola Estate ↗</a>
+        <div class="pt-2">
+          <a href="/pricing.html#builder" class="btn-luxe inline-flex py-3 px-6 text-xs font-semibold">
+            Reserve Amapola Estate ↗
+          </a>
         </div>
       </div>
     </div>
 
     <!-- 2. Toucan Villa -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-5 space-y-4 order-2 lg:order-1">
-        <span class="badge-tag">1,301 ft² Private Villa</span>
-        <h2 class="font-serif text-4xl text-white">Toucan Villa (2-3 Bedroom)</h2>
-        <p class="text-slate-300 text-sm font-light leading-relaxed">
+        <span class="tagline-pill">1,301 ft² Private Villa</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold">Toucan Villa (2-3 Bedroom)</h2>
+        <p class="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
           An expansive private villa featuring 1,301 square feet of airy indoor-outdoor living. Includes a big central salon, full kitchen, 2 designer bathrooms, courtyard pool view, and a private rooftop BBQ terrace engineered for intimate group dinners and celestial stargazing.
         </p>
-        <div class="text-xs font-mono text-slate-400 space-y-1 border-t border-white/10 pt-4">
+        <div class="text-xs font-mono text-stone-700 space-y-1.5 border-t border-orange-200/50 pt-4">
           <p>• 1,301 ft² • Sleeps up to 8 guests</p>
-          <p>• Full Kitchen with range &amp; fridge • Big living room</p>
+          <p>• Full Kitchen with range &amp; fridge • Big living salon</p>
           <p>• Rooftop terrace for BBQ &amp; Stargazing • Pool view</p>
         </div>
-        <div class="pt-4">
-          <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">Reserve Toucan Villa ↗</a>
+        <div class="pt-2">
+          <a href="/pricing.html#builder" class="btn-luxe inline-flex py-3 px-6 text-xs font-semibold">
+            Reserve Toucan Villa ↗
+          </a>
         </div>
       </div>
-      <div class="lg:col-span-7 grid grid-cols-2 gap-4 order-1 lg:order-2">
-        <img src="/assets/pages/accommodations/toucan-villa-1.jpg" alt="Toucan Villa Bedroom" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
-        <img src="/assets/pages/accommodations/toucan-villa-2.jpg" alt="Toucan Villa Rooftop" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 lg:order-2">
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/toucan-villa-1.jpg" alt="Toucan Villa Bedroom" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Toucan Master Chamber</span>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/toucan-villa-2.jpg" alt="Toucan Villa Rooftop" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Rooftop Sky Terrace</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 3. Honeymoon Queen Suite -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-7 grid grid-cols-2 gap-4">
-        <img src="/assets/pages/accommodations/honeymoon-suite-1.jpg" alt="Honeymoon Queen Suite" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
-        <img src="/assets/pages/accommodations/honeymoon-bath.jpg" alt="Honeymoon Suite Bath" class="w-full h-80 object-cover rounded border border-white/10" data-lightbox />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/honeymoon-suite-1.jpg" alt="Honeymoon Queen Suite" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Honeymoon Bedroom Sanctuary</span>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/honeymoon-bath.jpg" alt="Honeymoon Suite Bath" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
+          <div class="p-2.5 text-center bg-white">
+            <span class="text-xs font-serif text-stone-800 font-semibold">Spa Stone Bath</span>
+          </div>
+        </div>
       </div>
       <div class="lg:col-span-5 space-y-4">
-        <span class="badge-tag gold">431 ft² Romantic Seclusion</span>
-        <h2 class="font-serif text-4xl text-white">Honeymoon Queen Suite</h2>
-        <p class="text-slate-300 text-sm font-light leading-relaxed">
+        <span class="badge-rainbow">431 ft² Romantic Seclusion</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold">Honeymoon Queen Suite</h2>
+        <p class="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
           Created for solo visionaries or couples seeking refined intimacy. 431 square feet of secluded comfort with 1 plush Queen bed, private attached bathroom, kitchenette, minibar, espresso machine, flat-screen Smart TV, and a private patio with tranquil pool views.
         </p>
-        <div class="text-xs font-mono text-slate-400 space-y-1 border-t border-white/10 pt-4">
+        <div class="text-xs font-mono text-stone-700 space-y-1.5 border-t border-orange-200/50 pt-4">
           <p>• 431 ft² • 1 Queen Bed with Memory Foam Topper</p>
           <p>• Private Bath &amp; Kitchenette • Patio with pool view</p>
           <p>• Dedicated workspace &amp; minibar</p>
         </div>
-        <div class="pt-4">
-          <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">Reserve Honeymoon Suite ↗</a>
+        <div class="pt-2">
+          <a href="/pricing.html#builder" class="btn-luxe inline-flex py-3 px-6 text-xs font-semibold">
+            Reserve Honeymoon Suite ↗
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- 4. Queen Suite & Family Suite -->
+    <!-- 4. Queen Suite & Family Studio Suite -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="luxe-card space-y-4">
-        <img src="/assets/pages/accommodations/queen-suite-1.jpg" alt="Queen Suite" class="w-full h-64 object-cover rounded border border-white/10" data-lightbox />
-        <span class="badge-tag">Retreat Standard</span>
-        <h3 class="font-serif text-2xl text-white">Queen Suite</h3>
-        <p class="text-xs text-slate-300 font-light">
+      <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-4">
+        <div class="rounded-xl overflow-hidden border border-orange-200/40 group cursor-pointer" data-lightbox>
+          <img src="/assets/pages/accommodations/queen-suite-1.jpg" alt="Queen Suite" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
+        </div>
+        <span class="tagline-pill">Retreat Standard</span>
+        <h3 class="font-serif text-2xl text-stone-900 font-bold">Queen Suite</h3>
+        <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
           1 Queen bed plus pullout trundle, private bath, sitting lounge, kitchenette en-suite, and hanging closets. Cozy, highly functional, and included in the standard retreat package without upgrade fees.
         </p>
       </div>
 
-      <div class="luxe-card space-y-4">
-        <img src="/assets/pages/accommodations/amapola-grand-salon.png" alt="Family Studio Suite &amp; Grand Living Salon" class="w-full h-64 object-cover rounded border border-white/10" data-lightbox />
-        <span class="badge-tag">431 ft² Double</span>
-        <h3 class="font-serif text-2xl text-white">Family Studio Suite</h3>
-        <p class="text-xs text-slate-300 font-light">
+      <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-4">
+        <div class="rounded-xl overflow-hidden border border-orange-200/40 group cursor-pointer" data-lightbox>
+          <img src="/assets/pages/accommodations/amapola-grand-salon.png" alt="Family Studio Suite &amp; Grand Living Salon" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
+        </div>
+        <span class="tagline-pill">431 ft² Double</span>
+        <h3 class="font-serif text-2xl text-stone-900 font-bold">Family Studio Suite</h3>
+        <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
           2 Queen beds side by side, private bathroom, kitchenette, and inner courtyard patio access. Spacious and well-lit interiors designed for friends or family traveling together.
         </p>
       </div>
     </div>
 
-    <!-- Authentic Artisan Furniture & Architecture Showcase -->
-    <div class="space-y-8 pt-8 border-t border-white/10">
+    <!-- 5. Authentic Artisan Craftsmanship -->
+    <div class="space-y-8 pt-8 border-t border-orange-200/40">
       <div class="text-center max-w-3xl mx-auto">
         <span class="badge-rainbow mb-3">Authentic Costa Rican Craftsmanship</span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-white">Handcrafted Natural Elegance</h2>
-        <p class="text-slate-400 text-sm font-light mt-2">
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold">Handcrafted Natural Elegance</h2>
+        <p class="text-stone-600 text-sm font-light mt-2">
           Every villa at Amanti Sanctuary is curated with native Guanacaste hardwoods, hand-carved wildlife art, and artisanal Costa Rican stonework.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="luxe-card p-3 space-y-3">
-          <img src="/assets/pages/accommodations/guanacaste-king-suite.jpg" alt="Guanacaste Live Tree Root Headboard" class="w-full h-48 object-cover rounded" data-lightbox />
-          <h4 class="font-serif text-white text-base">Guanacaste Root Suites</h4>
-          <p class="text-xs text-slate-400 font-light">Living tree root headboards hand-sculpted by local artisans.</p>
+        <div class="bg-white p-4 rounded-2xl border border-orange-200/60 shadow-sm space-y-3 cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/guanacaste-king-suite.jpg" alt="Guanacaste Live Tree Root Headboard" class="w-full h-48 object-cover rounded-xl transition duration-500 group-hover:scale-105" />
+          <h4 class="font-serif text-stone-900 text-base font-bold">Guanacaste Root Suites</h4>
+          <p class="text-xs text-stone-600 font-light">Living tree root headboards hand-sculpted by local artisans.</p>
         </div>
 
-        <div class="luxe-card p-3 space-y-3">
-          <img src="/assets/pages/accommodations/scarlet-macaw-terrace.jpg" alt="Artisan Scarlet Macaw Terrace Furniture" class="w-full h-48 object-cover rounded" data-lightbox />
-          <h4 class="font-serif text-white text-base">Scarlet Macaw Verandas</h4>
-          <p class="text-xs text-slate-400 font-light">Hand-carved hardwood macaw cocktail tables and rocking chairs.</p>
+        <div class="bg-white p-4 rounded-2xl border border-orange-200/60 shadow-sm space-y-3 cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/scarlet-macaw-terrace.jpg" alt="Artisan Scarlet Macaw Terrace Furniture" class="w-full h-48 object-cover rounded-xl transition duration-500 group-hover:scale-105" />
+          <h4 class="font-serif text-stone-900 text-base font-bold">Scarlet Macaw Verandas</h4>
+          <p class="text-xs text-stone-600 font-light">Hand-carved hardwood macaw cocktail tables and rocking chairs.</p>
         </div>
 
-        <div class="luxe-card p-3 space-y-3">
-          <img src="/assets/pages/accommodations/swan-towel-art.jpg" alt="Luxury Swan Towel Art &amp; Hibiscus Welcome" class="w-full h-48 object-cover rounded" data-lightbox />
-          <h4 class="font-serif text-white text-base">Heart Swan Welcome</h4>
-          <p class="text-xs text-slate-400 font-light">Bespoke turn-down service with fresh tropical hibiscus flowers.</p>
+        <div class="bg-white p-4 rounded-2xl border border-orange-200/60 shadow-sm space-y-3 cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/swan-towel-art.jpg" alt="Luxury Swan Towel Art &amp; Hibiscus Welcome" class="w-full h-48 object-cover rounded-xl transition duration-500 group-hover:scale-105" />
+          <h4 class="font-serif text-stone-900 text-base font-bold">Heart Swan Welcome</h4>
+          <p class="text-xs text-stone-600 font-light">Bespoke turn-down service with fresh tropical hibiscus flowers.</p>
         </div>
 
-        <div class="luxe-card p-3 space-y-3">
-          <img src="/assets/pages/accommodations/alligator-kitchen-bench.jpg" alt="Handcrafted Alligator Kitchen Bench" class="w-full h-48 object-cover rounded" data-lightbox />
-          <h4 class="font-serif text-white text-base">Artisan Wood Benches</h4>
-          <p class="text-xs text-slate-400 font-light">Costa Rican wildlife carved solid wood furniture and chef kitchens.</p>
+        <div class="bg-white p-4 rounded-2xl border border-orange-200/60 shadow-sm space-y-3 cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/accommodations/alligator-kitchen-bench.jpg" alt="Handcrafted Alligator Kitchen Bench" class="w-full h-48 object-cover rounded-xl transition duration-500 group-hover:scale-105" />
+          <h4 class="font-serif text-stone-900 text-base font-bold">Artisan Wood Benches</h4>
+          <p class="text-xs text-stone-600 font-light">Costa Rican wildlife carved solid wood furniture and chef kitchens.</p>
         </div>
       </div>
     </div>
 
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
-    <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
-    <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
+  <!-- =========================================================================
+       5. FOOTER (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Ethos -->
+      <div class="space-y-4">
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          A luxury biophilic wellness sanctuary and somatic retreat dedicated to sustainable transformation, nervous system recalibration, and authentic human connection.
+        </p>
+        <p class="text-xs text-gold-400 font-editorial italic text-base">
+          "Every Body Is A Yoga Body."
+        </p>
+        <div class="text-[11px] text-slate-400 space-y-1 pt-2">
+          <p>Sanctuary: Amanti Resort, Playa Hermosa, Costa Rica</p>
+          <p>Headquarters: Boca Raton, Florida, USA</p>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Sanctuary Experience</strong>
+        <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Art of Arrival (Dates Soon)</a>
+        <a href="/method.html" class="block hover:text-gold-400 transition-colors">The Arrive Yoga Method™</a>
+        <a href="/accommodations.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Suites &amp; Private Villas</a>
+        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">6-Day Elemental Schedule</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Farm-To-Table Dining</a>
+        <a href="/about.html" class="block hover:text-gold-400 transition-colors">Meet Carly Anne Kasinpila</a>
+      </div>
+
+      <!-- Pricing & Legal -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Investment &amp; Inquiries</strong>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">Standard Package ($2,200)</a>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">VIP Package ($3,100)</a>
+        <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Consulting</a>
+        <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
+        <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
+      </div>
+
+      <!-- Direct Contact -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Concierge &amp; Booking</strong>
+        <p>Playa Hermosa, Puntarenas, Costa Rica</p>
+        <p>Direct: <a href="tel:9543367048" class="text-white hover:text-gold-400">954-336-7048</a></p>
+        <p>Email: <a href="mailto:arrive@everybodyisayogabody.org" class="text-white hover:text-gold-400">arrive@everybodyisayogabody.org</a></p>
+        <p>Web: <a href="https://everybodyisayogabody.org" target="_blank" class="text-gold-400">everybodyisayogabody.org</a></p>
+        <p class="text-[11px] text-slate-400 pt-2">© 2026 Arrive Yoga &amp; Wellness. All Rights Reserved.</p>
+      </div>
+
+    </div>
   </footer>
 
+  <!-- =========================================================================
+       MODALS: THEME DRAWER & LIGHTBOX
+       ========================================================================= -->
+  <div id="theme-drawer" class="theme-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+      <div>
+        <h3 class="font-serif text-2xl text-white">Visual Themes</h3>
+        <p class="text-xs font-mono text-slate-400">Haute Couture &amp; Sanctuary Palettes</p>
+      </div>
+      <button id="close-theme-drawer" class="text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Theme 1: Tropical Sunshine (Default) -->
+    <div class="theme-card-option active" data-theme-id="tropical-sunshine" data-set-theme="tropical-sunshine">
+      <div>
+        <strong class="text-white text-sm block">01. Tropical Sunshine &amp; Rainbow (Default) 🌺🌈</strong>
+        <span class="text-xs text-slate-400">Sunlit warmth, vibrant rainbow aura, &amp; joyful Costa Rica energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-cyan-400 border border-white/40 shadow-sm"></div>
+    </div>
+
+    <!-- Theme 2: Biophilic Emerald -->
+    <div class="theme-card-option" data-theme-id="biophilic-emerald" data-set-theme="biophilic-emerald">
+      <div>
+        <strong class="text-white text-sm block">02. Biophilic Emerald Sanctuary 🌿</strong>
+        <span class="text-xs text-slate-400">Costa Rica rainforest, jade greens &amp; raw linen</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#52b788] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 3: Sunset Somatic Terracotta -->
+    <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
+      <div>
+        <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
+        <span class="text-xs text-slate-400">Playa Hermosa dusk, rich clay &amp; glowing dusk ember</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e76f51] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 4: Haute Noir & Gold -->
+    <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
+      <div>
+        <strong class="text-white text-sm block">04. Haute Noir &amp; Royal Gold ✨</strong>
+        <span class="text-xs text-slate-400">Metropolitan vogue elegance, obsidian &amp; 24K gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e2b774] border border-white/20"></div>
+    </div>
+  </div>
+
+  <div id="lightbox-modal" class="sanctuary-modal">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-image" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl" />
+      <p id="lightbox-caption" class="text-gold-300 font-serif text-lg mt-4 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons & Engine Scripts -->
   <script src="js/main.js?v=3.0"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
 </body>
 </html>

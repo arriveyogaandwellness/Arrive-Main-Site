@@ -2,14 +2,16 @@
 <html lang="en" data-theme="tropical-sunshine" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6-Day Elemental Itinerary | The Art of Arrival Retreat • Costa Rica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>6-Day Elemental Itinerary | The Art of Arrival Retreat • Costa Rica • ARRIVE.</title>
   <meta name="description" content="Discover the 6-Day Elemental Pathway in Costa Rica: Earth, Water, Fire, Air, and Avatar State. Daily yoga, workshops, themed dinners, and excursions." />
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom Design System Stylesheet with Cache Buster -->
+  
+  <!-- Custom Design System Stylesheet with Cache Buster -->
   <link rel="stylesheet" href="css/style.css?v=3.0" />
+  
   <style>
     /* Critical Navigation & Tooltip Fail-Safes */
     .nav-tooltip {
@@ -60,7 +62,7 @@
       }
     }
   </style>
-  
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -69,6 +71,13 @@
           colors: {
             noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
             gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            script: ['"Alex Brush"', 'cursive']
           }
         }
       }
@@ -76,16 +85,19 @@
   </script>
 </head>
 
-<body class="selection:bg-gold-500 selection:text-black bg-noir-950 text-slate-200">
+<body class="selection:bg-pink-500 selection:text-white">
 
-  <!-- Nav -->
+  <!-- =========================================================================
+       1. NAVIGATION: LUXURY EDITORIAL HEADER (Universal Across All Pages)
+       ========================================================================= -->
   <header class="sanctuary-nav">
     <div class="nav-container">
       <a href="/index.html" class="nav-brand">
         <span class="brand-title brand-rainbow-title">ARRIVE.</span>
-        <span class="brand-tag">The 6-Day Journey</span>
+        <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
       </a>
-            <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
       <nav class="nav-icon-menu" aria-label="Main Navigation">
         <!-- 1. Home -->
         <div class="nav-icon-item">
@@ -142,7 +154,7 @@
           </a>
         </div>
 
-        <!-- 6. 6-Day Journey -->
+        <!-- 6. Itinerary (ACTIVE) -->
         <div class="nav-icon-item">
           <a href="/itinerary.html" class="nav-icon-btn active" aria-label="6-Day Journey — Elemental Pathway">
             <i data-lucide="calendar-days"></i>
@@ -196,12 +208,27 @@
             </span>
           </a>
         </div>
-
       </nav>
+
       <div class="nav-actions">
-        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">
-          Reserve Sanctuary ($500)
+        <!-- Stripe Live Status Pill -->
+        <div id="stripe-status-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse"></span>
+          <span class="text-amber-300 font-mono text-[10px] tracking-wider uppercase">Stripe Initializing</span>
+        </div>
+
+        <!-- Theme Drawer Trigger -->
+        <button id="open-theme-drawer" class="control-pill hidden md:inline-flex" title="Switch Haute Couture Visual Theme">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i>
+          <span class="hidden md:inline">Theme</span>
+        </button>
+
+        <!-- CTA Book Spot -->
+        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-[11px]">
+          Reserve Spot ($500)
         </a>
+
+        <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
@@ -209,7 +236,7 @@
     </div>
   </header>
 
-    <!-- Mobile Touch-Friendly Drawer -->
+  <!-- Mobile Touch-Friendly Drawer -->
   <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
@@ -322,356 +349,547 @@
     </div>
   </div>
 
-  <!-- Hero Header -->
-  <section class="py-24 border-b border-white/10 bg-noir-900/50">
-    <div class="max-w-6xl mx-auto px-6">
-      <span class="badge-rainbow mb-4">The 6-Day Elemental Pathway • Dates To Be Announced Soon</span>
-      <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
-        The 6-Day Retreat Experience
-      </h1>
-      <p class="text-slate-300 font-light text-xl max-w-3xl leading-relaxed">
-        Five elements guiding you inward and upward — from somatic grounding on Day 1 to full integration in the Avatar State on Day 5.
-      </p>
+  <!-- Audio Ambient Floating Dock -->
+  <div class="audio-dock">
+    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+      <div class="sound-wave paused">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       2. HERO SECTION — EDITORIAL VOGUE & COSTA RICA BIOPHILIC SANCTUARY
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-[55vh] flex flex-col items-center justify-start sm:justify-center overflow-hidden border-b border-orange-200/50 pt-8 sm:pt-16 pb-16 sm:pb-20">
+    <!-- Background Canvas -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/assets/pages/retreat/amapola-poolside.jpg" alt="Playa Hermosa Costa Rica — 6-Day Elemental Pathway" class="w-full h-full object-cover object-center opacity-25 filter brightness-95 contrast-105" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-[var(--bg-primary)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/90 via-white/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- High Fashion Badges -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-full px-2">
+        <span class="badge-rainbow">
+          <i data-lucide="compass" class="w-3.5 h-3.5 text-pink-500"></i>
+          6-Day Elemental Pathway
+        </span>
+        <span class="badge-rainbow">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-teal-500"></i>
+          Dates Announced Soon
+        </span>
+        <span class="tagline-pill">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+          Earth • Water • Fire • Air • Avatar State
+        </span>
+      </div>
+
+      <!-- Haute-Couture Sanctuary Editorial Card -->
+      <div class="hero-manifesto-card max-w-4xl mx-auto p-6 sm:p-10 md:p-12 rounded-3xl backdrop-blur-md bg-white/92 border border-orange-200/60 shadow-[0_20px_60px_-15px_rgba(255,122,0,0.16),0_4px_25px_rgba(0,0,0,0.05)] mb-8 text-center">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-stone-950 leading-[1.12] tracking-tight mb-4">
+          The 6-Day <span class="italic font-bold font-editorial text-rainbow inline-block py-1">Journey</span>
+        </h1>
+
+        <!-- Rainbow Ribbon -->
+        <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-pink-500 via-amber-400 to-teal-400 mx-auto rounded-full mb-6"></div>
+
+        <p class="font-editorial text-lg sm:text-2xl text-stone-800 italic leading-relaxed max-w-2xl mx-auto mb-4">
+          "Five elements guiding you inward and upward — from somatic grounding to total expansion."
+        </p>
+
+        <p class="text-stone-600 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Each day is anchored in an elemental frequency, pairing trauma-informed somatic yoga with experiential workshops, curated excursions, and celebratory farm-to-table dining under the stars.
+        </p>
+      </div>
+
+      <!-- Action Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-md mx-auto">
+        <a href="/pricing.html#builder" class="btn-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          Reserve Spot ($500 Deposit)
+        </a>
+        <a href="#schedule-timeline" class="btn-outline-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          View Daily Breakdown
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Detailed Timeline Schedule -->
-  <section class="section-wrapper space-y-12">
+  <!-- =========================================================================
+       3. DETAILED TIMELINE SCHEDULE — DAYS 1 TO 6
+       ========================================================================= -->
+  <section id="schedule-timeline" class="section-wrapper space-y-12 border-b border-orange-200/40">
 
-    <!-- Day 1 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-emerald-800/40 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <!-- Day 1: EARTH -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-white/95 border border-emerald-300/60 shadow-sm space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-orange-200/40 pb-4">
         <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-lg">01</span>
+          <span class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 font-mono font-bold flex items-center justify-center text-xl shadow-sm">01</span>
           <div>
-            <h2 class="font-serif text-3xl text-white">Day 1: EARTH — Arrival &amp; Grounding</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Day 1 • Earth Element: Anchor into the body &amp; regulate nervous system</p>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 1: EARTH — Arrival &amp; Grounding</h2>
+            <p class="text-xs font-mono text-emerald-700 font-bold uppercase tracking-wider">Earth Element: Anchor into the body &amp; regulate nervous system</p>
           </div>
         </div>
-        <span class="px-3 py-1 rounded bg-emerald-950 border border-emerald-800 text-xs font-mono text-emerald-300">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-300 text-xs font-mono text-emerald-800 font-medium">
           Color Theme: Green &amp; Earth Neutrals
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300 font-light">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-700 font-light">
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Daytime Flow</h4>
+          <h4 class="text-emerald-700 font-mono text-xs uppercase font-bold tracking-wider">Daytime Flow</h4>
           <p><strong>✈️ Arrival Window:</strong> Private air-conditioned shuttles pick up guests directly from Juan Santamaría Airport (SJO).</p>
           <p><strong>🍹 Welcome Reception:</strong> Refreshments, fresh coconut water, and light bites upon arriving at Amanti Sanctuary.</p>
           <p><strong>🛌 Orientation:</strong> Settle into private villa suites, unpack, and decompress from flight.</p>
         </div>
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Evening Ceremony</h4>
+          <h4 class="text-emerald-700 font-mono text-xs uppercase font-bold tracking-wider">Evening Ceremony</h4>
           <p><strong>5:00–6:00 PM:</strong> Meet &amp; Greet Circle — Creating community connection through conscious communication.</p>
           <p><strong>6:30–7:30 PM:</strong> Themed Dinner: <em>"Rooted in Abundance"</em> prepared by SWAY chefs.</p>
           <p><strong>7:30 PM+:</strong> Beach Bonfire &amp; Workshop: <em>"From Root to Rise — The Foundations of Self"</em>.</p>
         </div>
       </div>
 
-      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
-        <img src="/assets/pages/itinerary/playa-hermosa-destination.png" alt="Playa Hermosa Costa Rica Retreat Destination" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-emerald-500/30 shadow-md" data-lightbox />
-        <div class="text-xs font-light text-slate-300">
-          <strong class="text-emerald-400 font-mono block uppercase">Day 1 Highlight: Playa Hermosa Arrival &amp; Grounding</strong>
-          <p class="mt-1">Anchor your nervous system into Costa Rica's black sand beaches with mindful fire ceremony and connection circles.</p>
+      <div class="mt-4 pt-4 border-t border-orange-200/40 flex items-center gap-4 cursor-pointer group" data-lightbox>
+        <img src="/assets/pages/itinerary/playa-hermosa-destination.png" alt="Playa Hermosa Costa Rica Retreat Destination" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border border-emerald-500/30 shadow-sm transition duration-300 group-hover:scale-105" />
+        <div class="text-xs font-light text-stone-700">
+          <strong class="text-emerald-800 font-mono block uppercase text-xs">Day 1 Highlight: Playa Hermosa Arrival &amp; Grounding</strong>
+          <p class="mt-1 leading-relaxed">Anchor your nervous system into Costa Rica's black sand beaches with mindful fire ceremony and connection circles.</p>
         </div>
       </div>
     </div>
 
-    <!-- Day 2 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-blue-800/40 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <!-- Day 2: WATER -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-white/95 border border-blue-300/60 shadow-sm space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-orange-200/40 pb-4">
         <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center text-lg">02</span>
+          <span class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 font-mono font-bold flex items-center justify-center text-xl shadow-sm">02</span>
           <div>
-            <h2 class="font-serif text-3xl text-white">Day 2: WATER — Seeds of Hope &amp; Flow</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Day 2 • Water Element: Fluid strength &amp; emotional softening</p>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 2: WATER — Seeds of Hope &amp; Flow</h2>
+            <p class="text-xs font-mono text-blue-700 font-bold uppercase tracking-wider">Water Element: Fluid strength &amp; emotional softening</p>
           </div>
         </div>
-        <span class="px-3 py-1 rounded bg-blue-950 border border-blue-800 text-xs font-mono text-blue-300">
+        <span class="px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-300 text-xs font-mono text-blue-800 font-medium">
           Color Theme: Ocean Blues &amp; Teals
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300 font-light">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-700 font-light">
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Morning Practice &amp; Adventure</h4>
+          <h4 class="text-blue-700 font-mono text-xs uppercase font-bold tracking-wider">Morning Practice &amp; Adventure</h4>
           <p><strong>7:00–8:00 AM:</strong> Fresh organic farm breakfast &amp; cold-pressed juice bar.</p>
           <p><strong>8:00–9:00 AM:</strong> The Art of Arrival Vinyasa Flow on open-air Sky Decks.</p>
           <p><strong>10:00 AM–2:00 PM:</strong> Choose your excursion: Rainforest Waterfalls + Rainmaker Hanging Bridges, OR Playa Hermosa Black Sand Beach.</p>
         </div>
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Afternoon Reset &amp; Feast</h4>
+          <h4 class="text-blue-700 font-mono text-xs uppercase font-bold tracking-wider">Afternoon Reset &amp; Feast</h4>
           <p><strong>2:00–3:00 PM:</strong> Poolside lunch, free time, and en-suite spa treatments.</p>
           <p><strong>3:30–5:00 PM:</strong> Workshop: <em>Emotional Alchemy — Transforming Heavy Energy into Fluid Power</em>.</p>
           <p><strong>7:00–8:30 PM:</strong> Themed Dinner: <em>"Go With The Flow"</em>.</p>
         </div>
       </div>
 
-      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
-        <img src="/assets/pages/itinerary/poolside-dining-spread.png" alt="Poolside Lunch &amp; Fresh Tropical Fruit" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-blue-500/30 shadow-md" data-lightbox />
-        <div class="text-xs font-light text-slate-300">
-          <strong class="text-blue-400 font-mono block uppercase">Day 2 Highlight: Poolside Reset &amp; Waterfall Flow</strong>
-          <p class="mt-1">Recharge with fresh tropical provisions and restorative pool waters after morning flow.</p>
+      <div class="mt-4 pt-4 border-t border-orange-200/40 flex items-center gap-4 cursor-pointer group" data-lightbox>
+        <img src="/assets/pages/itinerary/poolside-dining-spread.png" alt="Poolside Lunch &amp; Fresh Tropical Fruit" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border border-blue-500/30 shadow-sm transition duration-300 group-hover:scale-105" />
+        <div class="text-xs font-light text-stone-700">
+          <strong class="text-blue-800 font-mono block uppercase text-xs">Day 2 Highlight: Poolside Reset &amp; Waterfall Flow</strong>
+          <p class="mt-1 leading-relaxed">Recharge with fresh tropical provisions and restorative pool waters after morning flow.</p>
         </div>
       </div>
     </div>
 
-    <!-- Day 3 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-amber-800/40 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <!-- Day 3: FIRE -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-white/95 border border-amber-300/60 shadow-sm space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-orange-200/40 pb-4">
         <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center text-lg">03</span>
+          <span class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 font-mono font-bold flex items-center justify-center text-xl shadow-sm">03</span>
           <div>
-            <h2 class="font-serif text-3xl text-white">Day 3: FIRE — Ignite, Transform &amp; Lead</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Day 3 • Fire Element: Courage, breakthrough &amp; sovereign passion</p>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 3: FIRE — Ignite, Transform &amp; Lead</h2>
+            <p class="text-xs font-mono text-amber-700 font-bold uppercase tracking-wider">Fire Element: Courage, breakthrough &amp; sovereign passion</p>
           </div>
         </div>
-        <span class="px-3 py-1 rounded bg-amber-950 border border-amber-800 text-xs font-mono text-amber-300">
+        <span class="px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-300 text-xs font-mono text-amber-800 font-medium">
           Color Theme: Crimson, Orange &amp; Gold
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300 font-light">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-700 font-light">
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Morning Fire &amp; Adventure</h4>
+          <h4 class="text-amber-700 font-mono text-xs uppercase font-bold tracking-wider">Morning Fire &amp; Adventure</h4>
           <p><strong>7:00–8:00 AM:</strong> Breakfast at SWAY.</p>
           <p><strong>8:00–9:00 AM:</strong> Power Yoga &amp; Functional Core Mobility.</p>
           <p><strong>9:30 AM–2:00 PM:</strong> Choose your fire adventure: Beach &amp; Jungle Horseback Riding, Sacred Temazcal Sweat Lodge, or Monkey Mangrove Cruise.</p>
         </div>
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Empowerment Workshop &amp; Evening</h4>
+          <h4 class="text-amber-700 font-mono text-xs uppercase font-bold tracking-wider">Empowerment Workshop &amp; Evening</h4>
           <p><strong>2:00–3:00 PM:</strong> Wholesome organic lunch.</p>
           <p><strong>3:30–5:00 PM:</strong> Workshop: <em>"Our Actions Have Consequences: Prevention → Pain → Power → Passion → Purpose"</em>.</p>
           <p><strong>7:00–8:30 PM:</strong> Themed Dinner: <em>"Crouching Yogi, Hidden Lion"</em>.</p>
         </div>
       </div>
 
-      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
-        <img src="/assets/pages/itinerary/carly-waterfall-meditation.jpg" alt="Carly Anne — Somatic Alignment &amp; Waterfall Meditation" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-amber-500/30 shadow-md" data-lightbox />
-        <div class="text-xs font-light text-slate-300">
-          <strong class="text-amber-400 font-mono block uppercase">Day 3 Highlight: Power Yoga &amp; Functional Core</strong>
-          <p class="mt-1">Move from prevention through pain to sovereign power under Carly's expert guidance.</p>
+      <div class="mt-4 pt-4 border-t border-orange-200/40 flex items-center gap-4 cursor-pointer group" data-lightbox>
+        <img src="/assets/pages/itinerary/carly-waterfall-meditation.jpg" alt="Carly Anne — Somatic Alignment &amp; Waterfall Meditation" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border border-amber-500/30 shadow-sm transition duration-300 group-hover:scale-105" />
+        <div class="text-xs font-light text-stone-700">
+          <strong class="text-amber-800 font-mono block uppercase text-xs">Day 3 Highlight: Power Yoga &amp; Functional Core</strong>
+          <p class="mt-1 leading-relaxed">Move from prevention through pain to sovereign power under Carly's expert guidance.</p>
         </div>
       </div>
     </div>
 
-    <!-- Day 4 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-purple-800/40 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <!-- Day 4: AIR -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-white/95 border border-purple-300/60 shadow-sm space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-orange-200/40 pb-4">
         <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center text-lg">04</span>
+          <span class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 font-mono font-bold flex items-center justify-center text-xl shadow-sm">04</span>
           <div>
-            <h2 class="font-serif text-3xl text-white">Day 4: AIR — Inner Realms &amp; The Space Between Thoughts</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Day 4 • Air Element: Breath mastery, mental spaciousness &amp; Haute White Party</p>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 4: AIR — Inner Realms &amp; Spacious Mind</h2>
+            <p class="text-xs font-mono text-purple-700 font-bold uppercase tracking-wider">Air Element: Breath mastery, mental spaciousness &amp; Haute White Party</p>
           </div>
         </div>
-        <span class="px-3 py-1 rounded bg-purple-950 border border-purple-800 text-xs font-mono text-purple-300">
+        <span class="px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-300 text-xs font-mono text-purple-800 font-medium">
           Color Theme: All-White Haute Couture
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300 font-light">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-700 font-light">
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Pranayama &amp; Canopy</h4>
+          <h4 class="text-purple-700 font-mono text-xs uppercase font-bold tracking-wider">Pranayama &amp; Canopy</h4>
           <p><strong>7:00–8:00 AM:</strong> Breakfast on Café Terrace.</p>
           <p><strong>8:00–9:00 AM:</strong> Breathwork &amp; Vocal Resonance Practice with Carly Anne.</p>
           <p><strong>9:30 AM–2:00 PM:</strong> Choose your air adventure: Ocean Canopy Ziplining OR Butterfly Garden Sanctuary Walk.</p>
         </div>
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">White Party &amp; Wisdom</h4>
+          <h4 class="text-purple-700 font-mono text-xs uppercase font-bold tracking-wider">White Party &amp; Wisdom</h4>
           <p><strong>2:00–3:00 PM:</strong> Mediterranean lunch.</p>
           <p><strong>7:30–8:30 PM:</strong> Tapas Dinner: <em>"It’s The Little Things That Count"</em>.</p>
           <p><strong>9:00 PM:</strong> Evening Workshop: <em>"The Space Between Your Thoughts"</em> (All-White Party).</p>
-          <p class="text-gold-300 italic font-editorial text-sm pt-2">
+          <p class="text-stone-800 italic font-editorial text-sm pt-2">
             "To ask 'What if I fall?' is secure yet restricting. To ask 'What if I fly?' is expansion."
           </p>
         </div>
       </div>
 
-      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
-        <img src="/assets/pages/itinerary/carly-speaking-stage.jpg" alt="Carly Anne Facilitation &amp; Vocal Practice" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-xl border border-purple-500/30 shadow-md" data-lightbox />
-        <div class="text-xs font-light text-slate-300">
-          <strong class="text-purple-400 font-mono block uppercase">Day 4 Highlight: Ocean-View Canopy &amp; Sky Decks</strong>
-          <p class="mt-1">Master breathwork and open your voice immersed in 360-degree views of the rainforest canopy.</p>
+      <div class="mt-4 pt-4 border-t border-orange-200/40 flex items-center gap-4 cursor-pointer group" data-lightbox>
+        <img src="/assets/pages/itinerary/carly-speaking-stage.jpg" alt="Carly Anne Facilitation &amp; Vocal Practice" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border border-purple-500/30 shadow-sm transition duration-300 group-hover:scale-105" />
+        <div class="text-xs font-light text-stone-700">
+          <strong class="text-purple-800 font-mono block uppercase text-xs">Day 4 Highlight: Ocean-View Canopy &amp; Sky Decks</strong>
+          <p class="mt-1 leading-relaxed">Master breathwork and open your voice immersed in 360-degree views of the rainforest canopy.</p>
         </div>
       </div>
     </div>
 
-    <!-- Day 5 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-gold-500/40 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <!-- Day 5: AVATAR STATE -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-amber-500/10 via-pink-500/10 to-teal-500/10 border-2 border-orange-300 shadow-md space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-orange-200/50 pb-4">
         <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 font-mono font-bold flex items-center justify-center text-lg">05</span>
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-amber-400 text-white font-mono font-bold flex items-center justify-center text-xl shadow-sm">05</span>
           <div>
-            <h2 class="font-serif text-3xl text-white">Day 5: UNLOCK THE AVATAR STATE</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Day 5 • Avatar State: Tortuga Island catamaran, Gratitude Gala &amp; DJ Aphasia celebration</p>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 5: UNLOCK THE AVATAR STATE</h2>
+            <p class="text-xs font-mono text-pink-700 font-bold uppercase tracking-wider">Day 5 • Avatar State: Tortuga Island catamaran, Gratitude Gala &amp; DJ Aphasia</p>
           </div>
         </div>
-        <span class="px-3 py-1 rounded bg-gold-950 border border-gold-800 text-xs font-mono text-gold-300">
+        <span class="px-3.5 py-1.5 rounded-full bg-white border border-orange-300 text-xs font-mono text-stone-800 font-medium shadow-sm">
           Color Theme: Rainbow / Prismatic Spectrum
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300 font-light">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-700 font-light">
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Island Catamaran Excursion</h4>
+          <h4 class="text-pink-700 font-mono text-xs uppercase font-bold tracking-wider">Island Catamaran Excursion</h4>
           <p><strong>8:00 AM:</strong> Slow Somatic Flow &amp; Guided Journaling.</p>
           <p><strong>9:15 AM:</strong> Early morning breakfast.</p>
-          <p><strong>10:30 AM–4:00 PM:</strong> Full-Day Day Trip to <strong>Tortuga Island</strong> via catamaran. Turquoise waters, snorkeling with tropical sea turtles, island beach BBQ, and The Art of Arrival Island Circle.</p>
+          <p><strong>10:30 AM–4:00 PM:</strong> Full-Day Trip to <strong>Tortuga Island</strong> via catamaran. Turquoise waters, snorkeling with tropical sea turtles, island beach BBQ, and The Art of Arrival Island Circle.</p>
         </div>
         <div class="space-y-3">
-          <h4 class="text-gold-400 font-mono text-xs uppercase font-bold">Gratitude Gala &amp; Celebration</h4>
+          <h4 class="text-pink-700 font-mono text-xs uppercase font-bold tracking-wider">Gratitude Gala &amp; Celebration</h4>
           <p><strong>7:00–8:00 PM:</strong> Final Feast: <em>"Gratitude Gala"</em> Celebration Dinner.</p>
           <p><strong>8:30 PM+:</strong> Closing Ceremony, Reflection Circle, and Live Music Performance by <strong>DJ Aphasia</strong>. Optional rooftop stargazing and night pool dip.</p>
         </div>
       </div>
 
-      <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-4">
-        <img src="/assets/pages/itinerary/art-of-arrival-poster.png" alt="Avatar State Celebration" class="w-24 h-24 sm:w-32 sm:h-32 object-contain bg-stone-900 rounded-xl border border-gold-500/30 shadow-md p-1" data-lightbox />
-        <div class="text-xs font-light text-slate-300">
-          <strong class="text-gold-400 font-mono block uppercase">Day 5 Highlight: Gratitude Gala &amp; Celebration</strong>
-          <p class="mt-1">Private catamaran sailing to Tortuga Island followed by sunset DJ Aphasia feasting and celebration.</p>
+      <div class="mt-4 pt-4 border-t border-orange-200/50 flex items-center gap-4 cursor-pointer group" data-lightbox>
+        <img src="/assets/pages/itinerary/art-of-arrival-poster.png" alt="Avatar State Celebration" class="w-24 h-24 sm:w-32 sm:h-32 object-contain bg-white rounded-2xl border border-orange-300 shadow-sm p-1.5 transition duration-300 group-hover:scale-105" />
+        <div class="text-xs font-light text-stone-700">
+          <strong class="text-pink-800 font-mono block uppercase text-xs">Day 5 Highlight: Gratitude Gala &amp; Celebration</strong>
+          <p class="mt-1 leading-relaxed">Private catamaran sailing to Tortuga Island followed by sunset DJ Aphasia feasting and celebration.</p>
         </div>
       </div>
     </div>
 
-    <!-- Day 6 -->
-    <div class="p-8 rounded-2xl bg-noir-900 border border-white/10 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-4">
-          <span class="w-10 h-10 rounded-full bg-white/10 text-white font-mono font-bold flex items-center justify-center text-lg">06</span>
-          <div>
-            <h2 class="font-serif text-3xl text-white">Day 6: DEPARTURE — What If I Fly?</h2>
-            <p class="text-xs font-mono text-gold-400 font-bold">Sunday Evening / Monday Departures • Taking the sanctuary into the world</p>
-          </div>
+    <!-- Day 6: DEPARTURE -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-white/95 border border-stone-200/80 shadow-sm space-y-6">
+      <div class="flex items-center gap-4 border-b border-orange-200/40 pb-4">
+        <span class="w-12 h-12 rounded-2xl bg-stone-100 text-stone-700 font-mono font-bold flex items-center justify-center text-xl shadow-sm">06</span>
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Day 6: DEPARTURE — What If I Fly?</h2>
+          <p class="text-xs font-mono text-stone-600 font-bold uppercase tracking-wider">Sunday Evening / Monday Departures • Taking the sanctuary into the world</p>
         </div>
       </div>
 
-      <div class="text-sm text-slate-300 font-light space-y-2">
+      <div class="text-sm text-stone-700 font-light space-y-2.5">
         <p><strong>7:30 AM:</strong> Gentle Morning Stretch &amp; Heart Circle.</p>
         <p><strong>8:15 AM:</strong> Farewell Breakfast served at Café Terrace.</p>
         <p><strong>9:30 AM+:</strong> Group and private airport shuttles to Juan Santamaría Airport (SJO) begin as scheduled.</p>
-        <p class="text-gold-300 italic font-editorial text-lg pt-4">
+        <p class="text-stone-900 italic font-editorial text-lg pt-4">
           "You do not return to your old life the same. You return grounded, brave, and arrived."
         </p>
       </div>
     </div>
 
-    <!-- Official Excursion Pricing Table -->
-    <div class="p-8 bg-noir-950 border border-white/10 rounded-2xl space-y-6">
-      <h3 class="font-serif text-2xl text-white">Official Excursions Pricing Master List</h3>
+    <!-- =========================================================================
+         4. OFFICIAL EXCURSION PRICING TABLE
+         ========================================================================= -->
+    <div class="p-8 sm:p-10 bg-white/95 border border-orange-200/60 rounded-3xl shadow-sm space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="tagline-pill mb-2">Curated Adventures</span>
+          <h3 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Official Excursions Master List</h3>
+        </div>
+        <span class="text-xs font-mono text-stone-500">Customizable in retreat builder</span>
+      </div>
+
       <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs font-mono">
-          <thead class="border-b border-white/10 text-gold-400 uppercase">
+        <table class="w-full text-left text-xs sm:text-sm font-mono border-collapse">
+          <thead class="border-b-2 border-orange-200/60 text-stone-900 uppercase">
             <tr>
               <th class="p-3">Excursion Option</th>
               <th class="p-3">Element</th>
               <th class="p-3">Code</th>
-              <th class="p-3">Date</th>
-              <th class="p-3">Price PP</th>
+              <th class="p-3">Schedule</th>
+              <th class="p-3 text-right">Price PP</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-white/5 text-slate-300">
-            <tr>
-              <td class="p-3 font-bold text-white">Beach Bonfire &amp; Grounding Circle</td>
-              <td class="p-3 text-emerald-400">Earth</td>
-              <td class="p-3">MM</td>
+          <tbody class="divide-y divide-orange-100 text-stone-700">
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Beach Bonfire &amp; Grounding Circle</td>
+              <td class="p-3 text-emerald-700 font-semibold">Earth</td>
+              <td class="p-3 text-stone-500">MM</td>
               <td class="p-3">Day 1</td>
-              <td class="p-3 text-emerald-400">Included ($0)</td>
+              <td class="p-3 text-right text-emerald-700 font-bold">Included ($0)</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Rainforest Waterfalls</td>
-              <td class="p-3 text-blue-400">Water</td>
-              <td class="p-3">RW</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Rainforest Waterfalls</td>
+              <td class="p-3 text-blue-700 font-semibold">Water</td>
+              <td class="p-3 text-stone-500">RW</td>
               <td class="p-3">Day 2</td>
-              <td class="p-3 text-gold-400">$25</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$25</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Rainmaker Hanging Bridges Add-on</td>
-              <td class="p-3 text-blue-400">Water</td>
-              <td class="p-3">RWB</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Rainmaker Hanging Bridges Add-on</td>
+              <td class="p-3 text-blue-700 font-semibold">Water</td>
+              <td class="p-3 text-stone-500">RWB</td>
               <td class="p-3">Day 2</td>
-              <td class="p-3 text-gold-400">$25</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$25</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">ATV &amp; Buggies to Waterfall Jump</td>
-              <td class="p-3 text-blue-400">Water</td>
-              <td class="p-3">W ATV</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">ATV &amp; Buggies to Waterfall Jump</td>
+              <td class="p-3 text-blue-700 font-semibold">Water</td>
+              <td class="p-3 text-stone-500">W ATV</td>
               <td class="p-3">Day 2</td>
-              <td class="p-3 text-gold-400">$100</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$100</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Waterfall Rappelling Option</td>
-              <td class="p-3 text-blue-400">Water</td>
-              <td class="p-3">W R</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Waterfall Rappelling Option</td>
+              <td class="p-3 text-blue-700 font-semibold">Water</td>
+              <td class="p-3 text-stone-500">W R</td>
               <td class="p-3">Day 2</td>
-              <td class="p-3 text-gold-400">$60</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$60</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Playa Hermosa Black Sand Beach</td>
-              <td class="p-3 text-blue-400">Water</td>
-              <td class="p-3">BSB</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Playa Hermosa Black Sand Beach</td>
+              <td class="p-3 text-blue-700 font-semibold">Water</td>
+              <td class="p-3 text-stone-500">BSB</td>
               <td class="p-3">Day 2</td>
-              <td class="p-3 text-emerald-400">Included ($0)</td>
+              <td class="p-3 text-right text-emerald-700 font-bold">Included ($0)</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Beach &amp; Jungle Horseback Riding</td>
-              <td class="p-3 text-amber-400">Fire</td>
-              <td class="p-3">HR</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Beach &amp; Jungle Horseback Riding</td>
+              <td class="p-3 text-amber-700 font-semibold">Fire</td>
+              <td class="p-3 text-stone-500">HR</td>
               <td class="p-3">Day 3</td>
-              <td class="p-3 text-gold-400">$70</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$70</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Temazcal Sacred Sweat Lodge</td>
-              <td class="p-3 text-amber-400">Fire</td>
-              <td class="p-3">TSL</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Temazcal Sacred Sweat Lodge</td>
+              <td class="p-3 text-amber-700 font-semibold">Fire</td>
+              <td class="p-3 text-stone-500">TSL</td>
               <td class="p-3">Day 3</td>
-              <td class="p-3 text-gold-400">$80</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$80</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Monkey Mangrove River Cruise</td>
-              <td class="p-3 text-amber-400">Fire</td>
-              <td class="p-3">MMC</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Monkey Mangrove River Cruise</td>
+              <td class="p-3 text-amber-700 font-semibold">Fire</td>
+              <td class="p-3 text-stone-500">MMC</td>
               <td class="p-3">Day 3</td>
-              <td class="p-3 text-gold-400">$60</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$60</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Butterfly Gardens Sanctuary</td>
-              <td class="p-3 text-purple-400">Air</td>
-              <td class="p-3">BG</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Butterfly Gardens Sanctuary</td>
+              <td class="p-3 text-purple-700 font-semibold">Air</td>
+              <td class="p-3 text-stone-500">BG</td>
               <td class="p-3">Day 4</td>
-              <td class="p-3 text-gold-400">$25</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$25</td>
             </tr>
-            <tr>
-              <td class="p-3 font-bold text-white">Canopy Zipline Tour</td>
-              <td class="p-3 text-purple-400">Air</td>
-              <td class="p-3">Z</td>
+            <tr class="hover:bg-orange-50/50 transition-colors">
+              <td class="p-3 font-bold text-stone-900">Canopy Zipline Tour</td>
+              <td class="p-3 text-purple-700 font-semibold">Air</td>
+              <td class="p-3 text-stone-500">Z</td>
               <td class="p-3">Day 4</td>
-              <td class="p-3 text-gold-400">$75+</td>
+              <td class="p-3 text-right text-amber-800 font-bold">$75+</td>
             </tr>
-            <tr class="bg-gold-950/40">
-              <td class="p-3 font-bold text-gold-400">Tortuga Island Catamaran &amp; Snorkel</td>
-              <td class="p-3 text-gold-400">Avatar</td>
-              <td class="p-3">TI</td>
+            <tr class="bg-amber-50 font-bold">
+              <td class="p-3 text-amber-900">Tortuga Island Catamaran &amp; Snorkel</td>
+              <td class="p-3 text-amber-800">Avatar</td>
+              <td class="p-3 text-stone-500">TI</td>
               <td class="p-3">Day 5</td>
-              <td class="p-3 font-bold text-gold-400">$160</td>
+              <td class="p-3 text-right text-amber-900">$160</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="text-xs text-slate-400 font-sans">
+      <p class="text-xs text-stone-600 font-sans">
         *All excursions can be customized in the Retreat Builder and added to your package seamlessly prior to final payment.
       </p>
+
+      <div class="pt-4 text-center">
+        <a href="/pricing.html#builder" class="btn-luxe inline-flex py-3.5 px-8 text-xs sm:text-sm">
+          Customize Your Package &amp; Excursions ↗
+        </a>
+      </div>
     </div>
 
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
-    <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
-    <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
+  <!-- =========================================================================
+       5. FOOTER (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Ethos -->
+      <div class="space-y-4">
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          A luxury biophilic wellness sanctuary and somatic retreat dedicated to sustainable transformation, nervous system recalibration, and authentic human connection.
+        </p>
+        <p class="text-xs text-gold-400 font-editorial italic text-base">
+          "Every Body Is A Yoga Body."
+        </p>
+        <div class="text-[11px] text-slate-400 space-y-1 pt-2">
+          <p>Sanctuary: Amanti Resort, Playa Hermosa, Costa Rica</p>
+          <p>Headquarters: Boca Raton, Florida, USA</p>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Sanctuary Experience</strong>
+        <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Art of Arrival (Dates Soon)</a>
+        <a href="/method.html" class="block hover:text-gold-400 transition-colors">The Arrive Yoga Method™</a>
+        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Suites &amp; Private Villas</a>
+        <a href="/itinerary.html" class="block text-gold-400 font-bold hover:text-white transition-colors">6-Day Elemental Schedule</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Farm-To-Table Dining</a>
+        <a href="/about.html" class="block hover:text-gold-400 transition-colors">Meet Carly Anne Kasinpila</a>
+      </div>
+
+      <!-- Pricing & Legal -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Investment &amp; Inquiries</strong>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">Standard Package ($2,200)</a>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">VIP Package ($3,100)</a>
+        <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Consulting</a>
+        <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
+        <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
+      </div>
+
+      <!-- Direct Contact -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Concierge &amp; Booking</strong>
+        <p>Playa Hermosa, Puntarenas, Costa Rica</p>
+        <p>Direct: <a href="tel:9543367048" class="text-white hover:text-gold-400">954-336-7048</a></p>
+        <p>Email: <a href="mailto:arrive@everybodyisayogabody.org" class="text-white hover:text-gold-400">arrive@everybodyisayogabody.org</a></p>
+        <p>Web: <a href="https://everybodyisayogabody.org" target="_blank" class="text-gold-400">everybodyisayogabody.org</a></p>
+        <p class="text-[11px] text-slate-400 pt-2">© 2026 Arrive Yoga &amp; Wellness. All Rights Reserved.</p>
+      </div>
+
+    </div>
   </footer>
 
+  <!-- =========================================================================
+       MODALS: THEME DRAWER & LIGHTBOX
+       ========================================================================= -->
+  <div id="theme-drawer" class="theme-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+      <div>
+        <h3 class="font-serif text-2xl text-white">Visual Themes</h3>
+        <p class="text-xs font-mono text-slate-400">Haute Couture &amp; Sanctuary Palettes</p>
+      </div>
+      <button id="close-theme-drawer" class="text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Theme 1: Tropical Sunshine (Default) -->
+    <div class="theme-card-option active" data-theme-id="tropical-sunshine" data-set-theme="tropical-sunshine">
+      <div>
+        <strong class="text-white text-sm block">01. Tropical Sunshine &amp; Rainbow (Default) 🌺🌈</strong>
+        <span class="text-xs text-slate-400">Sunlit warmth, vibrant rainbow aura, &amp; joyful Costa Rica energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-cyan-400 border border-white/40 shadow-sm"></div>
+    </div>
+
+    <!-- Theme 2: Biophilic Emerald -->
+    <div class="theme-card-option" data-theme-id="biophilic-emerald" data-set-theme="biophilic-emerald">
+      <div>
+        <strong class="text-white text-sm block">02. Biophilic Emerald Sanctuary 🌿</strong>
+        <span class="text-xs text-slate-400">Costa Rica rainforest, jade greens &amp; raw linen</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#52b788] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 3: Sunset Somatic Terracotta -->
+    <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
+      <div>
+        <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
+        <span class="text-xs text-slate-400">Playa Hermosa dusk, rich clay &amp; glowing dusk ember</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e76f51] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 4: Haute Noir & Gold -->
+    <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
+      <div>
+        <strong class="text-white text-sm block">04. Haute Noir &amp; Royal Gold ✨</strong>
+        <span class="text-xs text-slate-400">Metropolitan vogue elegance, obsidian &amp; 24K gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e2b774] border border-white/20"></div>
+    </div>
+  </div>
+
+  <div id="lightbox-modal" class="sanctuary-modal">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-image" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl" />
+      <p id="lightbox-caption" class="text-gold-300 font-serif text-lg mt-4 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons & Engine Scripts -->
   <script src="js/main.js?v=3.0"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
 </body>
 </html>

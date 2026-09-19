@@ -2,14 +2,16 @@
 <html lang="en" data-theme="tropical-sunshine" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact &amp; Inquiries | Arrive Yoga &amp; Wellness Center</title>
-  <meta name="description" content="Connect with Carly Anne Kasinpila and Arrive Yoga & Wellness Center. Inquiries for The Art of Arrival Retreat, Consulting, Brand Collaborations, and Media." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Contact &amp; Concierge Inquiries | Arrive Yoga &amp; Wellness Center • ARRIVE.</title>
+  <meta name="description" content="Connect with Carly Anne Kasinpila and Arrive Yoga &amp; Wellness Center. Inquiries for The Art of Arrival Retreat, Consulting, Brand Collaborations, and Media." />
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom Design System Stylesheet with Cache Buster -->
+  
+  <!-- Custom Design System Stylesheet with Cache Buster -->
   <link rel="stylesheet" href="css/style.css?v=3.0" />
+  
   <style>
     /* Critical Navigation & Tooltip Fail-Safes */
     .nav-tooltip {
@@ -60,7 +62,7 @@
       }
     }
   </style>
-  
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -69,6 +71,13 @@
           colors: {
             noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
             gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            script: ['"Alex Brush"', 'cursive']
           }
         }
       }
@@ -76,16 +85,19 @@
   </script>
 </head>
 
-<body class="selection:bg-gold-500 selection:text-black bg-noir-950 text-slate-200">
+<body class="selection:bg-pink-500 selection:text-white">
 
-  <!-- Nav -->
+  <!-- =========================================================================
+       1. NAVIGATION: LUXURY EDITORIAL HEADER (Universal Across All Pages)
+       ========================================================================= -->
   <header class="sanctuary-nav">
     <div class="nav-container">
       <a href="/index.html" class="nav-brand">
         <span class="brand-title brand-rainbow-title">ARRIVE.</span>
-        <span class="brand-tag">Contact</span>
+        <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
       </a>
-            <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
       <nav class="nav-icon-menu" aria-label="Main Navigation">
         <!-- 1. Home -->
         <div class="nav-icon-item">
@@ -142,7 +154,7 @@
           </a>
         </div>
 
-        <!-- 6. 6-Day Journey -->
+        <!-- 6. Itinerary -->
         <div class="nav-icon-item">
           <a href="/itinerary.html" class="nav-icon-btn" aria-label="6-Day Journey — Elemental Pathway">
             <i data-lucide="calendar-days"></i>
@@ -186,7 +198,7 @@
           </a>
         </div>
 
-        <!-- 10. Contact -->
+        <!-- 10. Contact (ACTIVE) -->
         <div class="nav-icon-item">
           <a href="/contact.html" class="nav-icon-btn active" aria-label="Contact — Concierge &amp; Inquiries">
             <i data-lucide="mail"></i>
@@ -196,12 +208,27 @@
             </span>
           </a>
         </div>
-
       </nav>
+
       <div class="nav-actions">
-        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-xs">
-          Reserve Sanctuary ($500)
+        <!-- Stripe Live Status Pill -->
+        <div id="stripe-status-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse"></span>
+          <span class="text-amber-300 font-mono text-[10px] tracking-wider uppercase">Stripe Initializing</span>
+        </div>
+
+        <!-- Theme Drawer Trigger -->
+        <button id="open-theme-drawer" class="control-pill hidden md:inline-flex" title="Switch Haute Couture Visual Theme">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i>
+          <span class="hidden md:inline">Theme</span>
+        </button>
+
+        <!-- CTA Book Spot -->
+        <a href="/pricing.html#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-[11px]">
+          Reserve Spot ($500)
         </a>
+
+        <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
@@ -209,7 +236,7 @@
     </div>
   </header>
 
-    <!-- Mobile Touch-Friendly Drawer -->
+  <!-- Mobile Touch-Friendly Drawer -->
   <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
@@ -322,84 +349,158 @@
     </div>
   </div>
 
-  <!-- Hero Header -->
-  <section class="py-24 border-b border-white/10 bg-noir-900/50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <span class="badge-rainbow mb-4">We Would Love To Hear From You</span>
-      <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
-        Connect &amp; Inquire
-      </h1>
-      <p class="text-slate-300 font-light text-xl max-w-3xl mx-auto leading-relaxed">
-        Whether you are interested in joining The Art of Arrival Retreat, exploring a strategic collaboration, booking consulting, or inviting Carly Anne to speak, you are welcome here.
-      </p>
+  <!-- Audio Ambient Floating Dock -->
+  <div class="audio-dock">
+    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+      <div class="sound-wave paused">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       2. HERO SECTION — EDITORIAL VOGUE & COSTA RICA BIOPHILIC SANCTUARY
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-[55vh] flex flex-col items-center justify-start sm:justify-center overflow-hidden border-b border-orange-200/50 pt-8 sm:pt-16 pb-16 sm:pb-20">
+    <!-- Background Canvas -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Arrive Sanctuary Concierge &amp; Inquiries" class="w-full h-full object-cover object-center opacity-20 filter brightness-95 contrast-105" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-[var(--bg-primary)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/90 via-white/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- High Fashion Badges -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-full px-2">
+        <span class="badge-rainbow">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-pink-500"></i>
+          Concierge Support &amp; Bookings
+        </span>
+        <span class="badge-rainbow">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-teal-500"></i>
+          Direct: 954-336-7048
+        </span>
+        <span class="tagline-pill">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+          Playa Hermosa, Costa Rica
+        </span>
+      </div>
+
+      <!-- Haute-Couture Sanctuary Editorial Card -->
+      <div class="hero-manifesto-card max-w-4xl mx-auto p-6 sm:p-10 md:p-12 rounded-3xl backdrop-blur-md bg-white/92 border border-orange-200/60 shadow-[0_20px_60px_-15px_rgba(255,122,0,0.16),0_4px_25px_rgba(0,0,0,0.05)] mb-8 text-center">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-stone-950 leading-[1.12] tracking-tight mb-4">
+          Connect &amp; <span class="italic font-bold font-editorial text-rainbow inline-block py-1">Inquire</span>
+        </h1>
+
+        <!-- Rainbow Ribbon -->
+        <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-pink-500 via-amber-400 to-teal-400 mx-auto rounded-full mb-6"></div>
+
+        <p class="font-editorial text-lg sm:text-2xl text-stone-800 italic leading-relaxed max-w-2xl mx-auto mb-4">
+          "Whether you are interested in joining The Art of Arrival Retreat, exploring a strategic collaboration, or booking advisory, you are welcome here."
+        </p>
+
+        <p class="text-stone-600 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Our concierge team is available around the clock to support your journey, suite selection, dietary needs, or brand partnership inquiries.
+        </p>
+      </div>
+
+      <!-- Action Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-md mx-auto">
+        <a href="#contact-inquiry-form" class="btn-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          Send Message
+        </a>
+        <a href="tel:9543367048" class="btn-outline-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center flex items-center justify-center gap-2">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+          Call 954-336-7048
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Form & Concierge Details -->
-  <section class="section-wrapper">
+  <!-- =========================================================================
+       3. CONTACT FORM & CONCIERGE DETAILS
+       ========================================================================= -->
+  <section class="section-wrapper border-b border-orange-200/40">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       
       <!-- Contact Details Left -->
       <div class="lg:col-span-5 space-y-8">
         <div class="space-y-3">
-          <span class="badge-tag gold">Direct Concierge</span>
-          <h2 class="font-serif text-3xl text-white">We’re Here To Support Your Arrival</h2>
-          <p class="text-slate-400 text-sm font-light leading-relaxed">
+          <span class="tagline-pill">Direct Concierge</span>
+          <h2 class="font-serif text-3xl text-stone-900 font-bold">We’re Here To Support Your Arrival</h2>
+          <p class="text-stone-600 text-sm font-light leading-relaxed">
             Our team is available to assist with retreat reservations, room configurations, payment plans, airport travel advice, and business advisory inquiries.
           </p>
         </div>
 
-        <div class="space-y-4 text-xs font-mono text-slate-300">
-          <div class="p-4 bg-noir-900 border border-white/10 rounded-xl flex items-center gap-4">
-            <i data-lucide="phone" class="w-5 h-5 text-gold-400"></i>
+        <div class="space-y-4 text-xs font-mono text-stone-800">
+          <div class="p-5 bg-white border border-orange-200/60 rounded-2xl shadow-sm flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+            </div>
             <div>
-              <span class="text-slate-500 block uppercase text-[10px]">Direct Phone &amp; WhatsApp</span>
-              <a href="tel:9543367048" class="text-white text-sm hover:text-gold-400 font-bold">954-336-7048</a>
+              <span class="text-stone-500 block uppercase text-[10px] font-bold">Direct Phone &amp; WhatsApp</span>
+              <a href="tel:9543367048" class="text-stone-950 text-sm hover:text-pink-600 font-bold">954-336-7048</a>
             </div>
           </div>
 
-          <div class="p-4 bg-noir-900 border border-white/10 rounded-xl flex items-center gap-4">
-            <i data-lucide="mail" class="w-5 h-5 text-gold-400"></i>
+          <div class="p-5 bg-white border border-orange-200/60 rounded-2xl shadow-sm flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
             <div>
-              <span class="text-slate-500 block uppercase text-[10px]">Official Email</span>
-              <a href="mailto:arrive@everybodyisayogabody.org" class="text-white text-sm hover:text-gold-400 font-bold">arrive@everybodyisayogabody.org</a>
+              <span class="text-stone-500 block uppercase text-[10px] font-bold">Official Email</span>
+              <a href="mailto:arrive@everybodyisayogabody.org" class="text-stone-950 text-sm hover:text-pink-600 font-bold">arrive@everybodyisayogabody.org</a>
             </div>
           </div>
 
-          <div class="p-4 bg-noir-900 border border-white/10 rounded-xl flex items-center gap-4">
-            <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
+          <div class="p-5 bg-white border border-orange-200/60 rounded-2xl shadow-sm flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
             <div>
-              <span class="text-slate-500 block uppercase text-[10px]">Retreat Sanctuary</span>
-              <span class="text-white text-sm block font-medium">Amanti Sanctuary, Playa Hermosa, Puntarenas, Costa Rica</span>
+              <span class="text-stone-500 block uppercase text-[10px] font-bold">Retreat Sanctuary</span>
+              <span class="text-stone-950 text-sm block font-medium">Amanti Sanctuary, Playa Hermosa, Puntarenas, Costa Rica</span>
             </div>
           </div>
 
-          <div class="p-4 bg-noir-900 border border-white/10 rounded-xl flex items-center gap-4">
-            <i data-lucide="calendar" class="w-5 h-5 text-gold-400"></i>
+          <div class="p-5 bg-white border border-orange-200/60 rounded-2xl shadow-sm flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="calendar" class="w-5 h-5"></i>
+            </div>
             <div>
-              <span class="text-slate-500 block uppercase text-[10px]">Confirmed Retreat Dates</span>
-              <span class="text-white text-sm block font-medium">Dates To Be Announced Soon (5 Nights / 6 Days)</span>
+              <span class="text-stone-500 block uppercase text-[10px] font-bold">Confirmed Retreat Dates</span>
+              <span class="text-stone-950 text-sm block font-medium">Dates To Be Announced Soon (5 Nights / 6 Days)</span>
             </div>
           </div>
         </div>
 
         <!-- Carly Personal Greeting Card -->
-        <div class="p-4 bg-white/80 border border-amber-200/60 rounded-2xl shadow-sm text-center">
-          <img src="/assets/pages/contact/carly-founder-portrait.jpg" alt="Carly Anne Kasinpila — Founder &amp; Host" class="w-full h-64 object-cover object-top rounded-xl mb-3" data-lightbox />
-          <strong class="text-stone-900 font-serif text-lg block">Carly Anne Kasinpila</strong>
-          <span class="text-xs font-mono text-amber-700 uppercase tracking-widest block">Founder &amp; Host</span>
-          <p class="text-xs text-stone-600 font-light mt-1">"I personally review our community inquiries and look forward to welcoming you into our sanctuary."</p>
+        <div class="p-6 bg-white border border-orange-200/60 rounded-3xl shadow-sm text-center cursor-pointer group" data-lightbox>
+          <img src="/assets/pages/contact/carly-founder-portrait.jpg" alt="Carly Anne Kasinpila — Founder &amp; Host" class="w-full h-64 object-cover object-top rounded-2xl mb-4 transition duration-500 group-hover:scale-105" />
+          <strong class="text-stone-900 font-serif text-xl block font-bold">Carly Anne Kasinpila</strong>
+          <span class="text-xs font-mono text-pink-700 uppercase tracking-widest block font-semibold">Founder &amp; Host</span>
+          <p class="text-xs sm:text-sm text-stone-600 font-light mt-2 italic leading-relaxed">
+            "I personally review our community inquiries and look forward to welcoming you into our sanctuary."
+          </p>
         </div>
       </div>
 
       <!-- Form Right -->
       <div class="lg:col-span-7">
-        <form id="contact-inquiry-form" class="p-8 sm:p-10 bg-noir-900 border border-white/10 rounded-2xl shadow-2xl space-y-6">
-          <h3 class="font-serif text-2xl text-white">Send Us An Inquiry</h3>
+        <form id="contact-inquiry-form" class="p-8 sm:p-10 bg-white/95 border border-orange-200/60 rounded-3xl shadow-lg space-y-6 text-stone-800">
+          <h3 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold border-b border-orange-200/40 pb-4">
+            Send Us An Inquiry
+          </h3>
 
           <!-- Inquiry Bucket Select -->
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Inquiry Type *</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Inquiry Type *</label>
             <select id="inquiry-type" class="luxe-select" required>
               <option value="retreat">The Art of Arrival Retreat (Dates To Be Announced Soon)</option>
               <option value="collaboration">Brand or Creative Collaboration</option>
@@ -411,28 +512,28 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Your Name *</label>
+              <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Your Name *</label>
               <input type="text" id="inquiry-name" class="luxe-input" placeholder="Elena Rostova" required />
             </div>
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Email Address *</label>
+              <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Email Address *</label>
               <input type="email" id="inquiry-email" class="luxe-input" placeholder="elena@example.com" required />
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Phone / WhatsApp</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Phone / WhatsApp</label>
             <input type="tel" id="inquiry-phone" class="luxe-input" placeholder="+1 (555) 019-2834" />
           </div>
 
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Message or Special Requests *</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Message or Special Requests *</label>
             <textarea id="inquiry-message" rows="5" class="luxe-input" placeholder="Tell us how you would like to arrive..." required></textarea>
           </div>
 
-          <div id="inquiry-feedback" class="hidden p-4 rounded text-xs font-mono"></div>
+          <div id="inquiry-feedback" class="hidden p-4 rounded-xl text-xs font-mono"></div>
 
-          <button type="submit" id="inquiry-submit-btn" class="btn-luxe w-full py-4 text-xs font-mono flex items-center justify-center gap-2">
+          <button type="submit" id="inquiry-submit-btn" class="btn-luxe w-full py-4 text-xs sm:text-sm font-mono flex items-center justify-center gap-2">
             <i data-lucide="send" class="w-4 h-4"></i>
             Submit Message
           </button>
@@ -442,12 +543,124 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
-    <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
-    <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
+  <!-- =========================================================================
+       4. FOOTER (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Ethos -->
+      <div class="space-y-4">
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          A luxury biophilic wellness sanctuary and somatic retreat dedicated to sustainable transformation, nervous system recalibration, and authentic human connection.
+        </p>
+        <p class="text-xs text-gold-400 font-editorial italic text-base">
+          "Every Body Is A Yoga Body."
+        </p>
+        <div class="text-[11px] text-slate-400 space-y-1 pt-2">
+          <p>Sanctuary: Amanti Resort, Playa Hermosa, Costa Rica</p>
+          <p>Headquarters: Boca Raton, Florida, USA</p>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Sanctuary Experience</strong>
+        <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Art of Arrival (Dates Soon)</a>
+        <a href="/method.html" class="block hover:text-gold-400 transition-colors">The Arrive Yoga Method™</a>
+        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Suites &amp; Private Villas</a>
+        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">6-Day Elemental Schedule</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Farm-To-Table Dining</a>
+        <a href="/about.html" class="block hover:text-gold-400 transition-colors">Meet Carly Anne Kasinpila</a>
+      </div>
+
+      <!-- Pricing & Legal -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Investment &amp; Inquiries</strong>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">Standard Package ($2,200)</a>
+        <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">VIP Package ($3,100)</a>
+        <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Consulting</a>
+        <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
+        <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
+      </div>
+
+      <!-- Direct Contact -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Concierge &amp; Booking</strong>
+        <p>Playa Hermosa, Puntarenas, Costa Rica</p>
+        <p>Direct: <a href="tel:9543367048" class="text-white hover:text-gold-400">954-336-7048</a></p>
+        <p>Email: <a href="mailto:arrive@everybodyisayogabody.org" class="text-white hover:text-gold-400">arrive@everybodyisayogabody.org</a></p>
+        <p>Web: <a href="https://everybodyisayogabody.org" target="_blank" class="text-gold-400">everybodyisayogabody.org</a></p>
+        <p class="text-[11px] text-slate-400 pt-2">© 2026 Arrive Yoga &amp; Wellness. All Rights Reserved.</p>
+      </div>
+
+    </div>
   </footer>
 
+  <!-- =========================================================================
+       MODALS: THEME DRAWER & LIGHTBOX
+       ========================================================================= -->
+  <div id="theme-drawer" class="theme-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+      <div>
+        <h3 class="font-serif text-2xl text-white">Visual Themes</h3>
+        <p class="text-xs font-mono text-slate-400">Haute Couture &amp; Sanctuary Palettes</p>
+      </div>
+      <button id="close-theme-drawer" class="text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Theme 1: Tropical Sunshine (Default) -->
+    <div class="theme-card-option active" data-theme-id="tropical-sunshine" data-set-theme="tropical-sunshine">
+      <div>
+        <strong class="text-white text-sm block">01. Tropical Sunshine &amp; Rainbow (Default) 🌺🌈</strong>
+        <span class="text-xs text-slate-400">Sunlit warmth, vibrant rainbow aura, &amp; joyful Costa Rica energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-cyan-400 border border-white/40 shadow-sm"></div>
+    </div>
+
+    <!-- Theme 2: Biophilic Emerald -->
+    <div class="theme-card-option" data-theme-id="biophilic-emerald" data-set-theme="biophilic-emerald">
+      <div>
+        <strong class="text-white text-sm block">02. Biophilic Emerald Sanctuary 🌿</strong>
+        <span class="text-xs text-slate-400">Costa Rica rainforest, jade greens &amp; raw linen</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#52b788] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 3: Sunset Somatic Terracotta -->
+    <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
+      <div>
+        <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
+        <span class="text-xs text-slate-400">Playa Hermosa dusk, rich clay &amp; glowing dusk ember</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e76f51] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 4: Haute Noir & Gold -->
+    <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
+      <div>
+        <strong class="text-white text-sm block">04. Haute Noir &amp; Royal Gold ✨</strong>
+        <span class="text-xs text-slate-400">Metropolitan vogue elegance, obsidian &amp; 24K gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e2b774] border border-white/20"></div>
+    </div>
+  </div>
+
+  <div id="lightbox-modal" class="sanctuary-modal">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-image" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl" />
+      <p id="lightbox-caption" class="text-gold-300 font-serif text-lg mt-4 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons & Engine Scripts -->
   <script src="js/main.js?v=3.0"></script>
   <script>
     if (window.lucide) window.lucide.createIcons();
@@ -484,11 +697,11 @@
           body: JSON.stringify(payload)
         });
         const data = await res.json();
-        feedback.className = 'p-4 rounded text-xs font-mono bg-emerald-950 border border-emerald-500 text-emerald-300 block';
+        feedback.className = 'p-4 rounded-xl text-xs font-mono bg-emerald-50 border border-emerald-300 text-emerald-800 block';
         feedback.textContent = '✓ ' + (data.message || 'Thank you! Your inquiry has been sent to our concierge.');
         form.reset();
       } catch (err) {
-        feedback.className = 'p-4 rounded text-xs font-mono bg-rose-950 border border-rose-500 text-rose-300 block';
+        feedback.className = 'p-4 rounded-xl text-xs font-mono bg-rose-50 border border-rose-300 text-rose-800 block';
         feedback.textContent = '⚠️ Network error. Please email arrive@everybodyisayogabody.org directly.';
       } finally {
         submitBtn.disabled = false;

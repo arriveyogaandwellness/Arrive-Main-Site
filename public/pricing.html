@@ -2,14 +2,16 @@
 <html lang="en" data-theme="tropical-sunshine" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retreat Packages &amp; Custom Builder | The Art of Arrival • Costa Rica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Retreat Packages &amp; Custom Builder | The Art of Arrival • Costa Rica • ARRIVE.</title>
   <meta name="description" content="Choose your retreat package: Standard Experience ($2,200) or VIP Experience ($3,100). Custom retreat calculator with excursions, spa treatments, and instant Stripe checkout." />
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom Design System Stylesheet with Cache Buster -->
+  
+  <!-- Custom Design System Stylesheet with Cache Buster -->
   <link rel="stylesheet" href="css/style.css?v=3.0" />
+  
   <style>
     /* Critical Navigation & Tooltip Fail-Safes */
     .nav-tooltip {
@@ -60,7 +62,7 @@
       }
     }
   </style>
-  
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -69,6 +71,13 @@
           colors: {
             noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
             gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            script: ['"Alex Brush"', 'cursive']
           }
         }
       }
@@ -76,16 +85,19 @@
   </script>
 </head>
 
-<body class="selection:bg-gold-500 selection:text-black bg-noir-950 text-slate-200">
+<body class="selection:bg-pink-500 selection:text-white">
 
-  <!-- Nav -->
+  <!-- =========================================================================
+       1. NAVIGATION: LUXURY EDITORIAL HEADER (Universal Across All Pages)
+       ========================================================================= -->
   <header class="sanctuary-nav">
     <div class="nav-container">
       <a href="/index.html" class="nav-brand">
         <span class="brand-title brand-rainbow-title">ARRIVE.</span>
-        <span class="brand-tag">Packages &amp; Builder</span>
+        <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
       </a>
-            <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
       <nav class="nav-icon-menu" aria-label="Main Navigation">
         <!-- 1. Home -->
         <div class="nav-icon-item">
@@ -142,7 +154,7 @@
           </a>
         </div>
 
-        <!-- 6. 6-Day Journey -->
+        <!-- 6. Itinerary -->
         <div class="nav-icon-item">
           <a href="/itinerary.html" class="nav-icon-btn" aria-label="6-Day Journey — Elemental Pathway">
             <i data-lucide="calendar-days"></i>
@@ -164,7 +176,7 @@
           </a>
         </div>
 
-        <!-- 8. Packages & Pricing -->
+        <!-- 8. Packages & Pricing (ACTIVE) -->
         <div class="nav-icon-item">
           <a href="/pricing.html" class="nav-icon-btn active" aria-label="Packages &amp; Pricing — Custom Builder">
             <i data-lucide="gem"></i>
@@ -196,12 +208,27 @@
             </span>
           </a>
         </div>
-
       </nav>
+
       <div class="nav-actions">
-        <a href="#builder" class="btn-luxe py-2.5 px-5 text-xs">
-          Reserve Sanctuary ($500)
+        <!-- Stripe Live Status Pill -->
+        <div id="stripe-status-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse"></span>
+          <span class="text-amber-300 font-mono text-[10px] tracking-wider uppercase">Stripe Initializing</span>
+        </div>
+
+        <!-- Theme Drawer Trigger -->
+        <button id="open-theme-drawer" class="control-pill hidden md:inline-flex" title="Switch Haute Couture Visual Theme">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i>
+          <span class="hidden md:inline">Theme</span>
+        </button>
+
+        <!-- CTA Book Spot -->
+        <a href="#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-[11px]">
+          Reserve Spot ($500)
         </a>
+
+        <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-toggle" class="mobile-menu-btn text-white p-2 rounded-lg bg-stone-900/10 hover:bg-stone-900/20" aria-label="Open menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
@@ -209,7 +236,7 @@
     </div>
   </header>
 
-    <!-- Mobile Touch-Friendly Drawer -->
+  <!-- Mobile Touch-Friendly Drawer -->
   <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
@@ -312,7 +339,7 @@
       </div>
     </div>
     <div class="pt-8 border-t border-white/10 mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
-      <a href="/pricing.html#builder" class="btn-luxe w-full sm:w-auto text-center py-3 px-8 text-xs font-mono uppercase tracking-wider">
+      <a href="#builder" class="btn-luxe w-full sm:w-auto text-center py-3 px-8 text-xs font-mono uppercase tracking-wider">
         Reserve Spot ($500 Deposit)
       </a>
       <a href="/stripe-setup.html" class="text-xs font-mono text-slate-400 hover:text-white flex items-center gap-1.5">
@@ -322,95 +349,156 @@
     </div>
   </div>
 
-  <!-- Hero Header -->
-  <section class="py-24 border-b border-white/10 bg-noir-900/50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <span class="badge-rainbow mb-4">Dates To Be Announced Soon • Playa Hermosa, Costa Rica</span>
-      <h1 class="text-5xl sm:text-7xl font-serif text-white mb-6">
-        Retreat Packages &amp; Pricing
-      </h1>
-      <p class="text-slate-300 font-light text-xl max-w-3xl mx-auto leading-relaxed">
-        Choose your path: Standard or VIP. Reserve with a $500 non-refundable deposit today and split remaining balance into flexible scheduled payments.
-      </p>
+  <!-- Audio Ambient Floating Dock -->
+  <div class="audio-dock">
+    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+      <div class="sound-wave paused">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       2. HERO SECTION — EDITORIAL VOGUE & COSTA RICA BIOPHILIC SANCTUARY
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-[55vh] flex flex-col items-center justify-start sm:justify-center overflow-hidden border-b border-orange-200/50 pt-8 sm:pt-16 pb-16 sm:pb-20">
+    <!-- Background Canvas -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/assets/pages/pricing/guanacaste-king-suite.jpg" alt="Amanti Sanctuary Retreat Suites &amp; Villas" class="w-full h-full object-cover object-center opacity-25 filter brightness-95 contrast-105" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-[var(--bg-primary)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/90 via-white/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- High Fashion Badges -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-full px-2">
+        <span class="badge-rainbow">
+          <i data-lucide="gem" class="w-3.5 h-3.5 text-pink-500"></i>
+          Standard ($2,200) &amp; VIP ($3,100)
+        </span>
+        <span class="badge-rainbow">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-teal-500"></i>
+          Dates Announced Soon
+        </span>
+        <span class="tagline-pill">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-500"></i>
+          Hold Spot with $500 Deposit
+        </span>
+      </div>
+
+      <!-- Haute-Couture Sanctuary Editorial Card -->
+      <div class="hero-manifesto-card max-w-4xl mx-auto p-6 sm:p-10 md:p-12 rounded-3xl backdrop-blur-md bg-white/92 border border-orange-200/60 shadow-[0_20px_60px_-15px_rgba(255,122,0,0.16),0_4px_25px_rgba(0,0,0,0.05)] mb-8 text-center">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-stone-950 leading-[1.12] tracking-tight mb-4">
+          Packages &amp; Custom <span class="italic font-bold font-editorial text-rainbow inline-block py-1">Builder</span>
+        </h1>
+
+        <!-- Rainbow Ribbon -->
+        <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-pink-500 via-amber-400 to-teal-400 mx-auto rounded-full mb-6"></div>
+
+        <p class="font-editorial text-lg sm:text-2xl text-stone-800 italic leading-relaxed max-w-2xl mx-auto mb-4">
+          "Choose your path: Standard or VIP. Reserve with a $500 non-refundable deposit today and split the balance into flexible scheduled installments."
+        </p>
+
+        <p class="text-stone-600 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Transparent, all-inclusive luxury pricing. Use the interactive builder below to customize your suite, excursions, and en-suite spa treatments with instant checkout.
+        </p>
+      </div>
+
+      <!-- Action Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-md mx-auto">
+        <a href="#builder" class="btn-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          Open Custom Builder
+        </a>
+        <a href="#packages-overview" class="btn-outline-luxe w-full sm:w-auto text-xs sm:text-sm py-3.5 px-8 text-center">
+          Compare Packages
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Side-by-Side Packages -->
-  <section class="section-wrapper border-b border-white/10">
+  <!-- =========================================================================
+       3. SIDE-BY-SIDE TIER PACKAGES
+       ========================================================================= -->
+  <section id="packages-overview" class="section-wrapper border-b border-orange-200/40">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       
       <!-- Standard Experience -->
-      <div class="luxe-card flex flex-col justify-between border-t-4 border-t-cyan-500">
+      <div class="p-8 sm:p-10 bg-white/95 border-2 border-cyan-300/80 rounded-3xl shadow-sm flex flex-col justify-between">
         <div class="space-y-6">
           <div>
-            <span class="badge-tag mb-2">Essential Reset</span>
-            <h3 class="font-serif text-3xl text-white">Standard Experience</h3>
+            <span class="tagline-pill mb-2">Essential Reset</span>
+            <h3 class="font-serif text-3xl text-stone-900 font-bold">Standard Experience</h3>
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-5xl font-serif font-bold text-white">$2,200</span>
-              <span class="text-slate-400 text-xs font-mono uppercase">/ Per Guest</span>
+              <span class="text-4xl sm:text-5xl font-serif font-bold text-stone-950">$2,200</span>
+              <span class="text-stone-500 text-xs font-mono uppercase">/ Per Guest</span>
             </div>
-            <p class="text-xs text-gold-400 font-mono mt-1">Or secure with $500 Deposit today</p>
+            <p class="text-xs text-amber-700 font-mono font-bold mt-1.5">Or secure with $500 Deposit today</p>
           </div>
 
-          <p class="text-slate-300 text-sm font-light leading-relaxed">
+          <p class="text-stone-600 text-sm font-light leading-relaxed">
             Perfect for guests who want everything essential for transformation: 5 nights luxury lodging, daily yoga, breathwork, all meals, and core rituals.
           </p>
 
-          <div class="border-t border-white/10 pt-6 space-y-3 text-xs text-slate-300 font-mono">
-            <h4 class="uppercase text-gold-400 font-bold tracking-wider">What's Included:</h4>
-            <ul class="space-y-2 font-light">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 5 Nights / 6 Days luxury accommodations</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Daily Art of Arrival yoga &amp; somatic breathwork</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Elemental workshops &amp; reflection circles</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Curated excursions (Waterfalls, Beach Bonfire)</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> All meals &amp; juices by SWAY chefs</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Opening Bonfire &amp; Closing Gala feasting</li>
+          <div class="border-t border-orange-200/50 pt-6 space-y-3 text-xs text-stone-700 font-mono">
+            <h4 class="uppercase text-stone-900 font-bold tracking-wider">What's Included:</h4>
+            <ul class="space-y-2.5 font-light">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> 5 Nights / 6 Days luxury accommodations</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Daily Art of Arrival yoga &amp; somatic breathwork</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Elemental workshops &amp; reflection circles</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Curated excursions (Waterfalls, Beach Bonfire)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> All meals &amp; juices by SWAY chefs</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Opening Bonfire &amp; Closing Gala feasting</li>
             </ul>
           </div>
         </div>
 
         <div class="pt-8">
-          <a href="#builder" class="btn-outline-luxe w-full text-center text-xs">
+          <a href="#builder" class="btn-outline-luxe w-full text-center text-xs py-3.5">
             Select Standard in Builder ($500 Deposit)
           </a>
         </div>
       </div>
 
       <!-- VIP Experience -->
-      <div class="luxe-card flex flex-col justify-between border-t-4 border-t-gold-500 bg-gradient-to-b from-noir-900 to-noir-950 relative">
-        <div class="absolute -top-3 right-6 bg-gold-500 text-black font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
-          Most Elevated
+      <div class="p-8 sm:p-10 bg-gradient-to-br from-amber-500/10 via-pink-500/10 to-teal-500/10 border-2 border-amber-400 rounded-3xl shadow-md flex flex-col justify-between relative">
+        <div class="absolute -top-3.5 right-8 bg-gradient-to-r from-amber-500 to-pink-500 text-white font-mono text-[10px] uppercase font-bold tracking-widest px-4 py-1.5 rounded-full shadow-sm">
+          Most Elevated Experience
         </div>
 
         <div class="space-y-6">
           <div>
-            <span class="badge-tag gold mb-2">Haute Couture Sanctuary</span>
-            <h3 class="font-serif text-3xl text-white">VIP Experience</h3>
+            <span class="badge-rainbow mb-2">Haute Couture Sanctuary</span>
+            <h3 class="font-serif text-3xl text-stone-900 font-bold">VIP Experience</h3>
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-5xl font-serif font-bold text-gold-400">$3,100</span>
-              <span class="text-slate-400 text-xs font-mono uppercase">/ Per Guest</span>
+              <span class="text-4xl sm:text-5xl font-serif font-bold text-stone-950">$3,100</span>
+              <span class="text-stone-500 text-xs font-mono uppercase">/ Per Guest</span>
             </div>
-            <p class="text-xs text-gold-400 font-mono mt-1">Or secure with $500 Deposit today</p>
+            <p class="text-xs text-pink-700 font-mono font-bold mt-1.5">Or secure with $500 Deposit today</p>
           </div>
 
-          <p class="text-slate-300 text-sm font-light leading-relaxed">
+          <p class="text-stone-600 text-sm font-light leading-relaxed">
             Designed for guests desiring deeper personal proximity to Carly Anne, personalized 1-on-1 coaching, business strategy alignment, and luxury wellness touches.
           </p>
 
-          <div class="border-t border-white/10 pt-6 space-y-3 text-xs text-slate-300 font-mono">
-            <h4 class="uppercase text-gold-400 font-bold tracking-wider">Everything in Standard, plus:</h4>
-            <ul class="space-y-2 font-light">
-              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> <strong>1-on-1 Private Session with Carly Anne</strong> ($200 private value)</li>
-              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> <strong>Curated Luxury Gift Basket</strong> from women-owned brands</li>
-              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> <strong>Platform Spotlight Feature</strong> on Carly Anne's media</li>
-              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> <strong>Creative Collaboration Invitation</strong> to present your gifts</li>
-              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> Priority villa suite selection &amp; concierge care</li>
+          <div class="border-t border-orange-200/50 pt-6 space-y-3 text-xs text-stone-700 font-mono">
+            <h4 class="uppercase text-amber-900 font-bold tracking-wider">Everything in Standard, plus:</h4>
+            <ul class="space-y-2.5 font-light">
+              <li class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-pink-600"></i> <strong>1-on-1 Private Session with Carly Anne</strong> ($200 private value)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-pink-600"></i> <strong>Curated Luxury Gift Basket</strong> from women-owned brands</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-pink-600"></i> <strong>Platform Spotlight Feature</strong> on Carly Anne's media</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-pink-600"></i> <strong>Creative Collaboration Invitation</strong> to present your gifts</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-pink-600"></i> Priority villa suite selection &amp; concierge care</li>
             </ul>
           </div>
         </div>
 
         <div class="pt-8">
-          <a href="#builder" class="btn-luxe w-full text-center text-xs">
+          <a href="#builder" class="btn-luxe w-full text-center text-xs py-3.5">
             Select VIP in Builder ($500 Deposit)
           </a>
         </div>
@@ -419,49 +507,51 @@
     </div>
 
     <!-- Joyful Affirmation & Chakra Banner -->
-    <div class="mt-16 max-w-4xl mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-teal-500/10 border border-amber-300/40 shadow-lg flex flex-col sm:flex-row items-center gap-6">
-      <img src="/assets/pages/pricing/arrive-chakra-tree.png" alt="Chakra Tree by Carly Anne" class="w-24 h-24 sm:w-32 sm:h-32 object-contain bg-white rounded-xl p-2 shadow-sm flex-shrink-0" data-lightbox />
+    <div class="mt-16 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-white/95 border border-orange-200/60 shadow-sm flex flex-col sm:flex-row items-center gap-6">
+      <img src="/assets/pages/pricing/arrive-chakra-tree.png" alt="Chakra Tree by Carly Anne" class="w-24 h-24 sm:w-32 sm:h-32 object-contain bg-white rounded-2xl p-2 shadow-sm flex-shrink-0 cursor-pointer group" data-lightbox />
       <div class="text-center sm:text-left space-y-2">
         <span class="badge-rainbow">The Arrive Sanctuary Philosophy</span>
-        <h4 class="font-serif text-2xl text-white">Every Body Is A Yoga Body.</h4>
-        <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+        <h4 class="font-serif text-2xl text-stone-900 font-bold">Every Body Is A Yoga Body.</h4>
+        <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
           Whether you choose the Standard Reset or Haute Couture VIP, all bodies, levels, and backgrounds are held with unconditional honor, joy, and somatic support.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Embed Builder Section -->
-  <section id="builder" class="section-wrapper bg-noir-900/40">
+  <!-- =========================================================================
+       4. RETREAT BUILDER & INSTANT CHECKOUT FORM
+       ========================================================================= -->
+  <section id="builder" class="section-wrapper border-b border-orange-200/40">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="tagline-pill mb-3">Custom Retreat Builder</span>
-      <h2 class="text-4xl sm:text-5xl font-serif text-white mb-4">
+      <h2 class="text-3xl sm:text-5xl font-serif text-stone-900 font-bold mb-4">
         Customize &amp; Check Out
       </h2>
-      <p class="text-slate-400 font-light text-base">
+      <p class="text-stone-600 font-light text-base">
         Calculate your custom total, choose between $500 deposit or full payment, and complete your reservation via Stripe.
       </p>
     </div>
 
-    <form id="retreat-builder-form" class="max-w-4xl mx-auto bg-noir-950 border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl space-y-10">
+    <form id="retreat-builder-form" class="max-w-4xl mx-auto bg-white/95 border border-orange-200/60 rounded-3xl p-6 sm:p-10 shadow-lg space-y-10 text-stone-800">
       
       <!-- Guest Info -->
       <div class="space-y-4">
-        <h3 class="font-serif text-2xl text-white flex items-center gap-3 border-b border-white/10 pb-3">
-          <span class="w-7 h-7 rounded-full bg-gold-500/20 text-gold-400 text-xs font-mono flex items-center justify-center font-bold">1</span>
+        <h3 class="font-serif text-2xl text-stone-900 font-bold flex items-center gap-3 border-b border-orange-200/40 pb-3">
+          <span class="w-8 h-8 rounded-full bg-pink-100 text-pink-700 text-xs font-mono flex items-center justify-center font-bold">1</span>
           Guest Information
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Full Name *</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Full Name *</label>
             <input type="text" id="calc-guest-name" class="luxe-input" placeholder="e.g. Elena Rostova" required />
           </div>
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Email Address *</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Email Address *</label>
             <input type="email" id="calc-guest-email" class="luxe-input" placeholder="elena@example.com" required />
           </div>
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Phone / WhatsApp</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Phone / WhatsApp</label>
             <input type="tel" id="calc-guest-phone" class="luxe-input" placeholder="+1 (555) 019-2834" />
           </div>
         </div>
@@ -469,20 +559,20 @@
 
       <!-- Package & Room -->
       <div class="space-y-4">
-        <h3 class="font-serif text-2xl text-white flex items-center gap-3 border-b border-white/10 pb-3">
-          <span class="w-7 h-7 rounded-full bg-gold-500/20 text-gold-400 text-xs font-mono flex items-center justify-center font-bold">2</span>
+        <h3 class="font-serif text-2xl text-stone-900 font-bold flex items-center gap-3 border-b border-orange-200/40 pb-3">
+          <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 text-xs font-mono flex items-center justify-center font-bold">2</span>
           Package &amp; Room Tier
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Experience Tier</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Experience Tier</label>
             <select id="calc-package" class="luxe-select">
               <option value="standard">Standard Experience — $2,200</option>
               <option value="vip">VIP Experience (Private Session &amp; Platform Feature) — $3,100</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Suite / Villa</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-stone-600 mb-2 font-bold">Suite / Villa</label>
             <select id="calc-room" class="luxe-select">
               <option value="queen" data-upgrade="0">Queen Suite (1 Queen + Trundle) — Included ($0)</option>
               <option value="family" data-upgrade="300">Family Suite (2 Queen Beds Side by Side) — +$300</option>
@@ -497,97 +587,97 @@
 
       <!-- Add-ons -->
       <div class="space-y-4">
-        <h3 class="font-serif text-2xl text-white flex items-center gap-3 border-b border-white/10 pb-3">
-          <span class="w-7 h-7 rounded-full bg-gold-500/20 text-gold-400 text-xs font-mono flex items-center justify-center font-bold">3</span>
+        <h3 class="font-serif text-2xl text-stone-900 font-bold flex items-center gap-3 border-b border-orange-200/40 pb-3">
+          <span class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 text-xs font-mono flex items-center justify-center font-bold">3</span>
           Optional Add-Ons (Excursions &amp; Spa)
         </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-300 font-mono">
-          <div class="space-y-2 p-4 bg-noir-900 rounded-lg border border-white/5">
-            <span class="text-gold-400 uppercase tracking-wider block mb-2 font-bold">Curated Excursions</span>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-stone-700 font-mono">
+          <div class="space-y-2 p-5 bg-stone-50/80 rounded-2xl border border-orange-200/40">
+            <span class="text-pink-700 uppercase tracking-wider block mb-2 font-bold">Curated Excursions</span>
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="25" data-name="Rainforest Waterfalls" /> Rainforest Waterfalls</span>
-              <span class="text-gold-400">+$25</span>
+              <span class="text-amber-800 font-bold">+$25</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="25" data-name="Rainmaker Hanging Bridges" /> Rainmaker Hanging Bridges</span>
-              <span class="text-gold-400">+$25</span>
+              <span class="text-amber-800 font-bold">+$25</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="100" data-name="ATV to Waterfall Jump" /> ATV to Waterfall Jump</span>
-              <span class="text-gold-400">+$100</span>
+              <span class="text-amber-800 font-bold">+$100</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="60" data-name="Waterfall Rappelling Add-on" /> Waterfall Rappelling Add-on</span>
-              <span class="text-gold-400">+$60</span>
+              <span class="text-amber-800 font-bold">+$60</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="70" data-name="Jungle Horseback Riding" /> Jungle &amp; Beach Horseback</span>
-              <span class="text-gold-400">+$70</span>
+              <span class="text-amber-800 font-bold">+$70</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="80" data-name="Temazcal Sweat Lodge" /> Temazcal Sweat Lodge</span>
-              <span class="text-gold-400">+$80</span>
+              <span class="text-amber-800 font-bold">+$80</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="60" data-name="Monkey Mangrove River Cruise" /> Monkey Mangrove River Cruise</span>
-              <span class="text-gold-400">+$60</span>
+              <span class="text-amber-800 font-bold">+$60</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="25" data-name="Butterfly Gardens Sanctuary" /> Butterfly Gardens Sanctuary</span>
-              <span class="text-gold-400">+$25</span>
+              <span class="text-amber-800 font-bold">+$25</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="75" data-name="Canopy Ziplining" /> Canopy Ziplining</span>
-              <span class="text-gold-400">+$75</span>
+              <span class="text-amber-800 font-bold">+$75</span>
             </label>
-            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
               <span class="flex items-center gap-2"><input type="checkbox" class="calc-excursion-check" data-price="160" data-name="Tortuga Island Day Trip" /> Tortuga Island Catamaran</span>
-              <span class="text-gold-400">+$160</span>
+              <span class="text-amber-800 font-bold">+$160</span>
             </label>
           </div>
 
           <div class="space-y-4">
-            <div class="space-y-2 p-4 bg-noir-900 rounded-lg border border-white/5">
-              <span class="text-gold-400 uppercase tracking-wider block mb-2 font-bold">En-Suite Spa Care</span>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+            <div class="space-y-2 p-5 bg-stone-50/80 rounded-2xl border border-orange-200/40">
+              <span class="text-teal-700 uppercase tracking-wider block mb-2 font-bold">En-Suite Spa Care</span>
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="75" data-name="60-Min Massage" /> 60-Min Therapeutic Massage</span>
-                <span class="text-gold-400">+$75</span>
+                <span class="text-amber-800 font-bold">+$75</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="125" data-name="90-Min Massage" /> 90-Min Deep Tissue Massage</span>
-                <span class="text-gold-400">+$125</span>
+                <span class="text-amber-800 font-bold">+$125</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="50" data-name="Beachfront Reflexology" /> 30-Min Beachfront Reflexology</span>
-                <span class="text-gold-400">+$50</span>
+                <span class="text-amber-800 font-bold">+$50</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="100" data-name="Mani & Pedi Duo" /> Manicure &amp; Pedicure Duo</span>
-                <span class="text-gold-400">+$100</span>
+                <span class="text-amber-800 font-bold">+$100</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="85" data-name="Customized Facial" /> Customized Botanical Facial</span>
-                <span class="text-gold-400">+$85</span>
+                <span class="text-amber-800 font-bold">+$85</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="85" data-name="Bamboo Therapy" /> Deep Bamboo Therapy</span>
-                <span class="text-gold-400">+$85</span>
+                <span class="text-amber-800 font-bold">+$85</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="100" data-name="Body Scrub Exfoliation" /> Exfoliating Organic Body Scrub</span>
-                <span class="text-gold-400">+$100</span>
+                <span class="text-amber-800 font-bold">+$100</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white/5 rounded">
+              <label class="flex items-center justify-between cursor-pointer p-1.5 hover:bg-white rounded-lg transition-colors">
                 <span class="flex items-center gap-2"><input type="checkbox" class="calc-spa-check" data-price="150" data-name="Signature Spa Experience" /> Signature Sanctuary Spa Ritual</span>
-                <span class="text-gold-400">+$150</span>
+                <span class="text-amber-800 font-bold">+$150</span>
               </label>
-              <p class="text-[10px] text-slate-400 font-sans italic pt-1">
+              <p class="text-[11px] text-stone-500 font-sans italic pt-1">
                 *Spa services must be reserved at least 7 to 10 days in advance.
               </p>
             </div>
 
-            <div class="p-4 bg-noir-900 rounded-lg border border-white/5 space-y-2">
-              <span class="text-gold-400 uppercase tracking-wider block font-bold">Airport Shuttles (SJO)</span>
+            <div class="p-5 bg-stone-50/80 rounded-2xl border border-orange-200/40 space-y-2">
+              <span class="text-amber-800 uppercase tracking-wider block font-bold">Airport Shuttles (SJO)</span>
               <select id="calc-airport" class="luxe-select text-xs">
                 <option value="0">Arrange own arrival ($0)</option>
                 <option value="150">Private Sprinter Pickup from SJO Airport (+$150)</option>
@@ -599,36 +689,36 @@
       </div>
 
       <!-- Price Breakdown & Checkout -->
-      <div class="p-6 sm:p-8 bg-noir-900 border border-gold-500/40 rounded-xl space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
+      <div class="p-6 sm:p-8 bg-white border-2 border-orange-300 rounded-2xl shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-orange-200/50 pb-4 gap-4">
           <div>
-            <span class="text-xs font-mono uppercase text-gold-400 tracking-wider">Estimated Total Investment</span>
-            <div class="text-4xl font-serif text-white" id="display-grand-total">$2,200</div>
+            <span class="text-xs font-mono uppercase text-stone-500 tracking-wider font-bold">Estimated Total Investment</span>
+            <div class="text-4xl sm:text-5xl font-serif text-stone-900 font-bold" id="display-grand-total">$2,200</div>
           </div>
 
-          <div class="flex items-center gap-3 p-3 rounded-lg bg-noir-950 border border-white/10">
-            <input type="checkbox" id="calc-deposit-toggle" class="w-5 h-5 accent-gold-500 cursor-pointer" checked />
+          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50 border border-amber-200">
+            <input type="checkbox" id="calc-deposit-toggle" class="w-5 h-5 accent-pink-600 cursor-pointer" checked />
             <div>
-              <label for="calc-deposit-toggle" class="text-xs font-mono uppercase text-white font-bold block cursor-pointer">
+              <label for="calc-deposit-toggle" class="text-xs font-mono uppercase text-stone-900 font-bold block cursor-pointer">
                 Pay $500 Deposit Today
               </label>
-              <span class="text-[11px] text-slate-400 font-sans block">Remaining balance split into scheduled installments</span>
+              <span class="text-[11px] text-stone-600 font-sans block">Remaining balance split into scheduled installments</span>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-mono text-slate-400">
-          <div>Base: <span id="display-base-price" class="text-white block">$2,200</span></div>
-          <div>Suite Upgrade: <span id="display-room-price" class="text-white block">$0</span></div>
-          <div>Excursions: <span id="display-excursions-total" class="text-white block">$0</span></div>
-          <div>Spa: <span id="display-spa-total" class="text-white block">$0</span></div>
-          <div>Transfers: <span id="display-transport-total" class="text-white block">$0</span></div>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-mono text-stone-600">
+          <div>Base: <span id="display-base-price" class="text-stone-900 font-bold block">$2,200</span></div>
+          <div>Suite Upgrade: <span id="display-room-price" class="text-stone-900 font-bold block">$0</span></div>
+          <div>Excursions: <span id="display-excursions-total" class="text-stone-900 font-bold block">$0</span></div>
+          <div>Spa: <span id="display-spa-total" class="text-stone-900 font-bold block">$0</span></div>
+          <div>Transfers: <span id="display-transport-total" class="text-stone-900 font-bold block">$0</span></div>
         </div>
 
-        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div class="pt-4 border-t border-orange-200/50 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span id="display-due-label" class="text-xs font-mono uppercase text-gold-400 block font-bold">Deposit Due Today</span>
-            <span id="display-due-today" class="text-4xl font-serif text-white font-bold">$500</span>
+            <span id="display-due-label" class="text-xs font-mono uppercase text-pink-700 block font-bold">Deposit Due Today (Remainder Scheduled)</span>
+            <span id="display-due-today" class="text-4xl font-serif text-stone-950 font-bold">$500</span>
           </div>
 
           <button id="proceed-to-stripe-btn" type="button" class="btn-luxe py-4 px-10 text-sm flex items-center justify-center gap-3">
@@ -642,88 +732,88 @@
   </section>
 
   <!-- =========================================================================
-       FLIGHT SUPPORT, TRANSPORTATION FLEET & INCLUSIONS (Master Manuscript 7.4-7.9)
+       5. FLIGHT SUPPORT, TRANSPORTATION FLEET & INCLUSIONS
        ========================================================================= -->
-  <section class="section-wrapper border-t border-b border-white/10 bg-noir-900/30">
+  <section class="section-wrapper border-b border-orange-200/40">
     <div class="max-w-5xl mx-auto space-y-12">
       
       <!-- Inclusions & Exclusions Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="luxe-card space-y-4">
-          <div class="flex items-center gap-3 border-b border-white/10 pb-3">
-            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-            <h3 class="font-serif text-2xl text-white">What's Included In All Paths</h3>
+        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-orange-200/40 pb-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>
+            <h3 class="font-serif text-2xl text-stone-900 font-bold">What's Included In All Paths</h3>
           </div>
-          <ul class="space-y-2.5 text-xs font-mono text-slate-300">
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> 5 Nights luxury lodging at Amanti Sanctuary</li>
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Daily Art of Arrival yoga, somatic movement &amp; breathwork</li>
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Elemental workshops, sound journeys &amp; group reflection circles</li>
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> All farm-fresh organic meals, brunch, and fresh juice bar by SWAY chefs</li>
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Opening Beach Bonfire &amp; Closing Gratitude Gala</li>
-            <li class="flex items-start gap-2"><span class="text-gold-400">✓</span> Curated community integration &amp; pre/post retreat support resources</li>
+          <ul class="space-y-2.5 text-xs font-mono text-stone-700">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> 5 Nights luxury lodging at Amanti Sanctuary</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Daily Art of Arrival yoga, somatic movement &amp; breathwork</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Elemental workshops, sound journeys &amp; group reflection circles</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> All farm-fresh organic meals, brunch, and fresh juice bar by SWAY chefs</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Opening Beach Bonfire &amp; Closing Gratitude Gala</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Curated community integration &amp; pre/post retreat support resources</li>
           </ul>
         </div>
 
-        <div class="luxe-card space-y-4">
-          <div class="flex items-center gap-3 border-b border-white/10 pb-3">
-            <i data-lucide="info" class="w-5 h-5 text-gold-400"></i>
-            <h3 class="font-serif text-2xl text-white">What's Not Included</h3>
+        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-4">
+          <div class="flex items-center gap-3 border-b border-orange-200/40 pb-3">
+            <i data-lucide="info" class="w-5 h-5 text-amber-600"></i>
+            <h3 class="font-serif text-2xl text-stone-900 font-bold">What's Not Included</h3>
           </div>
-          <ul class="space-y-2.5 text-xs font-mono text-slate-300">
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Flights to Costa Rica (SJO Airport) — flight guidance available</li>
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Comprehensive travel insurance (strongly recommended)</li>
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Spa treatments &amp; bodywork (unless added to package)</li>
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Additional custom excursions beyond selected itinerary</li>
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Alcoholic beverages (available for separate purchase at SWAY Lounge)</li>
-            <li class="flex items-start gap-2"><span class="text-slate-500">•</span> Personal shopping &amp; gratuities</li>
+          <ul class="space-y-2.5 text-xs font-mono text-stone-700">
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Flights to Costa Rica (SJO Airport) — flight guidance available</li>
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Comprehensive travel insurance (strongly recommended)</li>
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Spa treatments &amp; bodywork (unless added to package)</li>
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Additional custom excursions beyond selected itinerary</li>
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Alcoholic beverages (available for separate purchase at SWAY Lounge)</li>
+            <li class="flex items-start gap-2"><span class="text-stone-400">•</span> Personal shopping &amp; gratuities</li>
           </ul>
         </div>
       </div>
 
       <!-- High-Touch Flight Support & Fleet Logistics -->
-      <div class="luxe-card space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-4">
+      <div class="p-8 sm:p-10 bg-white/95 border border-orange-200/60 rounded-3xl shadow-sm space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-orange-200/40 pb-4 gap-4">
           <div>
             <span class="tagline-pill mb-2">High-Touch Guest Support</span>
-            <h3 class="font-serif text-2xl text-white">Flight Guidance &amp; Private Shuttles</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold">Flight Guidance &amp; Private Shuttles</h3>
           </div>
-          <span class="text-xs font-mono text-gold-400">Fly into Juan Santamaría Airport (SJO)</span>
+          <span class="text-xs font-mono text-amber-800 font-bold uppercase">Fly into Juan Santamaría Airport (SJO)</span>
         </div>
 
-        <p class="text-slate-300 text-sm font-light leading-relaxed">
+        <p class="text-stone-600 text-sm font-light leading-relaxed">
           While flights are booked individually by each guest, our concierge provides high-touch flight support to assist in identifying the most cost-effective and time-efficient itineraries to SJO. Private, air-conditioned transportation from the airport directly to Amanti Sanctuary can be arranged seamlessly.
         </p>
 
         <!-- Fleet Grid & Authentic Infographic -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          <div class="lg:col-span-5">
-            <img src="/assets/pages/pricing/transportation-fleet.png" alt="Private Luxury Fleet &amp; Airport Rates" class="w-full h-auto rounded-xl border border-white/10 shadow-lg" data-lightbox />
+          <div class="lg:col-span-5 cursor-pointer group" data-lightbox>
+            <img src="/assets/pages/pricing/transportation-fleet.png" alt="Private Luxury Fleet &amp; Airport Rates" class="w-full h-auto rounded-2xl border border-orange-200/60 shadow-sm transition duration-500 group-hover:scale-105" />
           </div>
           <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
-            <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
-              <strong class="text-white block">Mercedes Sprinter 1</strong>
-              <span class="text-gold-400 block">Up to 14 passengers</span>
-              <span class="text-slate-400 text-[11px] block">Or 9 guests with extensive luggage</span>
+            <div class="p-4 bg-stone-50 rounded-xl border border-orange-200/40 space-y-1">
+              <strong class="text-stone-900 block font-bold">Mercedes Sprinter 1</strong>
+              <span class="text-pink-700 block font-semibold">Up to 14 passengers</span>
+              <span class="text-stone-500 text-[11px] block">Or 9 guests with extensive luggage</span>
             </div>
-            <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
-              <strong class="text-white block">Mercedes Sprinter 2</strong>
-              <span class="text-gold-400 block">Up to 17 passengers</span>
-              <span class="text-slate-400 text-[11px] block">Or 12 guests with luggage</span>
+            <div class="p-4 bg-stone-50 rounded-xl border border-orange-200/40 space-y-1">
+              <strong class="text-stone-900 block font-bold">Mercedes Sprinter 2</strong>
+              <span class="text-teal-700 block font-semibold">Up to 17 passengers</span>
+              <span class="text-stone-500 text-[11px] block">Or 12 guests with luggage</span>
             </div>
-            <div class="p-4 bg-noir-950 rounded-lg border border-white/10 space-y-1">
-              <strong class="text-white block">Executive Coach 1</strong>
-              <span class="text-gold-400 block">Up to 24 passengers</span>
-              <span class="text-slate-400 text-[11px] block">Climate-controlled, under-bus storage</span>
+            <div class="p-4 bg-stone-50 rounded-xl border border-orange-200/40 space-y-1">
+              <strong class="text-stone-900 block font-bold">Executive Coach 1</strong>
+              <span class="text-amber-800 block font-semibold">Up to 24 passengers</span>
+              <span class="text-stone-500 text-[11px] block">Climate-controlled, under-bus storage</span>
             </div>
           </div>
         </div>
 
-        <div class="p-4 bg-noir-950/80 rounded-lg border border-gold-500/30 text-xs font-mono text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="p-5 bg-gradient-to-r from-amber-500/10 via-pink-500/10 to-teal-500/10 rounded-2xl border border-orange-200/60 text-xs font-mono text-stone-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <strong class="text-gold-400 block">Airport Shuttle Pricing Route:</strong>
+            <strong class="text-stone-900 block font-bold mb-1">Airport Shuttle Pricing Route:</strong>
             <span>Estimated $150 per airport run for up to 4 guests (plus tax), and approx. $25 per additional guest.</span>
           </div>
-          <a href="/terms.html" class="btn-outline-luxe text-xs whitespace-nowrap py-2 px-4 text-center">
+          <a href="/terms.html" class="btn-outline-luxe text-xs whitespace-nowrap py-2.5 px-5 text-center">
             View Policies &amp; Terms ↗
           </a>
         </div>
@@ -732,17 +822,129 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-noir-950 border-t border-white/10 py-12 text-center text-xs font-mono text-slate-500">
-    <p>© 2026 Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats</p>
-    <p class="mt-2 text-gold-400">Every Body Is A Yoga Body.</p>
-    <div class="pt-4 flex justify-center gap-6 text-[11px] text-slate-400">
-      <a href="/terms.html" class="hover:text-gold-400">Terms &amp; Cancellation Policy</a>
-      <a href="/contact.html" class="hover:text-gold-400">Concierge Inquiries</a>
-      <a href="/stripe-setup.html" class="hover:text-gold-400">Stripe Portal</a>
+  <!-- =========================================================================
+       6. FOOTER (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Ethos -->
+      <div class="space-y-4">
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          A luxury biophilic wellness sanctuary and somatic retreat dedicated to sustainable transformation, nervous system recalibration, and authentic human connection.
+        </p>
+        <p class="text-xs text-gold-400 font-editorial italic text-base">
+          "Every Body Is A Yoga Body."
+        </p>
+        <div class="text-[11px] text-slate-400 space-y-1 pt-2">
+          <p>Sanctuary: Amanti Resort, Playa Hermosa, Costa Rica</p>
+          <p>Headquarters: Boca Raton, Florida, USA</p>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Sanctuary Experience</strong>
+        <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Art of Arrival (Dates Soon)</a>
+        <a href="/method.html" class="block hover:text-gold-400 transition-colors">The Arrive Yoga Method™</a>
+        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Suites &amp; Private Villas</a>
+        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">6-Day Elemental Schedule</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Farm-To-Table Dining</a>
+        <a href="/about.html" class="block hover:text-gold-400 transition-colors">Meet Carly Anne Kasinpila</a>
+      </div>
+
+      <!-- Pricing & Legal -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Investment &amp; Inquiries</strong>
+        <a href="/pricing.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Standard Package ($2,200)</a>
+        <a href="/pricing.html" class="block text-gold-400 font-bold hover:text-white transition-colors">VIP Package ($3,100)</a>
+        <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Consulting</a>
+        <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
+        <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
+      </div>
+
+      <!-- Direct Contact -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Concierge &amp; Booking</strong>
+        <p>Playa Hermosa, Puntarenas, Costa Rica</p>
+        <p>Direct: <a href="tel:9543367048" class="text-white hover:text-gold-400">954-336-7048</a></p>
+        <p>Email: <a href="mailto:arrive@everybodyisayogabody.org" class="text-white hover:text-gold-400">arrive@everybodyisayogabody.org</a></p>
+        <p>Web: <a href="https://everybodyisayogabody.org" target="_blank" class="text-gold-400">everybodyisayogabody.org</a></p>
+        <p class="text-[11px] text-slate-400 pt-2">© 2026 Arrive Yoga &amp; Wellness. All Rights Reserved.</p>
+      </div>
+
     </div>
   </footer>
 
+  <!-- =========================================================================
+       MODALS: THEME DRAWER & LIGHTBOX
+       ========================================================================= -->
+  <div id="theme-drawer" class="theme-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+      <div>
+        <h3 class="font-serif text-2xl text-white">Visual Themes</h3>
+        <p class="text-xs font-mono text-slate-400">Haute Couture &amp; Sanctuary Palettes</p>
+      </div>
+      <button id="close-theme-drawer" class="text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Theme 1: Tropical Sunshine (Default) -->
+    <div class="theme-card-option active" data-theme-id="tropical-sunshine" data-set-theme="tropical-sunshine">
+      <div>
+        <strong class="text-white text-sm block">01. Tropical Sunshine &amp; Rainbow (Default) 🌺🌈</strong>
+        <span class="text-xs text-slate-400">Sunlit warmth, vibrant rainbow aura, &amp; joyful Costa Rica energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-cyan-400 border border-white/40 shadow-sm"></div>
+    </div>
+
+    <!-- Theme 2: Biophilic Emerald -->
+    <div class="theme-card-option" data-theme-id="biophilic-emerald" data-set-theme="biophilic-emerald">
+      <div>
+        <strong class="text-white text-sm block">02. Biophilic Emerald Sanctuary 🌿</strong>
+        <span class="text-xs text-slate-400">Costa Rica rainforest, jade greens &amp; raw linen</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#52b788] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 3: Sunset Somatic Terracotta -->
+    <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
+      <div>
+        <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
+        <span class="text-xs text-slate-400">Playa Hermosa dusk, rich clay &amp; glowing dusk ember</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e76f51] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 4: Haute Noir & Gold -->
+    <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
+      <div>
+        <strong class="text-white text-sm block">04. Haute Noir &amp; Royal Gold ✨</strong>
+        <span class="text-xs text-slate-400">Metropolitan vogue elegance, obsidian &amp; 24K gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e2b774] border border-white/20"></div>
+    </div>
+  </div>
+
+  <div id="lightbox-modal" class="sanctuary-modal">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-image" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl" />
+      <p id="lightbox-caption" class="text-gold-300 font-serif text-lg mt-4 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons & Engine Scripts -->
   <script src="js/main.js?v=3.0"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
 </body>
 </html>
