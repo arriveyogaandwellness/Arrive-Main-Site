@@ -5,6 +5,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
   initThemeEngine();
   initIconNavTooltips();
   initAudioAmbience();
@@ -560,16 +563,27 @@ function initMobileNav() {
   const closeBtn = document.getElementById('close-mobile-nav');
 
   if (toggle && drawer) {
-    toggle.addEventListener('click', () => drawer.classList.toggle('hidden'));
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !drawer.classList.contains('is-open');
+      drawer.classList.toggle('is-open', willOpen);
+      document.body.classList.toggle('overflow-hidden', willOpen);
+    });
   }
   if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => drawer.classList.add('hidden'));
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+    });
   }
 
   // Auto-close on link click
   if (drawer) {
     drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => drawer.classList.add('hidden'));
+      link.addEventListener('click', () => {
+        drawer.classList.remove('is-open');
+        document.body.classList.remove('overflow-hidden');
+      });
     });
   }
 }
@@ -593,12 +607,13 @@ function initIconNavTooltips() {
       }
       
       const isOpen = item.classList.contains('touch-open');
-      // If not yet open, show tooltip on first touch
+      // If not yet open on touch, show tooltip on first touch
       if (!isOpen) {
+        e.preventDefault();
         iconItems.forEach(other => other.classList.remove('touch-open'));
         item.classList.add('touch-open');
-        // If they want to navigate, allow navigation after brief feedback
       }
+      // If already open, the touch will naturally trigger link navigation
     });
 
     // Handle mouse enter / leave for desktop hover

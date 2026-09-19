@@ -25,5 +25,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "stripe": "^16.12.0"
+  },
+  "devDependencies": {
+    "heic-convert": "^2.1.0"
   }
 }
