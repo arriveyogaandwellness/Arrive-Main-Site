@@ -1,6 +1,6 @@
 {
   "name": "arrive-yoga-sanctuary",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "The Art of Arrival - Haute-Wellness & Editorial Retreat Experience in Costa Rica by Carly Anne Kasinpila",
   "main": "server.js",
   "scripts": {
