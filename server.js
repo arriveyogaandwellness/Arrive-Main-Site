@@ -277,7 +277,7 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('================================================================');
   console.log(`🌺 THE ART OF ARRIVAL — SANCTUARY WEB SERVER ONLINE`);
   console.log(`🌐 Local URL:      http://localhost:${PORT}`);
