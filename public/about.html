@@ -545,42 +545,88 @@
   </section>
 
   <!-- =========================================================================
-       UNIVERSAL LUXURY CONCIERGE FOOTER
+       NEWSLETTER ("Join the Arrive Family")
        ========================================================================= -->
-  <footer class="bg-noir-950 border-t border-white/10 py-16 text-slate-400 text-xs font-mono">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+  <section id="newsletter" class="py-20 border-t border-b border-white/10 bg-noir-900/50 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
+      <div class="space-y-3">
+        <span class="tagline-pill">Stay Connected</span>
+        <h2 class="text-3xl sm:text-5xl font-serif text-white">Join the Arrive Family</h2>
+        <p class="text-xs font-mono text-gold-400 tracking-widest uppercase font-bold">
+          Words on arriving, living, healing, and becoming.
+        </p>
+      </div>
+
+      <p class="text-slate-300 font-light text-base max-w-2xl mx-auto leading-relaxed">
+        Sign up for the Arrive Newsletter to receive wellness inspiration, retreat updates, special offerings, reflections, and grounded reminders to come back to yourself.
+      </p>
+
+      <!-- Incentive Card -->
+      <div class="p-6 bg-noir-950 border border-gold-500/30 rounded-xl max-w-xl mx-auto flex items-center gap-4 text-left">
+        <div class="w-12 h-12 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0">
+          <i data-lucide="gift" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <strong class="text-white text-sm block">Complimentary Gift: The Arrive Reset</strong>
+          <span class="text-xs text-slate-400 font-light">Receive our signature grounded guide for calming your nervous system and returning to your breath immediately upon joining.</span>
+        </div>
+      </div>
+
+      <!-- Newsletter Form -->
+      <form id="newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <input type="text" id="newsletter-name" placeholder="First Name" required class="luxe-input sm:w-1/3 text-xs" />
+        <input type="email" id="newsletter-email" placeholder="Your Email Address" required class="luxe-input sm:w-1/2 text-xs" />
+        <button type="submit" class="btn-luxe whitespace-nowrap text-xs py-3 px-6">
+          Join Us ↗
+        </button>
+      </form>
+      <div id="newsletter-success" class="hidden text-xs font-mono text-gold-400">
+        ✨ Welcome to the Arrive Family! Check your inbox for <span class="text-white font-bold">The Arrive Reset</span> guide.
+      </div>
+
+      <p class="text-[11px] font-mono text-slate-500">
+        We honor your space. No spam, ever. Unsubscribe at any time.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER & SITEMAP (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer bg-noir-950 border-t border-white/10 py-16 text-slate-400 text-xs font-mono">
+    <div class="footer-container max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
       
       <!-- Brand & Mission -->
       <div class="space-y-4">
-        <span class="font-serif text-2xl text-white font-bold block brand-rainbow-title">ARRIVE.</span>
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
         <p class="font-sans text-xs text-slate-400 leading-relaxed">
           Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats. Founded by Carly Anne Kasinpila.
         </p>
         <p class="text-gold-400 font-bold">Every Body Is A Yoga Body.</p>
         <div class="pt-2">
-          <span class="badge-tag gold">Amanti Sanctuary • Costa Rica</span>
+          <span class="badge-tag gold">Hosted on Railway &amp; GitHub</span>
         </div>
       </div>
 
       <!-- Quick Links -->
       <div class="space-y-2.5">
         <strong class="text-white uppercase tracking-wider block font-serif text-sm">Explore</strong>
-        <a href="/index.html" class="block hover:text-gold-400 transition-colors">Home Sanctuary</a>
-        <a href="/about.html" class="block hover:text-gold-400 transition-colors">About Carly Anne</a>
+        <a href="/index.html" class="block hover:text-gold-400 transition-colors">Home Experience</a>
         <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Retreat Experience</a>
         <a href="/method.html" class="block hover:text-gold-400 transition-colors">The ARRIVE Method™</a>
-        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">6-Day Elemental Schedule</a>
-        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Estates &amp; Suites</a>
-        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Farm-To-Table Dining</a>
+        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">Elemental 6-Day Schedule</a>
+        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Estates, Suites &amp; Villas</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Dining Service</a>
+        <a href="/about.html" class="block text-gold-400 font-bold hover:text-white transition-colors">About Carly Anne Kasinpila</a>
       </div>
 
       <!-- Retreat & Payment -->
       <div class="space-y-2.5">
-        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Retreat &amp; Rates</strong>
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Retreat &amp; Stripe</strong>
         <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">Standard Package ($2,200)</a>
         <a href="/pricing.html" class="block hover:text-gold-400 transition-colors">VIP Package ($3,100)</a>
         <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
-        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Consulting</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Advisory</a>
         <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
         <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
       </div>
@@ -599,8 +645,10 @@
   </footer>
 
   <!-- =========================================================================
-       MODALS: THEME DRAWER & LIGHTBOX
+       MODALS: THEME DRAWER, QUIZ & LIGHTBOX
        ========================================================================= -->
+
+  <!-- 1. Theme Engine Drawer -->
   <div id="theme-drawer" class="theme-drawer">
     <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
       <div>
@@ -634,21 +682,98 @@
     <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
       <div>
         <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
-        <span class="text-xs text-slate-400">Playa Hermosa dusk, rich clay &amp; glowing dusk ember</span>
+        <span class="text-xs text-slate-400">Pacific sunset glow, burnt orange &amp; clay</span>
       </div>
-      <div class="w-6 h-6 rounded-full bg-[#e76f51] border border-white/20"></div>
+      <div class="w-6 h-6 rounded-full bg-[#e07a5f] border border-white/20"></div>
     </div>
 
-    <!-- Theme 4: Haute Noir & Gold -->
+    <!-- Theme 4: Avatar Cosmic Spectrum -->
+    <div class="theme-card-option" data-theme-id="avatar-spectrum" data-set-theme="avatar-spectrum">
+      <div>
+        <strong class="text-white text-sm block">04. Avatar Cosmic Spectrum 🔮</strong>
+        <span class="text-xs text-slate-400">Deep violet, celestial rainbow &amp; vibrant energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#9d4edd] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 5: Obsidian Runway -->
     <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
       <div>
-        <strong class="text-white text-sm block">04. Haute Noir &amp; Royal Gold ✨</strong>
-        <span class="text-xs text-slate-400">Metropolitan vogue elegance, obsidian &amp; 24K gold</span>
+        <strong class="text-white text-sm block">05. Obsidian Evening Runway (Night Mode) ✨</strong>
+        <span class="text-xs text-slate-400">Midnight sanctuary, deep noir, and champagne gold</span>
       </div>
-      <div class="w-6 h-6 rounded-full bg-[#e2b774] border border-white/20"></div>
+      <div class="w-6 h-6 rounded-full bg-[#121216] border border-[#e2b774]"></div>
     </div>
   </div>
 
+  <!-- 2. Retreat Readiness Quiz Modal -->
+  <div id="quiz-modal" class="sanctuary-modal">
+    <div class="modal-dialog">
+      <button id="close-quiz-modal" class="modal-close-btn">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Quiz Form -->
+      <div id="quiz-form" class="space-y-6">
+        <div>
+          <span class="tagline-pill mb-2">Soul Diagnostic</span>
+          <h3 class="font-serif text-3xl text-white">Discover Your Primary Element</h3>
+          <p class="text-slate-300 text-sm font-light">Answer 4 intuitive questions to reveal where your nervous system is calling to reset.</p>
+        </div>
+
+        <div class="space-y-4 text-xs font-mono">
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">1. What has your nervous system felt like lately?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="earth" checked /> Chronic exhaustion, depleted, needing deep physical sleep.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="water" /> Emotionally overloaded, holding heavy feelings, needing to cry or soften.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="fire" /> Stagnant, frustrated, wanting to break out of comfort zone.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="air" /> Overthinking, racing mind, unable to find mental quiet.</label>
+          </div>
+
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">2. In nature, what grounds you most instantly?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="earth" checked /> Bare feet on solid soil, tree roots, dark sand.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="water" /> Ocean tides, waterfall spray, floating weightless.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="fire" /> Warm bonfire, sweat lodge heat, afternoon sunlight.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="air" /> High mountain canopy breeze, open endless horizon.</label>
+          </div>
+
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">3. What is the biggest breakthrough you desire to take home?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="earth" checked /> A revitalized, pain-free body with regulated sleep.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="water" /> Heart opening, forgiven past narratives, vulnerable ease.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="fire" /> Fierce self-confidence and clarity in my leadership.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="air" /> Unshakable calm in the space between my thoughts.</label>
+          </div>
+        </div>
+
+        <button id="quiz-submit-btn" type="button" class="btn-luxe w-full">
+          Reveal My Element &amp; Ideal Package
+        </button>
+      </div>
+
+      <!-- Quiz Result Container -->
+      <div id="quiz-result" class="space-y-6 hidden text-center">
+        <span class="tagline-pill">Your Diagnostic Result</span>
+        <h3 id="quiz-result-element" class="font-serif text-4xl text-white font-bold">Earth Anchor</h3>
+        <p id="quiz-result-description" class="text-slate-300 text-sm leading-relaxed max-w-xl mx-auto"></p>
+        
+        <div class="p-6 bg-noir-900 border border-gold-500/40 rounded-xl text-left space-y-2">
+          <span class="text-gold-400 font-mono text-xs uppercase font-bold block">Recommended Pathway:</span>
+          <p id="quiz-result-recommendation" class="text-white text-sm font-serif"></p>
+        </div>
+
+        <div class="pt-4 flex justify-center gap-4">
+          <a href="/pricing.html#builder" onclick="document.getElementById('quiz-modal').classList.remove('open')" class="btn-luxe">
+            Open Custom Retreat Builder
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Lightbox Modal -->
   <div id="lightbox-modal" class="sanctuary-modal">
     <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
       <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">

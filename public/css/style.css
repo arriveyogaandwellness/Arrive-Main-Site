@@ -966,6 +966,41 @@ h1, h2, h3, h4, .font-serif {
   border-color: var(--accent-gold);
 }
 
+/* Universal Concierge Footer */
+.sanctuary-footer,
+footer.sanctuary-footer {
+  background-color: #09090b;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4rem 1.5rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 10;
+}
+
+[data-theme="tropical-sunshine"] .sanctuary-footer,
+[data-theme="tropical-sunshine"] footer.sanctuary-footer {
+  background-color: #fffdf9 !important;
+  color: #57534e !important;
+  border-color: rgba(255, 122, 0, 0.18) !important;
+}
+
+.footer-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 /* Responsive queries */
 .mobile-menu-btn {
   display: none !important;
