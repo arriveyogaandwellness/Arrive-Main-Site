@@ -69,6 +69,7 @@ let audioCtx = null;
 let isAudioPlaying = false;
 let oceanGain = null;
 let jungleGain = null;
+let birdTimer = null;
 
 function initAudioAmbience() {
   const toggleBtn = document.getElementById('audio-ambient-toggle');
@@ -87,6 +88,7 @@ function initAudioAmbience() {
         oceanGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
         jungleGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
       }
+        window.clearTimeout(birdTimer);
       isAudioPlaying = false;
       if (soundWave) soundWave.classList.add('paused');
       if (label) label.textContent = 'Audio: Paused';
@@ -98,6 +100,7 @@ function initAudioAmbience() {
         oceanGain.gain.setTargetAtTime(0.08, audioCtx.currentTime, 0.5);
         jungleGain.gain.setTargetAtTime(0.04, audioCtx.currentTime, 0.5);
       }
+      scheduleBirdCall();
       isAudioPlaying = true;
       if (soundWave) soundWave.classList.remove('paused');
       if (label) label.textContent = 'Pacific Waves & Forest';
@@ -110,7 +113,7 @@ function createAmbientSynthesis() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     audioCtx = new AudioContext();
 
-    // Ocean Waves Pink Noise Generator
+    // Build a low, gently moving wave bed instead of a constant white-noise loop.
     const bufferSize = audioCtx.sampleRate * 2;
     const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
     const output = noiseBuffer.getChannelData(0);
@@ -132,16 +135,16 @@ function createAmbientSynthesis() {
     whiteNoise.buffer = noiseBuffer;
     whiteNoise.loop = true;
 
-    // Filter for wave sound
+    // Low-passed surf with a slow swell creates the sense of water arriving and receding.
     const filter = audioCtx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(320, audioCtx.currentTime);
+    filter.frequency.setValueAtTime(240, audioCtx.currentTime);
 
     // LFO for wave swelling
     const lfo = audioCtx.createOscillator();
-    lfo.frequency.setValueAtTime(0.12, audioCtx.currentTime); // slow swell
+    lfo.frequency.setValueAtTime(0.08, audioCtx.currentTime);
     const lfoGain = audioCtx.createGain();
-    lfoGain.gain.setValueAtTime(200, audioCtx.currentTime);
+    lfoGain.gain.setValueAtTime(140, audioCtx.currentTime);
     lfo.connect(filter.frequency);
 
     oceanGain = audioCtx.createGain();
@@ -154,10 +157,10 @@ function createAmbientSynthesis() {
     whiteNoise.start();
     lfo.start();
 
-    // Jungle warm sub-tone
+    // A quiet forest-air layer gives the ambience a natural space without a tonal hum.
     const osc = audioCtx.createOscillator();
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(108, audioCtx.currentTime); // healing frequency
+    osc.frequency.setValueAtTime(72, audioCtx.currentTime);
     jungleGain = audioCtx.createGain();
     jungleGain.gain.setValueAtTime(0, audioCtx.currentTime);
 
@@ -168,6 +171,26 @@ function createAmbientSynthesis() {
   } catch (e) {
     console.log('Ambient audio synthesis not permitted until user click');
   }
+}
+
+function scheduleBirdCall() {
+  if (!audioCtx || !isAudioPlaying) return;
+
+  const start = audioCtx.currentTime + 0.05;
+  const bird = audioCtx.createOscillator();
+  const birdGain = audioCtx.createGain();
+  bird.type = 'sine';
+  bird.frequency.setValueAtTime(1500 + Math.random() * 350, start);
+  bird.frequency.exponentialRampToValueAtTime(2400 + Math.random() * 500, start + 0.16);
+  bird.frequency.exponentialRampToValueAtTime(1200 + Math.random() * 250, start + 0.32);
+  birdGain.gain.setValueAtTime(0.0001, start);
+  birdGain.gain.exponentialRampToValueAtTime(0.018, start + 0.04);
+  birdGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.36);
+  bird.connect(birdGain);
+  birdGain.connect(audioCtx.destination);
+  bird.start(start);
+  bird.stop(start + 0.4);
+  birdTimer = window.setTimeout(scheduleBirdCall, 4200 + Math.random() * 5200);
 }
 
 /* ==========================================================================
