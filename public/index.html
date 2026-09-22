@@ -39,7 +39,7 @@
     .skip-link:hover, .skip-link:focus-visible { color: var(--ink); border-color: var(--ink); outline: none; }
     .welcome-meta { position: absolute; right: 0; bottom: 3rem; display: flex; gap: 2rem; color: var(--soft-ink); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
     .welcome-meta strong { display: block; margin-top: .45rem; background: var(--rainbow); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: .72rem; font-weight: 600; }
-    .sound-note { position: absolute; left: 0; bottom: 3rem; color: var(--soft-ink); font-size: .61rem; letter-spacing: .15em; text-transform: uppercase; }
+    .sound-note { margin: 1.25rem 0 0 3.5rem; color: var(--soft-ink); font-size: .61rem; letter-spacing: .15em; text-transform: uppercase; }
     .welcome.is-playing .welcome-content { animation: dissolve 1s ease forwards; pointer-events: none; }
     .welcome.is-playing .welcome-video { opacity: 1; }
     .welcome.is-playing .welcome-shade { opacity: .08; }
@@ -56,8 +56,16 @@
       .intro-copy, .welcome-actions { margin-left: 0; }
       .welcome-actions { align-items: flex-start; flex-direction: column; gap: 1.25rem; }
       .welcome-meta { position: static; margin-top: 3.5rem; gap: 1.25rem; }
-      .sound-note { bottom: 1.5rem; left: 1.25rem; }
+      .sound-note { margin-left: 0; }
       .orb { width: 90vw; right: -35vw; top: 12vh; }
+    }
+    @media (max-width: 700px) and (max-height: 700px) {
+      .welcome-content { padding: 1.25rem 0; }
+      h1 { margin: 1rem 0 .8rem; font-size: clamp(3.8rem, 20vw, 6.2rem); }
+      .intro-copy { margin-bottom: 1.25rem; line-height: 1.5; }
+      .welcome-actions { gap: .8rem; }
+      .welcome-meta { margin-top: 1.5rem; }
+      .sound-note { margin-top: .75rem; }
     }
   </style>
 </head>
@@ -102,12 +110,14 @@
       enterButton.addEventListener('click', () => {
         if (!filmStarted) {
           filmStarted = true;
+          video.removeAttribute('muted');
           video.muted = false;
           video.volume = 1;
           screen.classList.add('is-playing');
           video.play().catch(() => {
-            video.muted = true;
-            video.play().catch(() => { window.location.href = '/home.html'; });
+            filmStarted = false;
+            screen.classList.remove('is-playing');
+            document.querySelector('.sound-note').textContent = 'Sound could not start. Check your device volume.';
           });
         } else {
           window.location.href = '/home.html';
