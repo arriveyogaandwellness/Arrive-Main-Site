@@ -51,6 +51,7 @@
     @keyframes dissolve { to { opacity: 0; transform: translateY(-24px); } }
     @keyframes breathe { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.06) rotate(4deg); } }
     @media (max-width: 700px) {
+      .welcome.is-playing .welcome-video { object-fit: contain; background: var(--night); }
       .welcome-content { width: min(100% - 2.5rem, 560px); padding-top: 5rem; }
       h1 { font-size: clamp(4.3rem, 24vw, 8rem); }
       .intro-copy, .welcome-actions { margin-left: 0; }
