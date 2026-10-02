@@ -101,6 +101,55 @@
         border-color: var(--border-active);
       }
     }
+    #itinerary .home-pathway-tabs {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      margin-top: 1.75rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(226, 183, 116, 0.7) rgba(255, 255, 255, 0.06);
+    }
+    #itinerary .home-pathway-tab {
+      flex: 0 0 auto;
+      min-height: 46px;
+      border: 1px solid var(--day-accent);
+      border-top-width: 4px;
+      border-bottom: 0;
+      border-radius: 0.7rem 0.7rem 0 0;
+      background: color-mix(in srgb, var(--day-accent) 72%, white);
+      color: #18181b;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+    #itinerary .home-pathway-tab[data-day="day1"] { --day-accent: #34d399; }
+    #itinerary .home-pathway-tab[data-day="day2"] { --day-accent: #38bdf8; }
+    #itinerary .home-pathway-tab[data-day="day3"] { --day-accent: #fb923c; }
+    #itinerary .home-pathway-tab[data-day="day4"] { --day-accent: #c084fc; }
+    #itinerary .home-pathway-tab[data-day="day5"] { --day-accent: #f472b6; }
+    #itinerary .home-pathway-tab[data-day="day6"] { --day-accent: #facc15; }
+    #itinerary .home-pathway-tab[aria-selected="true"] {
+      z-index: 1;
+      transform: translateY(1px);
+      border-color: var(--day-accent);
+      background: var(--day-accent);
+      color: #18181b;
+      opacity: 1;
+    }
+    #itinerary .home-pathway-tab:hover { opacity: 1; }
+    #itinerary .home-pathway-tab:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+    #itinerary .home-pathway-panels {
+      margin-top: -1px;
+    }
+    #itinerary .home-pathway-panel {
+      border-radius: 0 0.75rem 0.75rem 0.75rem;
+    }
   </style>
   
   <script>
@@ -837,7 +886,7 @@
        6. THE 6-DAY ELEMENTAL JOURNEY & ITINERARY
        ========================================================================= -->
   <section id="itinerary" class="section-wrapper border-b border-white/10">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <div class="mb-8">
       <div>
         <span class="tagline-pill mb-2">The Experience</span>
         <h2 class="text-4xl sm:text-5xl font-serif text-white">
@@ -847,38 +896,23 @@
           Five elements guiding you inward and upward — from grounding to the Avatar State.
         </p>
       </div>
+    </div>
 
-      <!-- Day Filter Pills -->
-      <div class="flex flex-wrap items-center gap-2">
-        <button class="itinerary-day-btn active-day bg-accent-gold text-black px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-wider transition-all" data-day="all">
-          All Days
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day1">
-          Day 1: Earth
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day2">
-          Day 2: Water
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day3">
-          Day 3: Fire
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day4">
-          Day 4: Air
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day5">
-          Day 5: Avatar
-        </button>
-        <button class="itinerary-day-btn border border-white/10 px-3 py-2 rounded-sm font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all" data-day="day6">
-          Day 6: Fly
-        </button>
-      </div>
+    <!-- Day Folder Tabs -->
+    <div class="home-pathway-tabs" role="tablist" aria-label="Elemental Pathway days">
+      <button id="pathway-tab-day1" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="true" aria-controls="elemental-day1" tabindex="0" data-day="day1">Day 1: Earth</button>
+      <button id="pathway-tab-day2" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="false" aria-controls="elemental-day2" tabindex="-1" data-day="day2">Day 2: Water</button>
+      <button id="pathway-tab-day3" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="false" aria-controls="elemental-day3" tabindex="-1" data-day="day3">Day 3: Fire</button>
+      <button id="pathway-tab-day4" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="false" aria-controls="elemental-day4" tabindex="-1" data-day="day4">Day 4: Air</button>
+      <button id="pathway-tab-day5" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="false" aria-controls="elemental-day5" tabindex="-1" data-day="day5">Day 5: Avatar</button>
+      <button id="pathway-tab-day6" class="home-pathway-tab px-3 py-2 font-mono text-xs uppercase tracking-wider" type="button" role="tab" aria-selected="false" aria-controls="elemental-day6" tabindex="-1" data-day="day6">Day 6: Fly</button>
     </div>
 
     <!-- Timeline Cards -->
-    <div class="space-y-6">
+    <div class="space-y-6 home-pathway-panels">
 
       <!-- DAY 1 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-emerald-900/40 space-y-4" data-day-content="day1">
+      <div id="elemental-day1" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-emerald-900/40 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day1" tabindex="0" data-day-content="day1">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold">01</span>
@@ -912,7 +946,7 @@
       </div>
 
       <!-- DAY 2 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-blue-900/40 space-y-4" data-day-content="day2">
+      <div id="elemental-day2" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-blue-900/40 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day2" tabindex="0" hidden data-day-content="day2">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-mono text-sm flex items-center justify-center font-bold">02</span>
@@ -946,7 +980,7 @@
       </div>
 
       <!-- DAY 3 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-amber-900/40 space-y-4" data-day-content="day3">
+      <div id="elemental-day3" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-amber-900/40 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day3" tabindex="0" hidden data-day-content="day3">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-mono text-sm flex items-center justify-center font-bold">03</span>
@@ -978,7 +1012,7 @@
       </div>
 
       <!-- DAY 4 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-purple-900/40 space-y-4" data-day-content="day4">
+      <div id="elemental-day4" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-purple-900/40 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day4" tabindex="0" hidden data-day-content="day4">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-mono text-sm flex items-center justify-center font-bold">04</span>
@@ -1011,7 +1045,7 @@
       </div>
 
       <!-- DAY 5 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-gold-500/40 space-y-4" data-day-content="day5">
+      <div id="elemental-day5" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-gold-500/40 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day5" tabindex="0" hidden data-day-content="day5">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 font-mono text-sm flex items-center justify-center font-bold">05</span>
@@ -1043,7 +1077,7 @@
       </div>
 
       <!-- DAY 6 -->
-      <div class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-white/10 space-y-4" data-day-content="day6">
+      <div id="elemental-day6" class="itinerary-day-content p-8 rounded-xl bg-noir-900 border border-white/10 space-y-4" role="tabpanel" aria-labelledby="pathway-tab-day6" tabindex="0" hidden data-day-content="day6">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-full bg-white/10 text-white font-mono text-sm flex items-center justify-center font-bold">06</span>
@@ -2324,6 +2358,49 @@
       audio.addEventListener('pause', () => setPlaying(false));
       audio.addEventListener('error', () => {
         if (label) label.textContent = 'Promo sound unavailable';
+      });
+    })();
+  </script>
+  <script>
+    (() => {
+      const section = document.getElementById('itinerary');
+      if (!section) return;
+
+      const tabs = Array.from(section.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(section.querySelectorAll('[role="tabpanel"]'));
+      if (!tabs.length || !panels.length) return;
+
+      const activateTab = (selectedTab, moveFocus = false) => {
+        tabs.forEach(tab => {
+          const isSelected = tab === selectedTab;
+          tab.setAttribute('aria-selected', String(isSelected));
+          tab.tabIndex = isSelected ? 0 : -1;
+          tab.classList.toggle('active-day', isSelected);
+          tab.classList.toggle('bg-accent-gold', isSelected);
+          tab.classList.toggle('text-black', isSelected);
+          tab.classList.toggle('text-slate-300', !isSelected);
+        });
+
+        panels.forEach(panel => {
+          panel.hidden = panel.dataset.dayContent !== selectedTab.dataset.day;
+        });
+
+        if (moveFocus) selectedTab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', event => {
+          let nextIndex;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = tabs.length - 1;
+          else return;
+
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        });
       });
     })();
   </script>
