@@ -812,6 +812,217 @@ h1, h2, h3, h4, .font-serif {
   box-shadow: var(--shadow-luxe);
 }
 
+.method-carousel-shell {
+  position: relative;
+}
+
+.method-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  padding: 0.5rem 0.25rem 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 184, 92, 0.9) rgba(255, 255, 255, 0.06);
+}
+
+.method-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.method-carousel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+
+.method-carousel::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #d7a85d, #f0c77a);
+  border-radius: 999px;
+}
+
+.method-slide {
+  position: relative;
+  flex: 0 0 320px;
+  width: 320px;
+  min-height: 380px;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid rgba(214, 168, 93, 0.45);
+  border-top: 4px solid #d7a85d;
+  border-radius: 1.25rem;
+  background-image:
+    linear-gradient(rgba(16, 11, 9, 0.72), rgba(16, 11, 9, 0.72)),
+    url('/assets/pages/home/The%20Art%20Of%20Arrival%20Retreat%20%20Root%20Down,%20Rise%20Up,%20NamaSLAY%20.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16);
+  scroll-snap-align: start;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.method-slide:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.22);
+}
+
+.method-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0.75rem;
+  border: 1px solid rgba(214, 168, 93, 0.2);
+  border-radius: 0.9rem;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+}
+
+.method-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  background: rgba(214, 168, 93, 0.12);
+  color: #f0c77a;
+  font-family: var(--font-mono);
+  font-size: clamp(1.7rem, 2vw, 2.3rem);
+  font-weight: 700;
+}
+
+.method-slide h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2vw, 2.25rem);
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.method-kicker {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f0c77a;
+}
+
+.method-slide p:last-child {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+@media (max-width: 640px) {
+  .method-slide {
+    flex-basis: 82vw;
+    width: 82vw;
+    min-height: 340px;
+  }
+}
+
+.paper-letter {
+  position: relative;
+  padding: clamp(1.5rem, 2vw, 2.5rem);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.72), rgba(236, 223, 204, 0.9)),
+    radial-gradient(circle at 20% 18%, rgba(165, 130, 95, 0.12) 0, transparent 22%),
+    radial-gradient(circle at 78% 28%, rgba(165, 130, 95, 0.1) 0, transparent 18%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(120, 92, 68, 0.025) 0,
+      rgba(120, 92, 68, 0.025) 2px,
+      transparent 2px,
+      transparent 7px
+    );
+  border: 1px solid rgba(110, 86, 64, 0.45);
+  border-radius: 18px 18px 28px 28px / 18px 18px 36px 36px;
+  box-shadow:
+    0 28px 60px rgba(57, 39, 22, 0.16),
+    0 8px 18px rgba(57, 39, 22, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 0 0 1px rgba(126, 95, 67, 0.08);
+  overflow: hidden;
+  transform: rotate(0.35deg);
+  filter: saturate(0.9) contrast(1.05);
+  clip-path: polygon(0 2%, 5% 1%, 11% 2%, 18% 1%, 25% 2%, 31% 0%, 39% 2%, 46% 1%, 54% 2%, 62% 0%, 70% 2%, 79% 1%, 86% 2%, 93% 1%, 100% 3%, 100% 100%, 0 100%);
+}
+
+.paper-letter::before {
+  content: "";
+  position: absolute;
+  inset: 0.8rem 0.8rem 1.25rem;
+  border: 1px solid rgba(123, 97, 72, 0.26);
+  border-radius: 12px 12px 22px 22px / 12px 12px 32px 32px;
+  box-shadow: inset 0 0 18px rgba(122, 92, 66, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.22), rgba(116, 89, 63, 0.02)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(103, 74, 52, 0.04) 0,
+      rgba(103, 74, 52, 0.04) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  pointer-events: none;
+}
+
+.paper-letter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(90, 64, 42, 0.015));
+  pointer-events: none;
+}
+
+.paper-letter-body {
+  position: relative;
+  z-index: 1;
+  color: #2e231d;
+}
+
+.paper-letter-body h2,
+.paper-letter-body h3,
+.paper-letter-body p,
+.paper-letter-body strong,
+.paper-letter-body .paper-signature,
+.paper-letter-body .paper-signoff {
+  color: #2e231d;
+}
+
+.paper-letter-body .paper-quote {
+  color: #9a632e !important;
+  font-family: var(--font-editorial, Georgia, serif);
+}
+
+.paper-letter-body .paper-meta {
+  color: #8a5d36 !important;
+}
+
+.paper-letter-body .paper-signature {
+  font-family: var(--font-script, "Segoe Print", "Bradley Hand", cursive);
+  color: #9a632e;
+}
+
+.paper-letter-body .paper-credit {
+  border-top: 1px solid rgba(121, 92, 64, 0.28);
+}
+
+.paper-letter-body .text-white,
+.paper-letter-body .text-slate-300,
+.paper-letter-body .text-slate-400,
+.paper-letter-body .text-slate-200 {
+  color: #2e231d !important;
+}
+
+.paper-letter-body .text-gold-300,
+.paper-letter-body .text-gold-400 {
+  color: #9a632e !important;
+}
+
 .badge-tag {
   display: inline-block;
   font-family: var(--font-mono);
@@ -1342,14 +1553,52 @@ footer.sanctuary-footer {
   border: 1px solid rgba(255, 255, 255, 0.08);
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #f8f4ee;
+}
+
+#mobile-nav-drawer .mobile-nav-item strong,
+#mobile-nav-drawer .mobile-nav-item strong.text-white,
+#mobile-nav-drawer .mobile-nav-item strong.text-slate-300,
+#mobile-nav-drawer .mobile-nav-item strong.text-slate-400,
+#mobile-nav-drawer .mobile-nav-item span,
+#mobile-nav-drawer .mobile-nav-item span.text-amber-400,
+#mobile-nav-drawer .mobile-nav-item span.text-xs,
+#mobile-nav-drawer .mobile-nav-item div,
+#mobile-nav-drawer .mobile-nav-item i,
+#mobile-nav-drawer .mobile-nav-item svg {
+  color: #f8f4ee !important;
+}
+
+#mobile-nav-drawer .mobile-nav-item span,
+#mobile-nav-drawer .mobile-nav-item span.text-amber-400,
+#mobile-nav-drawer .mobile-nav-item span.text-xs {
+  color: #f7c872 !important;
 }
 
 .mobile-nav-item:hover,
 .mobile-nav-item:active,
 .mobile-nav-item.active {
-  background: linear-gradient(135deg, rgba(255, 51, 102, 0.18), rgba(255, 122, 0, 0.18));
-  border-color: rgba(255, 51, 102, 0.45);
-  box-shadow: 0 4px 16px rgba(255, 51, 102, 0.15);
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(255, 122, 0, 0.22));
+  border-color: rgba(255, 153, 92, 0.8);
+  box-shadow: 0 4px 16px rgba(255, 125, 70, 0.2);
   transform: translateX(4px);
+}
+
+#mobile-nav-drawer .mobile-nav-item:hover strong,
+#mobile-nav-drawer .mobile-nav-item:active strong,
+#mobile-nav-drawer .mobile-nav-item.active strong,
+#mobile-nav-drawer .mobile-nav-item:hover .text-white,
+#mobile-nav-drawer .mobile-nav-item:active .text-white,
+#mobile-nav-drawer .mobile-nav-item.active .text-white {
+  color: #fffaf5 !important;
+}
+
+#mobile-nav-drawer .mobile-nav-item:hover span,
+#mobile-nav-drawer .mobile-nav-item:active span,
+#mobile-nav-drawer .mobile-nav-item.active span,
+#mobile-nav-drawer .mobile-nav-item:hover .text-amber-400,
+#mobile-nav-drawer .mobile-nav-item:active .text-amber-400,
+#mobile-nav-drawer .mobile-nav-item.active .text-amber-400 {
+  color: #ffd97a !important;
 }
 

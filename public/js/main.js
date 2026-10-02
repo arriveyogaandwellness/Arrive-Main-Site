@@ -585,6 +585,18 @@ function initMobileNav() {
   const drawer = document.getElementById('mobile-nav-drawer');
   const closeBtn = document.getElementById('close-mobile-nav');
 
+  const applyMobileNavContrast = () => {
+    if (!drawer) return;
+
+    drawer.querySelectorAll('.mobile-nav-item strong').forEach(el => {
+      el.style.color = '#f8f4ee';
+    });
+
+    drawer.querySelectorAll('.mobile-nav-item span').forEach(el => {
+      el.style.color = '#f7c872';
+    });
+  };
+
   const closeDrawer = () => {
     if (!drawer) return;
     drawer.classList.remove('is-open');
@@ -610,8 +622,11 @@ function initMobileNav() {
       } else {
         openDrawer();
       }
+      applyMobileNavContrast();
     });
   }
+
+  applyMobileNavContrast();
 
   if (closeBtn && drawer) {
     closeBtn.addEventListener('click', (e) => {
