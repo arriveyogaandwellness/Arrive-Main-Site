@@ -235,6 +235,47 @@ body {
   max-width: 100%;
 }
 
+.hero-message-viewport {
+  width: min(100%, 28rem);
+  height: 2.75rem;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.hero-message-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  animation: hero-message-roll 16s ease-in-out infinite;
+}
+
+.hero-message-rotator:hover .hero-message-track {
+  animation-play-state: paused;
+}
+
+.hero-message-slide {
+  display: flex;
+  flex: 0 0 2.75rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 2.75rem;
+}
+
+@keyframes hero-message-roll {
+  0%, 21% { transform: translateY(0); }
+  25%, 46% { transform: translateY(-2.75rem); }
+  50%, 71% { transform: translateY(-5.5rem); }
+  75%, 96% { transform: translateY(-8.25rem); }
+  100% { transform: translateY(-11rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-message-track {
+    animation: none;
+  }
+}
+
 @media (max-width: 640px) {
   .badge-rainbow,
   .tagline-pill {
