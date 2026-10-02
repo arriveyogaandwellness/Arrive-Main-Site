@@ -24,7 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ==========================================================================
    1. Luxury Theme Engine
    ========================================================================== */
+/* Theme 6: Peacock Lagoon — picker card injected via JS so the new theme
+   appears in the theme drawer on every page without duplicating markup
+   across all HTML files. Added 2026-10-02 (Stella). */
+function injectPeacockLagoonCard() {
+  const drawer = document.getElementById('theme-drawer');
+  if (!drawer || drawer.querySelector('[data-theme-id="peacock-lagoon"]')) return;
+  drawer.insertAdjacentHTML('beforeend', `
+    <!-- Theme 6: Peacock Lagoon -->
+    <div class="theme-card-option" data-theme-id="peacock-lagoon" data-set-theme="peacock-lagoon">
+      <div>
+        <strong class="text-white text-sm block">06. Peacock Lagoon \ud83e\udd9a</strong>
+        <span class="text-xs text-slate-400">Deep ocean teal, emerald &amp; flashes of feather gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-400 via-teal-300 to-amber-400 border border-white/40 shadow-sm"></div>
+    </div>`);
+}
+
 function initThemeEngine() {
+  injectPeacockLagoonCard();
   const savedTheme = localStorage.getItem('arrive_sanctuary_theme') || 'tropical-sunshine';
   setTheme(savedTheme);
 
