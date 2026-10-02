@@ -70,6 +70,21 @@
     .audio-dock.home-audio-prompt {
       animation: homeAudioPrompt 0.9s ease-in-out 4;
     }
+    .audio-dock.home-audio-collapsed {
+      padding: 0.35rem;
+    }
+    .home-audio-collapsed #home-promo-sound-toggle {
+      width: 2.75rem;
+      height: 2.75rem;
+      justify-content: center;
+      gap: 0;
+      padding: 0;
+      color: var(--accent-gold);
+    }
+    .home-audio-collapsed #home-promo-sound-label,
+    .home-audio-collapsed .sound-wave {
+      display: none;
+    }
     @keyframes homeAudioPrompt {
       0%, 100% {
         transform: scale(1);
@@ -2280,10 +2295,14 @@
 
       setPlaying(false);
       dock.classList.add('home-audio-prompt');
-      const promptTimer = window.setTimeout(() => dock.classList.remove('home-audio-prompt'), 3600);
+      const promptTimer = window.setTimeout(() => {
+        dock.classList.remove('home-audio-prompt');
+        dock.classList.add('home-audio-collapsed');
+      }, 3600);
 
       toggle.addEventListener('click', async () => {
         dock.classList.remove('home-audio-prompt');
+        dock.classList.add('home-audio-collapsed');
         window.clearTimeout(promptTimer);
 
         if (!audio.paused) {
@@ -2298,7 +2317,10 @@
         }
       });
 
-      audio.addEventListener('play', () => setPlaying(true));
+      audio.addEventListener('play', () => {
+        dock.classList.add('home-audio-collapsed');
+        setPlaying(true);
+      });
       audio.addEventListener('pause', () => setPlaying(false));
       audio.addEventListener('error', () => {
         if (label) label.textContent = 'Promo sound unavailable';
