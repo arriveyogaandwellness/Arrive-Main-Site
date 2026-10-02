@@ -67,6 +67,25 @@
         display: none !important;
       }
     }
+    .audio-dock.home-audio-prompt {
+      animation: homeAudioPrompt 0.9s ease-in-out 4;
+    }
+    @keyframes homeAudioPrompt {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-luxe);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 0 4px rgba(226, 183, 116, 0.25), 0 0 24px rgba(226, 183, 116, 0.45);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .audio-dock.home-audio-prompt {
+        animation: none;
+        border-color: var(--border-active);
+      }
+    }
   </style>
   
   <script>
@@ -364,14 +383,14 @@
 
   <!-- Audio Ambient Floating Dock -->
   <div class="audio-dock">
-    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+    <button id="home-promo-sound-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors" type="button" aria-label="Play promo sound" aria-pressed="false" title="Play promo sound">
       <div class="sound-wave paused">
         <div class="sound-bar"></div>
         <div class="sound-bar"></div>
         <div class="sound-bar"></div>
         <div class="sound-bar"></div>
       </div>
-      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <span id="home-promo-sound-label">Tap to hear promo sound</span>
       <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
     </button>
   </div>
@@ -2239,6 +2258,52 @@
     if (window.lucide) {
       window.lucide.createIcons();
     }
+  </script>
+  <script>
+    (() => {
+      const toggle = document.getElementById('home-promo-sound-toggle');
+      const label = document.getElementById('home-promo-sound-label');
+      const dock = toggle && toggle.closest('.audio-dock');
+      if (!toggle || !dock) return;
+
+      const audio = new Audio('assets/pages/home/promo-soundtrack.mp3');
+      audio.preload = 'none';
+      audio.loop = true;
+
+      const setPlaying = (isPlaying) => {
+        toggle.setAttribute('aria-pressed', String(isPlaying));
+        toggle.setAttribute('aria-label', isPlaying ? 'Pause promo sound' : 'Play promo sound');
+        toggle.title = isPlaying ? 'Pause promo sound' : 'Play promo sound';
+        dock.querySelector('.sound-wave')?.classList.toggle('paused', !isPlaying);
+        if (label) label.textContent = isPlaying ? 'Promo Sound: On' : 'Tap to hear promo sound';
+      };
+
+      setPlaying(false);
+      dock.classList.add('home-audio-prompt');
+      const promptTimer = window.setTimeout(() => dock.classList.remove('home-audio-prompt'), 3600);
+
+      toggle.addEventListener('click', async () => {
+        dock.classList.remove('home-audio-prompt');
+        window.clearTimeout(promptTimer);
+
+        if (!audio.paused) {
+          audio.pause();
+          return;
+        }
+
+        try {
+          await audio.play();
+        } catch (error) {
+          if (label) label.textContent = 'Promo sound unavailable';
+        }
+      });
+
+      audio.addEventListener('play', () => setPlaying(true));
+      audio.addEventListener('pause', () => setPlaying(false));
+      audio.addEventListener('error', () => {
+        if (label) label.textContent = 'Promo sound unavailable';
+      });
+    })();
   </script>
 </body>
 </html>
