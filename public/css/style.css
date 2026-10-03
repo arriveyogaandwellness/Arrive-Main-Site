@@ -199,7 +199,7 @@ body {
   --bg-card-hover: #0e4c55;
   --text-primary: #f2fbf8;
   --text-secondary: #bcd9d2;
-  --text-muted: #7fa8a0;
+  --text-muted: #9dbfb6;
 
   --accent-gold: #f0b429;
   --accent-gold-light: #ffd972;
@@ -220,6 +220,56 @@ body {
   --glass-border: rgba(34, 211, 238, 0.25);
 
   --shadow-luxe: 0 15px 35px -5px rgba(34, 211, 238, 0.15), 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Peacock Lagoon: dark-theme component overrides (mirrors noir-gold dark handling) */
+[data-theme="peacock-lagoon"] .hero-manifesto-card {
+  background: rgba(7, 51, 58, 0.92) !important;
+  border-color: rgba(34, 211, 238, 0.35) !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7) !important;
+}
+[data-theme="peacock-lagoon"] .hero-manifesto-card h1 {
+  color: #f2fbf8 !important;
+}
+[data-theme="peacock-lagoon"] .hero-manifesto-card p {
+  color: #bcd9d2 !important;
+}
+[data-theme="peacock-lagoon"] .nav-icon-menu {
+  background: rgba(7, 51, 58, 0.72);
+  border-color: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+[data-theme="peacock-lagoon"] .nav-icon-btn {
+  color: #9dbfb6;
+}
+[data-theme="peacock-lagoon"] .nav-icon-btn:hover,
+[data-theme="peacock-lagoon"] .nav-icon-btn.touch-active {
+  color: #22d3ee !important;
+  background: rgba(34, 211, 238, 0.15) !important;
+  border-color: rgba(34, 211, 238, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.25);
+}
+[data-theme="peacock-lagoon"] .nav-icon-btn.active {
+  background: linear-gradient(135deg, #22d3ee, #0e7490) !important;
+  color: #04262b !important;
+}
+[data-theme="peacock-lagoon"] .nav-icon-btn.active i,
+[data-theme="peacock-lagoon"] .nav-icon-btn.active svg {
+  color: #04262b !important;
+}
+[data-theme="peacock-lagoon"] .nav-tooltip {
+  background: #04262b;
+  color: #f2fbf8;
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(34, 211, 238, 0.15);
+}
+[data-theme="peacock-lagoon"] .nav-tooltip::before {
+  border-bottom-color: #04262b;
+}
+[data-theme="peacock-lagoon"] .nav-tooltip-sub {
+  color: #f0b429;
+  background: rgba(240, 180, 41, 0.12);
+  border-color: rgba(240, 180, 41, 0.3);
 }
 
 /* Radiant Rainbow Brand Text */
