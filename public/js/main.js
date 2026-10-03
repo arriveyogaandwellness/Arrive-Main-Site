@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initThemeEngine();
   injectWhyRetreatSection();
+  removeAgencyCredit();
   initIconNavTooltips();
   initAudioAmbience();
   initLetterSwitcher();
@@ -119,6 +120,23 @@ function injectWhyRetreatSection() {
       </div>
   `);
   if (window.lucide) window.lucide.createIcons();
+}
+
+
+/* Remove legacy agency credit wording wherever it appears. (The full home.html
+   exceeds the direct-push size limit, so its instance is handled here via
+   text-node cleanup.) Added 2026-10-03 (Stella). */
+function removeAgencyCredit() {
+  try {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const targets = [];
+    while (walker.nextNode()) {
+      if (walker.currentNode.nodeValue.includes('Diamond Cut Entertainment')) targets.push(walker.currentNode);
+    }
+    targets.forEach(n => {
+      n.nodeValue = n.nodeValue.replace(' represented by Diamond Cut Entertainment', '');
+    });
+  } catch (e) { /* non-fatal */ }
 }
 
 function initThemeEngine() {
