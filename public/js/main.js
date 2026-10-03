@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
   initThemeEngine();
+  injectWhyRetreatSection();
   initIconNavTooltips();
   initAudioAmbience();
   initLetterSwitcher();
@@ -39,6 +40,85 @@ function injectPeacockLagoonCard() {
       </div>
       <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-400 via-teal-300 to-amber-400 border border-white/40 shadow-sm"></div>
     </div>`);
+}
+
+
+/* Why The Retreat — home hero section injected via JS (kept in main.js so the
+   copy stays in one place; content adapted from "Why The Art of Arrival
+   Retreat Works" — Office Arrive Drive docs. Added 2026-10-03 (Stella). */
+function injectWhyRetreatSection() {
+  if (document.getElementById('why-retreat')) return;
+  const video = document.querySelector('video[aria-label="Amanti Resort promotional video"]');
+  if (!video) return;
+  const container = video.closest('.aspect-video');
+  if (!container) return;
+  container.insertAdjacentHTML('afterend', `
+<!-- Why The Retreat -->
+      <div id="why-retreat" class="luxe-card w-full max-w-6xl mx-auto p-6 sm:p-10 md:p-12 mb-10 sm:mb-14 text-left relative overflow-hidden">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <span class="badge-rainbow"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-pink-500"></i>Why The Art of Arrival</span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-slate-900 mt-4 mb-4">More Than <span class="text-rainbow">a Vacation</span></h2>
+          <p class="text-slate-600 text-base sm:text-lg font-light leading-relaxed">This isn&rsquo;t just a vacation. It&rsquo;s a structured nervous system reset, a community laboratory, and a nature-immersive experience &mdash; designed to help you remember who you are and what you&rsquo;re capable of.</p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+          <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 sm:p-5 text-center">
+            <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[var(--border-subtle)] flex items-center justify-center"><i data-lucide="activity" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <h3 class="font-serif text-lg text-slate-900 mb-1">Body</h3>
+            <p class="text-slate-600 text-xs font-light">Strength, mobility &amp; deep rest</p>
+          </div>
+          <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 sm:p-5 text-center">
+            <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[var(--border-subtle)] flex items-center justify-center"><i data-lucide="brain" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <h3 class="font-serif text-lg text-slate-900 mb-1">Mind</h3>
+            <p class="text-slate-600 text-xs font-light">Clarity, focus &amp; emotional regulation</p>
+          </div>
+          <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 sm:p-5 text-center">
+            <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[var(--border-subtle)] flex items-center justify-center"><i data-lucide="heart" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <h3 class="font-serif text-lg text-slate-900 mb-1">Heart</h3>
+            <p class="text-slate-600 text-xs font-light">Connection, courage &amp; healing</p>
+          </div>
+          <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 sm:p-5 text-center">
+            <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[var(--border-subtle)] flex items-center justify-center"><i data-lucide="sparkles" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <h3 class="font-serif text-lg text-slate-900 mb-1">Spirit</h3>
+            <p class="text-slate-600 text-xs font-light">Meaning, purpose &amp; alignment</p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 mb-8 sm:mb-10">
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="waves" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Nervous System Reset</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Gentle practices signal safety to your body, easing anxiety, tension, and burnout.</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="moon" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Deep Rest &amp; Better Sleep</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Guided relaxation, nature, and tech-free time help your body remember how to recharge.</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="dumbbell" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Stronger, Freer Body</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Accessible yoga, mobility, and mindful movement support joints, fascia, and posture.</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="users" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Real Connection</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Meet aligned humans, share stories, and remember you&rsquo;re not alone in your growth.</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="compass" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Clarity &amp; Confidence</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Step beyond your comfort zone &mdash; safely &mdash; and build trust in yourself and your next steps.</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center shrink-0"><i data-lucide="leaf" class="w-5 h-5 text-[var(--accent-gold)]"></i></div>
+            <div><h4 class="font-bold text-slate-900 text-sm mb-0.5">Nature Immersion</h4><p class="text-slate-600 text-xs font-light leading-relaxed">Waterfalls, ocean air, and rainforest greens scientifically support mood and immunity.</p></div>
+          </div>
+        </div>
+
+        <div class="text-center border-t border-[var(--border-subtle)] pt-6 sm:pt-8">
+          <p class="font-serif text-xl sm:text-2xl text-slate-900 mb-2">You won&rsquo;t just return relaxed. <span class="text-rainbow font-bold">You return with tools.</span></p>
+          <p class="text-slate-600 text-sm font-light mb-4 max-w-2xl mx-auto">Breath practices, mindset frameworks, rituals &mdash; and the felt sense of &ldquo;I can do hard things, and beautiful things, on purpose.&rdquo;</p>
+          <p class="font-mono text-xs tracking-[0.3em] uppercase text-[var(--accent-gold)]">Root down &bull; Rise up &bull; Arrive</p>
+        </div>
+      </div>
+  `);
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function initThemeEngine() {
