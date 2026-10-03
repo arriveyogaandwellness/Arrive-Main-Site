@@ -299,6 +299,19 @@ body {
 [data-theme="peacock-lagoon"] :is(.bg-white,.bg-white\/70,.bg-white\/90,.bg-white\/92,.bg-white\/95,.bg-stone-50,.bg-stone-100,.bg-orange-50,.bg-amber-50,.bg-stone-50\/80,.paper-letter-body,[class*="from-white"],[class*="from-amber-50"]) .text-cyan-800, [data-theme="peacock-lagoon"] :is(.bg-white,.bg-white\/70,.bg-white\/90,.bg-white\/92,.bg-white\/95,.bg-stone-50,.bg-stone-100,.bg-orange-50,.bg-amber-50,.bg-stone-50\/80,.paper-letter-body,[class*="from-white"],[class*="from-amber-50"]).text-cyan-800 { color: #155e75 !important; }
 [data-theme="peacock-lagoon"] :is(.bg-white,.bg-white\/70,.bg-white\/90,.bg-white\/92,.bg-white\/95,.bg-stone-50,.bg-stone-100,.bg-orange-50,.bg-amber-50,.bg-stone-50\/80,.paper-letter-body,[class*="from-white"],[class*="from-amber-50"]) .text-rose-800, [data-theme="peacock-lagoon"] :is(.bg-white,.bg-white\/70,.bg-white\/90,.bg-white\/92,.bg-white\/95,.bg-stone-50,.bg-stone-100,.bg-orange-50,.bg-amber-50,.bg-stone-50\/80,.paper-letter-body,[class*="from-white"],[class*="from-amber-50"]).text-rose-800 { color: #9f1239 !important; }
 
+/* Peacock Lagoon: outline buttons get a dark pill so they read on light washes */
+[data-theme="peacock-lagoon"] .btn-outline-luxe {
+  background: rgba(4, 38, 43, 0.92) !important;
+  color: #f2fbf8 !important;
+  border: 2px solid rgba(34, 211, 238, 0.55) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+}
+[data-theme="peacock-lagoon"] .btn-outline-luxe:hover {
+  background: rgba(34, 211, 238, 0.16) !important;
+  color: #67e8f9 !important;
+  border-color: #22d3ee !important;
+}
+
 /* Radiant Rainbow Brand Text */
 .text-rainbow,
 .brand-rainbow-title {
