@@ -975,8 +975,8 @@ function initHeroPoster() {
   }
   function apply() {
     try {
-      var b64 = window.__heroWelcomeB64;
-      if (!b64 || b64.length < 50000) return;
+      var b64 = window.__heroWelcomeB64 || '';
+      if (b64.length < 50000 || b64.indexOf('/9j/') !== 0) return; /* JPEG magic: bail if chunks misordered */
       var st = document.createElement('style');
       st.textContent = '@keyframes heroPosterDrift{0%{transform:scale(1.03)}50%{transform:scale(1.13) translate(-1.2%,1%)}100%{transform:scale(1.03)}}'
         + '.hero-poster-bg{animation:heroPosterDrift 42s ease-in-out infinite;will-change:transform}'
@@ -997,9 +997,16 @@ function initHeroPoster() {
   }
   var tag = document.querySelector('script[src*="js/main.js"]');
   var prefix = tag ? tag.src.split('js/main.js')[0] : '';
-  Promise.all([
-    load(prefix + 'js/hero-welcome-b64-1.js?v=1.0'),
-    load(prefix + 'js/hero-welcome-b64-2.js?v=1.0'),
-    load(prefix + 'js/hero-welcome-b64-3.js?v=1.0')
-  ]).then(apply);
+  var urls = [
+    prefix + 'js/hero-welcome-b64-1.js?v=1.0',
+    prefix + 'js/hero-welcome-b64-2.js?v=1.0',
+    prefix + 'js/hero-welcome-b64-3.js?v=1.0'
+  ];
+  /* Load SEQUENTIALLY: dynamically inserted scripts execute in load-finish
+     order, so parallel loading can append the base64 chunks out of order,
+     corrupting the JPEG (renders as nothing). Chaining guarantees order.
+     Fixed 2026-10-04 after the live hero rendered blank. */
+  var chain = Promise.resolve();
+  urls.forEach(function (u) { chain = chain.then(function () { return load(u); }); });
+  chain.then(apply);
 }
