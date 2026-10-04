@@ -180,134 +180,122 @@ function setTheme(themeId) {
 }
 
 /* ==========================================================================
-   2. Audio Ambience Engine (Subtle Jungle & Waves Ambient)
+   2. Retreat Audio Player
    ========================================================================== */
-let audioCtx = null;
-let isAudioPlaying = false;
-let oceanGain = null;
-let jungleGain = null;
-let birdTimer = null;
-
 function initAudioAmbience() {
-  const toggleBtn = document.getElementById('audio-ambient-toggle');
-  const soundWave = document.querySelector('.sound-wave');
-  const label = document.getElementById('audio-label');
+  const tracks = [
+    { title: 'The Art of Arrival Track (1)', src: '/assets/Audio/The%20Art%20of%20Arrival%20Track%20(1).mp3' },
+    { title: 'The Art of Arrival Track (2)', src: '/assets/Audio/The%20Art%20of%20Arrival%20Track%20(2).mp3' },
+    { title: 'The Journey Home', src: '/assets/Audio/The%20Journey%20Home.mp3' }
+  ];
 
-  if (!toggleBtn) return;
+  document.querySelectorAll('.audio-dock').forEach(dock => {
+    const toggleBtn = dock.querySelector('#audio-ambient-toggle');
+    const soundWave = dock.querySelector('.sound-wave');
+    const label = dock.querySelector('#audio-label, #home-promo-sound-label');
+    if (!toggleBtn) return;
 
-  toggleBtn.addEventListener('click', () => {
-    if (!audioCtx) {
-      createAmbientSynthesis();
-    }
+    const panel = document.createElement('div');
+    panel.id = 'audio-player-panel';
+    panel.className = 'audio-player-panel';
+    panel.setAttribute('aria-label', 'Audio tracks');
+    panel.setAttribute('aria-hidden', 'true');
+    panel.innerHTML = `
+      <p class="audio-player-heading">Choose a track</p>
+      <div class="audio-track-list" role="group" aria-label="Available tracks"></div>
+      <audio class="audio-player-controls" controls preload="none"></audio>
+      <p class="audio-player-status" aria-live="polite"></p>
+    `;
+    dock.append(panel);
 
-    if (isAudioPlaying) {
-      if (oceanGain && jungleGain) {
-        oceanGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
-        jungleGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
-      }
-        window.clearTimeout(birdTimer);
-      isAudioPlaying = false;
-      if (soundWave) soundWave.classList.add('paused');
-      if (label) label.textContent = 'Audio: Paused';
-    } else {
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (oceanGain && jungleGain) {
-        oceanGain.gain.setTargetAtTime(0.08, audioCtx.currentTime, 0.5);
-        jungleGain.gain.setTargetAtTime(0.04, audioCtx.currentTime, 0.5);
-      }
-      scheduleBirdCall();
-      isAudioPlaying = true;
+    const audio = panel.querySelector('audio');
+    const trackList = panel.querySelector('.audio-track-list');
+    const status = panel.querySelector('.audio-player-status');
+    let selectedIndex = 0;
+
+    const updateSelectedTrack = () => {
+      trackList.querySelectorAll('button').forEach((trackButton, index) => {
+        const isSelected = index === selectedIndex;
+        trackButton.setAttribute('aria-pressed', String(isSelected));
+        trackButton.classList.toggle('is-selected', isSelected);
+      });
+      if (label) label.textContent = tracks[selectedIndex].title;
+    };
+
+    tracks.forEach((track, index) => {
+      const trackButton = document.createElement('button');
+      trackButton.className = 'audio-track-button';
+      trackButton.type = 'button';
+      trackButton.textContent = track.title;
+      trackButton.addEventListener('click', async () => {
+        selectedIndex = index;
+        updateSelectedTrack();
+        status.textContent = '';
+        audio.src = track.src;
+        audio.load();
+        try {
+          await audio.play();
+        } catch (error) {
+          status.textContent = 'Unable to play this track. Please try again.';
+        }
+      });
+      trackList.append(trackButton);
+    });
+
+    audio.src = tracks[selectedIndex].src;
+    updateSelectedTrack();
+
+    toggleBtn.type = 'button';
+    toggleBtn.setAttribute('aria-controls', 'audio-player-panel');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', 'Choose an audio track');
+    toggleBtn.title = 'Choose an audio track';
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = dock.classList.toggle('is-open');
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    audio.addEventListener('play', () => {
       if (soundWave) soundWave.classList.remove('paused');
-      if (label) label.textContent = 'Pacific Waves & Forest';
-    }
+      if (label) label.textContent = `Playing: ${tracks[selectedIndex].title}`;
+      status.textContent = '';
+    });
+    audio.addEventListener('pause', () => {
+      if (soundWave) soundWave.classList.add('paused');
+      if (!audio.ended && label) label.textContent = tracks[selectedIndex].title;
+    });
+    audio.addEventListener('error', () => {
+      if (soundWave) soundWave.classList.add('paused');
+      status.textContent = 'This track could not be loaded.';
+      if (label) label.textContent = 'Track unavailable';
+    });
+
+    document.addEventListener('click', event => {
+      if (!dock.contains(event.target)) {
+        dock.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    dock.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && dock.classList.contains('is-open')) {
+        dock.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.focus();
+      }
+    });
+
+    dock.classList.add('is-open', 'audio-player-intro');
+    panel.setAttribute('aria-hidden', 'false');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    window.setTimeout(() => {
+      dock.classList.remove('is-open', 'audio-player-intro');
+      panel.setAttribute('aria-hidden', 'true');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }, 2000);
   });
-}
-
-function createAmbientSynthesis() {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    audioCtx = new AudioContext();
-
-    // Build a low, gently moving wave bed instead of a constant white-noise loop.
-    const bufferSize = audioCtx.sampleRate * 2;
-    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      b0 = 0.99886 * b0 + white * 0.0555179;
-      b1 = 0.99332 * b1 + white * 0.0750759;
-      b2 = 0.96900 * b2 + white * 0.1538520;
-      b3 = 0.86650 * b3 + white * 0.3104856;
-      b4 = 0.55000 * b4 + white * 0.5329522;
-      b5 = -0.7616 * b5 - white * 0.0168980;
-      output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
-      output[i] *= 0.11;
-      b6 = white * 0.115926;
-    }
-
-    const whiteNoise = audioCtx.createBufferSource();
-    whiteNoise.buffer = noiseBuffer;
-    whiteNoise.loop = true;
-
-    // Low-passed surf with a slow swell creates the sense of water arriving and receding.
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(240, audioCtx.currentTime);
-
-    // LFO for wave swelling
-    const lfo = audioCtx.createOscillator();
-    lfo.frequency.setValueAtTime(0.08, audioCtx.currentTime);
-    const lfoGain = audioCtx.createGain();
-    lfoGain.gain.setValueAtTime(140, audioCtx.currentTime);
-    lfo.connect(filter.frequency);
-
-    oceanGain = audioCtx.createGain();
-    oceanGain.gain.setValueAtTime(0, audioCtx.currentTime);
-
-    whiteNoise.connect(filter);
-    filter.connect(oceanGain);
-    oceanGain.connect(audioCtx.destination);
-
-    whiteNoise.start();
-    lfo.start();
-
-    // A quiet forest-air layer gives the ambience a natural space without a tonal hum.
-    const osc = audioCtx.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(72, audioCtx.currentTime);
-    jungleGain = audioCtx.createGain();
-    jungleGain.gain.setValueAtTime(0, audioCtx.currentTime);
-
-    osc.connect(jungleGain);
-    jungleGain.connect(audioCtx.destination);
-    osc.start();
-
-  } catch (e) {
-    console.log('Ambient audio synthesis not permitted until user click');
-  }
-}
-
-function scheduleBirdCall() {
-  if (!audioCtx || !isAudioPlaying) return;
-
-  const start = audioCtx.currentTime + 0.05;
-  const bird = audioCtx.createOscillator();
-  const birdGain = audioCtx.createGain();
-  bird.type = 'sine';
-  bird.frequency.setValueAtTime(1500 + Math.random() * 350, start);
-  bird.frequency.exponentialRampToValueAtTime(2400 + Math.random() * 500, start + 0.16);
-  bird.frequency.exponentialRampToValueAtTime(1200 + Math.random() * 250, start + 0.32);
-  birdGain.gain.setValueAtTime(0.0001, start);
-  birdGain.gain.exponentialRampToValueAtTime(0.018, start + 0.04);
-  birdGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.36);
-  bird.connect(birdGain);
-  birdGain.connect(audioCtx.destination);
-  bird.start(start);
-  bird.stop(start + 0.4);
-  birdTimer = window.setTimeout(scheduleBirdCall, 4200 + Math.random() * 5200);
 }
 
 /* ==========================================================================
