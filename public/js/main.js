@@ -855,11 +855,10 @@ function initNewsletter() {
     if (successMsg) successMsg.classList.remove('hidden');
   });
 }
-
-/* Home hero poster backdrop — swaps the hero background to Peter's "Art of
-   Arrival" jungle artwork with a slow Ken Burns drift, served as base64
-   chunks (GitHub connector is text-only, so binary can't be pushed directly).
-   Added 2026-10-03 (Stella). */
+/* Home hero backdrop — "welcome-background.png" from Drive (Arrive Assets),
+   swapped in 2026-10-04 per Peter (replaces the earlier chat-uploaded poster).
+   Served as base64 chunks because the GitHub connector is text-only.
+   Rendered nearly opaque per Peter: "make it less transparent". */
 function initHeroPoster() {
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -874,7 +873,7 @@ function initHeroPoster() {
   }
   function apply() {
     try {
-      var b64 = window.__heroPosterB64;
+      var b64 = window.__heroWelcomeB64;
       if (!b64 || b64.length < 50000) return;
       var st = document.createElement('style');
       st.textContent = '@keyframes heroPosterDrift{0%{transform:scale(1.03)}50%{transform:scale(1.13) translate(-1.2%,1%)}100%{transform:scale(1.03)}}'
@@ -886,18 +885,19 @@ function initHeroPoster() {
       var img = bg.querySelector('img');
       if (img) {
         img.src = 'data:image/jpeg;base64,' + b64;
-        img.alt = 'The Art of Arrival \u2014 visionary jungle artwork';
-        img.className = 'hero-poster-bg w-full h-full object-cover object-center opacity-80';
+        img.alt = 'Welcome to Arrive \u2014 visionary jungle artwork';
+        img.className = 'hero-poster-bg w-full h-full object-cover object-center opacity-95';
       }
       var kids = bg.children;
-      if (kids[1]) kids[1].className = 'absolute inset-0 bg-gradient-to-b from-white/60 via-white/25 to-[var(--bg-primary)]';
-      if (kids[2]) kids[2].className = 'absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/50 via-white/15 to-transparent';
+      if (kids[1]) kids[1].className = 'absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-[var(--bg-primary)]';
+      if (kids[2]) kids[2].className = 'absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/25 via-transparent to-transparent';
     } catch (e) { /* backdrop is decorative; never break the page */ }
   }
   var tag = document.querySelector('script[src*="js/main.js"]');
   var prefix = tag ? tag.src.split('js/main.js')[0] : '';
   Promise.all([
-    load(prefix + 'js/hero-poster-b64-1.js?v=1.0'),
-    load(prefix + 'js/hero-poster-b64-2.js?v=1.0')
+    load(prefix + 'js/hero-welcome-b64-1.js?v=1.0'),
+    load(prefix + 'js/hero-welcome-b64-2.js?v=1.0'),
+    load(prefix + 'js/hero-welcome-b64-3.js?v=1.0')
   ]).then(apply);
 }
