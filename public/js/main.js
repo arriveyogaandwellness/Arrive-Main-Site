@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+  if (document.body.dataset.audioOnly === 'true') {
+    initAudioAmbience();
+    return;
+  }
   initThemeEngine();
   injectWhyRetreatSection();
   removeAgencyCredit();
@@ -183,6 +187,7 @@ function setTheme(themeId) {
    2. Retreat Audio Player
    ========================================================================== */
 function initAudioAmbience() {
+  const storageKey = 'arrive_audio_playback_v1';
   const tracks = [
     { title: 'The Art of Arrival Track (1)', src: '/assets/Audio/The%20Art%20of%20Arrival%20Track%20(1).mp3' },
     { title: 'The Art of Arrival Track (2)', src: '/assets/Audio/The%20Art%20of%20Arrival%20Track%20(2).mp3' },
@@ -212,6 +217,43 @@ function initAudioAmbience() {
     const trackList = panel.querySelector('.audio-track-list');
     const status = panel.querySelector('.audio-player-status');
     let selectedIndex = 0;
+    let resumeState = null;
+    let lastSavedAt = 0;
+    let introTimeout = null;
+
+    const dismissIntro = () => {
+      window.clearTimeout(introTimeout);
+      dock.classList.remove('audio-player-intro');
+    };
+
+    try {
+      const savedState = JSON.parse(sessionStorage.getItem(storageKey));
+      if (
+        savedState &&
+        Number.isInteger(savedState.trackIndex) &&
+        savedState.trackIndex >= 0 &&
+        savedState.trackIndex < tracks.length &&
+        Number.isFinite(savedState.currentTime) &&
+        savedState.currentTime >= 0 &&
+        Number.isFinite(savedState.savedAt) &&
+        typeof savedState.isPlaying === 'boolean'
+      ) {
+        resumeState = savedState;
+        selectedIndex = savedState.trackIndex;
+      }
+    } catch (error) {
+      sessionStorage.removeItem(storageKey);
+    }
+
+    const savePlaybackState = (isPlaying = !audio.paused && !audio.ended) => {
+      sessionStorage.setItem(storageKey, JSON.stringify({
+        trackIndex: selectedIndex,
+        currentTime: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        volume: audio.volume,
+        isPlaying,
+        savedAt: Date.now()
+      }));
+    };
 
     const updateSelectedTrack = () => {
       trackList.querySelectorAll('button').forEach((trackButton, index) => {
@@ -222,28 +264,80 @@ function initAudioAmbience() {
       if (label) label.textContent = tracks[selectedIndex].title;
     };
 
+    const playTrack = async (index, startAt = 0) => {
+      selectedIndex = index;
+      updateSelectedTrack();
+      status.textContent = '';
+      audio.src = tracks[selectedIndex].src;
+      audio.load();
+      try {
+        if (startAt > 0) {
+          await new Promise((resolve, reject) => {
+            const onMetadata = () => {
+              audio.removeEventListener('error', onError);
+              resolve();
+            };
+            const onError = () => {
+              audio.removeEventListener('loadedmetadata', onMetadata);
+              reject(new Error('Unable to load the selected track.'));
+            };
+            audio.addEventListener('loadedmetadata', onMetadata, { once: true });
+            audio.addEventListener('error', onError, { once: true });
+          });
+          audio.currentTime = Math.min(startAt, Math.max(0, audio.duration - 0.25));
+        }
+        await audio.play();
+      } catch (error) {
+        status.textContent = 'Unable to play this track. Please try again.';
+      }
+    };
+
     tracks.forEach((track, index) => {
       const trackButton = document.createElement('button');
       trackButton.className = 'audio-track-button';
       trackButton.type = 'button';
       trackButton.textContent = track.title;
-      trackButton.addEventListener('click', async () => {
-        selectedIndex = index;
-        updateSelectedTrack();
-        status.textContent = '';
-        audio.src = track.src;
-        audio.load();
-        try {
-          await audio.play();
-        } catch (error) {
-          status.textContent = 'Unable to play this track. Please try again.';
-        }
+      trackButton.addEventListener('click', () => {
+        dismissIntro();
+        playTrack(index);
       });
       trackList.append(trackButton);
     });
 
-    audio.src = tracks[selectedIndex].src;
     updateSelectedTrack();
+    audio.addEventListener('loadedmetadata', () => {
+      if (!resumeState) return;
+      const savedState = resumeState;
+      resumeState = null;
+      const elapsedWhileAway = savedState.isPlaying
+        ? Math.max(0, (Date.now() - savedState.savedAt) / 1000)
+        : 0;
+      const resumeAt = savedState.currentTime + elapsedWhileAway;
+      audio.currentTime = Math.min(resumeAt, audio.duration);
+      if (savedState.isPlaying && resumeAt >= audio.duration) {
+        if (selectedIndex < tracks.length - 1) {
+          playTrack(selectedIndex + 1);
+        } else {
+          if (soundWave) soundWave.classList.add('paused');
+          if (label) label.textContent = 'Playlist complete';
+          status.textContent = 'All tracks finished. Choose a track to play again.';
+          savePlaybackState(false);
+        }
+        return;
+      }
+      if (savedState.isPlaying) {
+        audio.play().catch(() => {
+          status.textContent = 'Press play to resume audio.';
+        });
+      }
+    });
+    audio.src = tracks[selectedIndex].src;
+    if (resumeState) {
+      if (Number.isFinite(resumeState.volume)) {
+        audio.volume = Math.min(1, Math.max(0, resumeState.volume));
+      }
+      audio.load();
+    }
 
     toggleBtn.type = 'button';
     toggleBtn.setAttribute('aria-controls', 'audio-player-panel');
@@ -251,6 +345,7 @@ function initAudioAmbience() {
     toggleBtn.setAttribute('aria-label', 'Choose an audio track');
     toggleBtn.title = 'Choose an audio track';
     toggleBtn.addEventListener('click', () => {
+      dismissIntro();
       const isOpen = dock.classList.toggle('is-open');
       panel.setAttribute('aria-hidden', String(!isOpen));
       toggleBtn.setAttribute('aria-expanded', String(isOpen));
@@ -260,16 +355,35 @@ function initAudioAmbience() {
       if (soundWave) soundWave.classList.remove('paused');
       if (label) label.textContent = `Playing: ${tracks[selectedIndex].title}`;
       status.textContent = '';
+      savePlaybackState(true);
     });
     audio.addEventListener('pause', () => {
       if (soundWave) soundWave.classList.add('paused');
       if (!audio.ended && label) label.textContent = tracks[selectedIndex].title;
+      savePlaybackState(false);
+    });
+    audio.addEventListener('timeupdate', () => {
+      if (audio.currentTime - lastSavedAt < 1) return;
+      lastSavedAt = audio.currentTime;
+      savePlaybackState();
+    });
+    audio.addEventListener('volumechange', () => savePlaybackState());
+    audio.addEventListener('ended', () => {
+      if (selectedIndex < tracks.length - 1) {
+        playTrack(selectedIndex + 1);
+        return;
+      }
+      if (soundWave) soundWave.classList.add('paused');
+      if (label) label.textContent = 'Playlist complete';
+      status.textContent = 'All tracks finished. Choose a track to play again.';
+      savePlaybackState(false);
     });
     audio.addEventListener('error', () => {
       if (soundWave) soundWave.classList.add('paused');
       status.textContent = 'This track could not be loaded.';
       if (label) label.textContent = 'Track unavailable';
     });
+    window.addEventListener('pagehide', () => savePlaybackState());
 
     document.addEventListener('click', event => {
       if (!dock.contains(event.target)) {
@@ -290,7 +404,7 @@ function initAudioAmbience() {
     dock.classList.add('is-open', 'audio-player-intro');
     panel.setAttribute('aria-hidden', 'false');
     toggleBtn.setAttribute('aria-expanded', 'true');
-    window.setTimeout(() => {
+    introTimeout = window.setTimeout(() => {
       dock.classList.remove('is-open', 'audio-player-intro');
       panel.setAttribute('aria-hidden', 'true');
       toggleBtn.setAttribute('aria-expanded', 'false');
