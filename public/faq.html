@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="tropical-sunshine" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Retreat FAQ | The Art of Arrival • Costa Rica • ARRIVE.</title>
+  <meta name="description" content="Answers to every Art of Arrival Retreat question: what is included, payment plans, airport transfers, packing, solo travel, and cancellation." />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Design System Stylesheet with Cache Buster -->
+  <link rel="stylesheet" href="css/style.css?v=3.0" />
+  
+  <style>
+    /* Critical Navigation & Tooltip Fail-Safes */
+    .nav-tooltip {
+      display: none !important;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 500;
+    }
+    .nav-icon-item:hover .nav-tooltip,
+    .nav-icon-btn:focus-visible .nav-tooltip,
+    .nav-icon-item.touch-open .nav-tooltip {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(-50%) translateY(0);
+    }
+    #mobile-nav-drawer {
+      display: none !important;
+    }
+    #mobile-nav-drawer.is-open {
+      display: flex !important;
+    }
+    @media (max-width: 1199px) {
+      .nav-icon-menu {
+        display: none !important;
+      }
+      #stripe-status-badge {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+    }
+    @media (min-width: 1200px) {
+      .nav-icon-menu {
+        display: inline-flex !important;
+      }
+      .mobile-menu-btn {
+        display: none !important;
+      }
+      #mobile-nav-drawer {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            noir: { 950: '#09090b', 900: '#121216', 800: '#18181f' },
+            gold: { 300: '#f5e4c3', 400: '#edd5a6', 500: '#e2b774', 600: '#b88d44' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="selection:bg-pink-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. NAVIGATION: LUXURY EDITORIAL HEADER (Universal Across All Pages)
+       ========================================================================= -->
+  <header class="sanctuary-nav">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <span class="brand-title brand-rainbow-title">ARRIVE.</span>
+        <span class="brand-tag">Costa Rica • Amanti Sanctuary</span>
+      </a>
+
+      <!-- Visual Icon Navigation Bar with Hover & Touch Tooltips -->
+      <nav class="nav-icon-menu" aria-label="Main Navigation">
+        <!-- 1. Home -->
+        <div class="nav-icon-item">
+          <a href="/index.html" class="nav-icon-btn" aria-label="Home — Sanctuary Entrance">
+            <i data-lucide="home"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">Home</span>
+              <span class="nav-tooltip-sub">Sanctuary Entrance</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 2. About Carly -->
+        <div class="nav-icon-item">
+          <a href="/about.html" class="nav-icon-btn" aria-label="About Carly — Founder &amp; Artist">
+            <i data-lucide="sparkles"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">About Carly</span>
+              <span class="nav-tooltip-sub">Founder &amp; Artist</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 3. The Retreat -->
+        <div class="nav-icon-item">
+          <a href="/retreat.html" class="nav-icon-btn" aria-label="The Retreat — Art of Arrival">
+            <i data-lucide="palmtree"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">The Retreat</span>
+              <span class="nav-tooltip-sub">Art of Arrival</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 4. The Method -->
+        <div class="nav-icon-item">
+          <a href="/method.html" class="nav-icon-btn" aria-label="The Method — Somatic Science">
+            <i data-lucide="activity"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">The Method</span>
+              <span class="nav-tooltip-sub">Somatic Science</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 5. Suites & Villas -->
+        <div class="nav-icon-item">
+          <a href="/accommodations.html" class="nav-icon-btn" aria-label="Suites &amp; Villas — Luxury Estates">
+            <i data-lucide="bed-double"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">Suites &amp; Villas</span>
+              <span class="nav-tooltip-sub">Luxury Estates</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 6. Itinerary -->
+        <div class="nav-icon-item">
+          <a href="/itinerary.html" class="nav-icon-btn" aria-label="6-Day Journey — Elemental Pathway">
+            <i data-lucide="calendar-days"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">6-Day Journey</span>
+              <span class="nav-tooltip-sub">Elemental Pathway</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 7. SWAY Dining -->
+        <div class="nav-icon-item">
+          <a href="/dining.html" class="nav-icon-btn" aria-label="SWAY Dining — Farm-To-Table">
+            <i data-lucide="utensils"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">SWAY Dining</span>
+              <span class="nav-tooltip-sub">Farm-To-Table</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 8. Packages & Pricing (ACTIVE) -->
+        <div class="nav-icon-item">
+          <a href="/pricing.html" class="nav-icon-btn" aria-label="Packages &amp; Pricing — Custom Builder">
+            <i data-lucide="gem"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">Packages &amp; Pricing</span>
+              <span class="nav-tooltip-sub">Custom Builder</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 9. Consulting -->
+        <div class="nav-icon-item">
+          <a href="/consulting.html" class="nav-icon-btn" aria-label="Consulting — Brand &amp; Advisory">
+            <i data-lucide="briefcase"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">Consulting</span>
+              <span class="nav-tooltip-sub">Brand &amp; Advisory</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 10. Contact -->
+        <div class="nav-icon-item">
+          <a href="/contact.html" class="nav-icon-btn" aria-label="Contact — Concierge &amp; Inquiries">
+            <i data-lucide="mail"></i>
+            <span class="nav-tooltip" role="tooltip">
+              <span class="nav-tooltip-title">Contact</span>
+              <span class="nav-tooltip-sub">Concierge &amp; Inquiries</span>
+            </span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Stripe Live Status Pill -->
+        <div id="stripe-status-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+          <span class="w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse"></span>
+          <span class="text-amber-300 font-mono text-[10px] tracking-wider uppercase">Stripe Initializing</span>
+        </div>
+
+        <!-- Theme Drawer Trigger -->
+        <button id="open-theme-drawer" class="control-pill hidden md:inline-flex" title="Switch Haute Couture Visual Theme">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i>
+          <span class="hidden md:inline">Theme</span>
+        </button>
+
+        <!-- CTA Book Spot -->
+        <a href="#builder" class="btn-luxe hidden md:inline-flex py-2.5 px-5 text-[11px]">
+          Reserve Spot ($500)
+        </a>
+
+        <!-- Mobile Menu Toggle (Instant SVG, 44px touch target) -->
+        <button id="mobile-menu-toggle" class="mobile-menu-btn inline-flex items-center justify-center w-11 h-11 rounded-xl text-stone-900 bg-white/90 border border-stone-300/80 hover:bg-stone-100 shadow-sm transition-all focus:outline-none" aria-label="Open menu">
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Touch-Friendly Drawer -->
+  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[200] p-6 sm:p-8 flex-col justify-between overflow-y-auto" style="display: none;">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <a href="/index.html" class="font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <button id="close-mobile-nav" class="flex items-center justify-center w-11 h-11 rounded-xl text-white bg-white/15 hover:bg-white/25 border border-white/20 transition-all focus:outline-none" aria-label="Close menu">
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6">
+        <a href="/index.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Home</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Sanctuary Entrance</span>
+          </div>
+        </a>
+        <a href="/about.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">About Carly</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Founder &amp; Artist</span>
+          </div>
+        </a>
+        <a href="/retreat.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="palmtree" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Retreat</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Art of Arrival</span>
+          </div>
+        </a>
+        <a href="/method.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">The Method</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Somatic Science</span>
+          </div>
+        </a>
+        <a href="/accommodations.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="bed-double" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Suites &amp; Villas</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Luxury Estates</span>
+          </div>
+        </a>
+        <a href="/itinerary.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="calendar-days" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">6-Day Journey</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Elemental Pathway</span>
+          </div>
+        </a>
+        <a href="/dining.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="utensils" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">SWAY Dining</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Farm-To-Table</span>
+          </div>
+        </a>
+        <a href="/pricing.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="gem" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Packages &amp; Pricing</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Custom Builder</span>
+          </div>
+        </a>
+        <a href="/consulting.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Consulting</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Brand &amp; Advisory</span>
+          </div>
+        </a>
+        <a href="/contact.html" class="mobile-nav-item">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Contact</strong>
+            <span class="text-xs text-amber-400/90 font-mono uppercase tracking-wider">Concierge &amp; Inquiries</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/10 mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <a href="#builder" class="btn-luxe w-full sm:w-auto text-center py-3 px-8 text-xs font-mono uppercase tracking-wider">
+        Reserve Spot ($500 Deposit)
+      </a>
+      <a href="/stripe-setup.html" class="text-xs font-mono text-slate-400 hover:text-white flex items-center gap-1.5">
+        <span>Stripe Merchant Setup</span>
+        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Audio Ambient Floating Dock -->
+  <div class="audio-dock">
+    <button id="audio-ambient-toggle" class="flex items-center gap-3 text-xs font-mono text-slate-300 hover:text-gold-400 transition-colors">
+      <div class="sound-wave paused">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+      <span id="audio-label">Ambient Sanctuary Sound</span>
+      <i data-lucide="volume-2" class="w-4 h-4 text-gold-500"></i>
+    </button>
+
+<!-- =========================================================================
+     2. HERO — FAQ
+     ========================================================================= -->
+  <section class="relative overflow-hidden border-b border-white/10 pt-14 sm:pt-20 pb-14 sm:pb-20">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-[var(--bg-primary)]"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
+      <span class="tagline-pill">Questions, Answered</span>
+      <h1 class="font-serif text-4xl sm:text-6xl text-slate-900">Retreat <span class="text-rainbow font-bold">FAQ</span></h1>
+      <p class="text-slate-600 font-light text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Everything you want to know before you arrive — what's included, how payments work,
+        what to pack, and how to get here. Still curious? <a href="/contact.html" class="text-pink-600 font-medium underline underline-offset-4">Ask our concierge</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. FAQ ACCORDION
+       ========================================================================= -->
+  <section class="section-wrapper py-16 sm:py-20">
+    <div class="max-w-3xl mx-auto px-6 space-y-4">
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Who is this retreat for?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light space-y-2">
+          <p>This retreat is perfect for:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>People seeking a reset without sacrificing beauty or comfort</li>
+            <li>Wellness-minded travelers ready for something deeper than a vacation</li>
+            <li>Anyone navigating a personal transition or season of growth</li>
+            <li>Those craving meaningful community and inspiration</li>
+            <li>Guests who want a balance of structure and freedom</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Do I need yoga experience?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Not at all. <strong class="font-medium text-slate-800">Every Body Is A Yoga Body</strong> is not just our slogan — it is how we teach. Classes are trauma-aware, accessible for all levels and body types, and built around breath, grounding, and honest self-inquiry rather than performance. You will never be asked to compete, compare, or push past your edge.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          What is included in my package?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light space-y-2">
+          <p>Every package includes:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>5 nights / 6 days of luxury lodging at Amanti Sanctuary</li>
+            <li>All scheduled yoga, breathwork, and elemental workshops</li>
+            <li>Opening and closing ceremonies, group experiences, and rituals</li>
+            <li>Daily breakfast plus select shared meals (non-alcoholic beverages included)</li>
+            <li>Curated excursions aligned with the Earth, Water, Fire, and Air themes</li>
+            <li>Community support before and after the retreat, plus integration tools and resources</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          What is not included?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light space-y-2">
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Flights to and from Costa Rica</li>
+            <li>Travel insurance (strongly recommended)</li>
+            <li>Airport transfers (available as an add-on)</li>
+            <li>Spa services, unless selected as an add-on</li>
+            <li>Optional excursions and custom add-ons beyond the set package</li>
+            <li>Alcoholic beverages (available for purchase separately) and personal expenses</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Are excursions included in the base package?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Yes — curated excursions aligned with each elemental day are part of the experience. Beyond those, a full menu of optional adventures and spa services is available as add-ons, from waterfall rappelling to the Tortuga Island day trip. <a href="/excursions.html" class="text-pink-600 font-medium underline underline-offset-4">Explore the full adventure menu</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          What airport do I fly into?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Fly into <strong class="font-medium text-slate-800">Juan Santamaría International Airport (SJO)</strong> near San José, Costa Rica. Our team greets you on arrival day and our shuttles bring you to Amanti Sanctuary in Playa Hermosa. Flight guidance is available — just ask, and we'll help you find a cost-effective, time-efficient itinerary.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Is airport transportation included?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Airport transfers are available as an add-on (approximately $150 per airport run for up to 4 guests, plus tax). All vehicles are air conditioned, and group shuttles are coordinated around arrival and departure days so nobody navigates alone.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Are payment plans available?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Yes. A <strong class="font-medium text-slate-800">$500 non-refundable deposit</strong> reserves your spot, and the remaining balance is split into scheduled installments. Limited flexibility is available upon request — reach out and we'll find a rhythm that works.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          What should I pack?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Pack light and comfortable: breathable layers for practice, swimwear, sandals and walking shoes, sun protection, and a journal for reflection. A detailed packing list is sent to every guest after booking — including the all-white dress theme for Air day.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Is alcohol included?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Meals and non-alcoholic beverages are included. Alcoholic beverages are not included but are available for purchase separately at the resort.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          Can I attend solo?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Absolutely — many of our guests arrive solo and leave with lifelong friends. Community is part of the curriculum here: opening circles, shared meals, and heart talks are designed so nobody stays a stranger for long.</p>
+        </div>
+      </details>
+
+      <details class="faq-item group bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-serif text-lg sm:text-xl text-slate-900 font-medium">
+          What is the cancellation policy?
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-mono text-xl leading-none">+</span>
+        </summary>
+        <div class="px-5 sm:px-6 pb-6 text-slate-600 text-sm leading-relaxed font-light">
+          <p>Please review our full <a href="/terms.html" class="text-pink-600 font-medium underline underline-offset-4">Terms &amp; Cancellation Policy</a> for deposit, refund, and transfer details before booking. Travel insurance is strongly recommended for every guest.</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. FAQ CTA STRIP
+       ========================================================================= -->
+  <section class="section-wrapper py-16 border-t border-orange-200/40">
+    <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
+      <h2 class="font-serif text-3xl sm:text-4xl text-slate-900">Ready To Choose <span class="text-rainbow font-bold">Your Experience?</span></h2>
+      <p class="text-slate-600 font-light">Spaces are intentionally limited. If you feel the pull, honor it.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/pricing.html#builder" class="btn-luxe w-full sm:w-auto text-sm py-4 px-8 text-center">Save My Spot — $500 Deposit</a>
+        <a href="/contact.html" class="btn-outline-luxe w-full sm:w-auto text-sm py-4 px-8 text-center">Request a Call</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { display: none; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); background: #fce7f3; }
+    .faq-icon { transition: transform .25s ease; }
+  </style>
+
+  <!-- =========================================================================
+       NEWSLETTER ("Join the Arrive Family")
+       ========================================================================= -->
+  <section id="newsletter" class="py-20 border-t border-b border-white/10 bg-noir-900/50 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
+      <div class="space-y-3">
+        <span class="tagline-pill">Stay Connected</span>
+        <h2 class="text-3xl sm:text-5xl font-serif text-white">Join the Arrive Family</h2>
+        <p class="text-xs font-mono text-gold-400 tracking-widest uppercase font-bold">
+          Words on arriving, living, healing, and becoming.
+        </p>
+      </div>
+
+      <p class="text-slate-300 font-light text-base max-w-2xl mx-auto leading-relaxed">
+        Sign up for the Arrive Newsletter to receive wellness inspiration, retreat updates, special offerings, reflections, and grounded reminders to come back to yourself.
+      </p>
+
+      <!-- Incentive Card -->
+      <div class="p-6 bg-noir-950 border border-gold-500/30 rounded-xl max-w-xl mx-auto flex items-center gap-4 text-left">
+        <div class="w-12 h-12 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0">
+          <i data-lucide="gift" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <strong class="text-white text-sm block">Complimentary Gift: The Arrive Reset</strong>
+          <span class="text-xs text-slate-400 font-light">Receive our signature grounded guide for calming your nervous system and returning to your breath immediately upon joining.</span>
+        </div>
+      </div>
+
+      <!-- Newsletter Form -->
+      <form id="newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <input type="text" id="newsletter-name" placeholder="First Name" required class="luxe-input sm:w-1/3 text-xs" />
+        <input type="email" id="newsletter-email" placeholder="Your Email Address" required class="luxe-input sm:w-1/2 text-xs" />
+        <button type="submit" class="btn-luxe whitespace-nowrap text-xs py-3 px-6">
+          Join Us ↗
+        </button>
+      </form>
+      <div id="newsletter-success" class="hidden text-xs font-mono text-gold-400">
+        ✨ Welcome to the Arrive Family! Check your inbox for <span class="text-white font-bold">The Arrive Reset</span> guide.
+      </div>
+
+      <p class="text-[11px] font-mono text-slate-500">
+        We honor your space. No spam, ever. Unsubscribe at any time.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER & SITEMAP (Universal Concierge Across All Pages)
+       ========================================================================= -->
+  <footer class="sanctuary-footer bg-noir-950 border-t border-white/10 py-16 text-slate-400 text-xs font-mono">
+    <div class="footer-container max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Brand & Mission -->
+      <div class="space-y-4">
+        <a href="/index.html" class="inline-block font-serif text-2xl font-bold tracking-tight brand-rainbow-title">ARRIVE.</a>
+        <p class="font-sans text-xs text-slate-400 leading-relaxed">
+          Arrive Yoga &amp; Wellness Center • The Art of Arrival Retreats. Founded by Carly Anne Kasinpila.
+        </p>
+        <p class="text-gold-400 font-bold">Every Body Is A Yoga Body.</p>
+        <div class="pt-2">
+          <span class="badge-tag gold">Hosted on Railway &amp; GitHub</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Explore</strong>
+        <a href="/index.html" class="block hover:text-gold-400 transition-colors">Home Experience</a>
+        <a href="/retreat.html" class="block hover:text-gold-400 transition-colors">The Retreat Experience</a>
+        <a href="/method.html" class="block hover:text-gold-400 transition-colors">The ARRIVE Method™</a>
+        <a href="/itinerary.html" class="block hover:text-gold-400 transition-colors">Elemental 6-Day Schedule</a>
+        <a href="/accommodations.html" class="block hover:text-gold-400 transition-colors">Estates, Suites &amp; Villas</a>
+        <a href="/dining.html" class="block hover:text-gold-400 transition-colors">SWAY Dining Service</a>
+        <a href="/about.html" class="block hover:text-gold-400 transition-colors">About Carly Anne Kasinpila</a>
+        <a href="/faq.html" class="block hover:text-gold-400 transition-colors">Retreat FAQ</a>
+        <a href="/excursions.html" class="block hover:text-gold-400 transition-colors">Excursions &amp; Spa</a>
+      </div>
+
+      <!-- Retreat & Payment -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Retreat &amp; Stripe</strong>
+        <a href="/pricing.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Standard Package ($2,200)</a>
+        <a href="/pricing.html" class="block text-gold-400 font-bold hover:text-white transition-colors">VIP Package ($3,100)</a>
+        <a href="/pricing.html#builder" class="block hover:text-gold-400 transition-colors">Custom Cost Calculator</a>
+        <a href="/consulting.html" class="block hover:text-gold-400 transition-colors">Executive &amp; Brand Advisory</a>
+        <a href="/terms.html" class="block hover:text-gold-400 transition-colors">Terms &amp; Cancellation Policy</a>
+        <a href="/stripe-setup.html" class="block text-gold-400 font-bold hover:text-white transition-colors">Stripe Merchant Setup ↗</a>
+      </div>
+
+      <!-- Direct Contact -->
+      <div class="space-y-2.5">
+        <strong class="text-white uppercase tracking-wider block font-serif text-sm">Concierge &amp; Booking</strong>
+        <p>Playa Hermosa, Puntarenas, Costa Rica</p>
+        <p>Direct: <a href="tel:9543367048" class="text-white hover:text-gold-400">954-336-7048</a></p>
+        <p>Email: <a href="mailto:arrive@everybodyisayogabody.org" class="text-white hover:text-gold-400">arrive@everybodyisayogabody.org</a></p>
+        <p>Web: <a href="https://everybodyisayogabody.org" target="_blank" class="text-gold-400">everybodyisayogabody.org</a></p>
+        <p class="text-[11px] text-slate-400 pt-2">© 2026 Arrive Yoga &amp; Wellness. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS: THEME DRAWER, QUIZ & LIGHTBOX
+       ========================================================================= -->
+
+  <!-- 1. Theme Engine Drawer -->
+  <div id="theme-drawer" class="theme-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+      <div>
+        <h3 class="font-serif text-2xl text-white">Visual Themes</h3>
+        <p class="text-xs font-mono text-slate-400">Haute Couture &amp; Sanctuary Palettes</p>
+      </div>
+      <button id="close-theme-drawer" class="text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Theme 1: Tropical Sunshine (Default) -->
+    <div class="theme-card-option active" data-theme-id="tropical-sunshine" data-set-theme="tropical-sunshine">
+      <div>
+        <strong class="text-white text-sm block">01. Tropical Sunshine &amp; Rainbow (Default) 🌺🌈</strong>
+        <span class="text-xs text-slate-400">Sunlit warmth, vibrant rainbow aura, &amp; joyful Costa Rica energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-cyan-400 border border-white/40 shadow-sm"></div>
+    </div>
+
+    <!-- Theme 2: Biophilic Emerald -->
+    <div class="theme-card-option" data-theme-id="biophilic-emerald" data-set-theme="biophilic-emerald">
+      <div>
+        <strong class="text-white text-sm block">02. Biophilic Emerald Sanctuary 🌿</strong>
+        <span class="text-xs text-slate-400">Costa Rica rainforest, jade greens &amp; raw linen</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#52b788] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 3: Sunset Somatic Terracotta -->
+    <div class="theme-card-option" data-theme-id="sunset-terracotta" data-set-theme="sunset-terracotta">
+      <div>
+        <strong class="text-white text-sm block">03. Sunset Somatic Terracotta 🌅</strong>
+        <span class="text-xs text-slate-400">Pacific sunset glow, burnt orange &amp; clay</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#e07a5f] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 4: Avatar Cosmic Spectrum -->
+    <div class="theme-card-option" data-theme-id="avatar-spectrum" data-set-theme="avatar-spectrum">
+      <div>
+        <strong class="text-white text-sm block">04. Avatar Cosmic Spectrum 🔮</strong>
+        <span class="text-xs text-slate-400">Deep violet, celestial rainbow &amp; vibrant energy</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#9d4edd] border border-white/20"></div>
+    </div>
+
+    <!-- Theme 5: Obsidian Runway -->
+    <div class="theme-card-option" data-theme-id="noir-gold" data-set-theme="noir-gold">
+      <div>
+        <strong class="text-white text-sm block">05. Obsidian Evening Runway (Night Mode) ✨</strong>
+        <span class="text-xs text-slate-400">Midnight sanctuary, deep noir, and champagne gold</span>
+      </div>
+      <div class="w-6 h-6 rounded-full bg-[#121216] border border-[#e2b774]"></div>
+    </div>
+  </div>
+
+  <!-- 2. Retreat Readiness Quiz Modal -->
+  <div id="quiz-modal" class="sanctuary-modal">
+    <div class="modal-dialog">
+      <button id="close-quiz-modal" class="modal-close-btn">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Quiz Form -->
+      <div id="quiz-form" class="space-y-6">
+        <div>
+          <span class="tagline-pill mb-2">Soul Diagnostic</span>
+          <h3 class="font-serif text-3xl text-white">Discover Your Primary Element</h3>
+          <p class="text-slate-300 text-sm font-light">Answer 4 intuitive questions to reveal where your nervous system is calling to reset.</p>
+        </div>
+
+        <div class="space-y-4 text-xs font-mono">
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">1. What has your nervous system felt like lately?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="earth" checked /> Chronic exhaustion, depleted, needing deep physical sleep.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="water" /> Emotionally overloaded, holding heavy feelings, needing to cry or soften.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="fire" /> Stagnant, frustrated, wanting to break out of comfort zone.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q1" value="air" /> Overthinking, racing mind, unable to find mental quiet.</label>
+          </div>
+
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">2. In nature, what grounds you most instantly?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="earth" checked /> Bare feet on solid soil, tree roots, dark sand.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="water" /> Ocean tides, waterfall spray, floating weightless.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="fire" /> Warm bonfire, sweat lodge heat, afternoon sunlight.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q2" value="air" /> High mountain canopy breeze, open endless horizon.</label>
+          </div>
+
+          <div class="p-4 bg-noir-900 border border-white/10 rounded-md space-y-2">
+            <span class="text-gold-400 font-bold block">3. What is the biggest breakthrough you desire to take home?</span>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="earth" checked /> A revitalized, pain-free body with regulated sleep.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="water" /> Heart opening, forgiven past narratives, vulnerable ease.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="fire" /> Fierce self-confidence and clarity in my leadership.</label>
+            <label class="flex items-center gap-2 text-slate-300 cursor-pointer"><input type="radio" name="q3" value="air" /> Unshakable calm in the space between my thoughts.</label>
+          </div>
+        </div>
+
+        <button id="quiz-submit-btn" type="button" class="btn-luxe w-full">
+          Reveal My Element &amp; Ideal Package
+        </button>
+      </div>
+
+      <!-- Quiz Result Container -->
+      <div id="quiz-result" class="space-y-6 hidden text-center">
+        <span class="tagline-pill">Your Diagnostic Result</span>
+        <h3 id="quiz-result-element" class="font-serif text-4xl text-white font-bold">Earth Anchor</h3>
+        <p id="quiz-result-description" class="text-slate-300 text-sm leading-relaxed max-w-xl mx-auto"></p>
+        
+        <div class="p-6 bg-noir-900 border border-gold-500/40 rounded-xl text-left space-y-2">
+          <span class="text-gold-400 font-mono text-xs uppercase font-bold block">Recommended Pathway:</span>
+          <p id="quiz-result-recommendation" class="text-white text-sm font-serif"></p>
+        </div>
+
+        <div class="pt-4 flex justify-center gap-4">
+          <a href="/pricing.html#builder" onclick="document.getElementById('quiz-modal').classList.remove('open')" class="btn-luxe">
+            Open Custom Retreat Builder
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Lightbox Modal -->
+  <div id="lightbox-modal" class="sanctuary-modal">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <button id="close-lightbox" class="modal-close-btn top-[-50px] right-0">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-image" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl" />
+      <p id="lightbox-caption" class="text-gold-300 font-serif text-lg mt-4 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons & Engine Scripts -->
+  <script src="js/main.js?v=3.0"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
