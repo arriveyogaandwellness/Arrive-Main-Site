@@ -123,13 +123,16 @@
     }
   </style>
 </head>
-<body data-audio-only="true">
+<body data-welcome-only="true">
   <main class="welcome" id="welcome-screen">
     <div class="welcome-poster" aria-hidden="true"></div>
     <video class="welcome-video" id="intro-video" preload="auto" playsinline muted poster="/assets/welcome/welcome-background.png" aria-label="Arrive sanctuary introduction">
       <source src="https://media.githubusercontent.com/media/arriveyogaandwellness/Arrive-Main-Site/main/public/assets/welcome/art-of-arrival-ai-v8.mp4" type="video/mp4" />
       <source src="/assets/welcome/art-of-arrival-ai-v8.mp4" type="video/mp4" />
     </video>
+    <audio id="welcome-soundtrack" preload="auto" aria-hidden="true">
+      <source src="/assets/welcome/art-of-arrival-ai-v8-audio.mp3" type="audio/mpeg" />
+    </audio>
     <div class="welcome-shade" aria-hidden="true"></div>
     <div class="welcome-grain" aria-hidden="true"></div>
     <div class="welcome-scanlines" aria-hidden="true"></div>
@@ -144,21 +147,11 @@
       </div>
       <div class="welcome-meta" aria-label="Location and film duration">
         <div>Costa Rica<strong>Amanti Sanctuary</strong></div>
-        <div>Film<strong>04:14</strong></div>
+        <div>Film<strong>03:52</strong></div>
       </div>
       <div class="sound-note">Best experienced with sound</div>
     </section>
   </main>
-  <div class="audio-dock">
-    <button id="audio-ambient-toggle" type="button" aria-label="Choose an audio track">
-      <div class="sound-wave paused" aria-hidden="true">
-        <div class="sound-bar"></div><div class="sound-bar"></div>
-        <div class="sound-bar"></div><div class="sound-bar"></div>
-      </div>
-      <span id="audio-label">Choose a track</span>
-      <i data-lucide="volume-2" class="w-4 h-4"></i>
-    </button>
-  </div>
   <footer class="welcome-footer" aria-label="Arrive site footer">
     <div class="welcome-footer-grid">
       <div>
@@ -200,26 +193,56 @@
     (() => {
       const screen = document.getElementById('welcome-screen');
       const video = document.getElementById('intro-video');
+      const soundtrack = document.getElementById('welcome-soundtrack');
       const enterButton = document.getElementById('enter-button');
+      const soundNote = document.querySelector('.sound-note');
       let filmStarted = false;
+      let redirectTimeout = null;
+
       video.addEventListener('canplay', () => video.classList.add('is-ready'));
       video.addEventListener('ended', () => {
+        soundtrack.pause();
         screen.classList.remove('is-playing');
         screen.classList.add('is-finished');
         enterButton.innerHTML = '<span aria-hidden="true">↗</span> Continue to retreat';
         enterButton.addEventListener('click', () => { window.location.href = '/home.html'; }, { once: true });
+        redirectTimeout = window.setTimeout(() => { window.location.href = '/home.html'; }, 2000);
       });
+
+      video.addEventListener('timeupdate', () => {
+        if (soundtrack.paused || !Number.isFinite(video.currentTime)) return;
+        if (Math.abs(soundtrack.currentTime - video.currentTime) > 0.35) {
+          soundtrack.currentTime = video.currentTime;
+        }
+      });
+      video.addEventListener('pause', () => {
+        if (filmStarted && !video.ended) soundtrack.pause();
+      });
+      video.addEventListener('play', () => {
+        if (!filmStarted || !soundtrack.paused) return;
+        soundtrack.currentTime = video.currentTime;
+        soundtrack.play().catch(() => {
+          soundNote.textContent = 'The welcome soundtrack could not start. Check your device volume.';
+        });
+      });
+
       enterButton.addEventListener('click', () => {
+        window.clearTimeout(redirectTimeout);
         if (!filmStarted) {
           filmStarted = true;
-          video.removeAttribute('muted');
-          video.muted = false;
-          video.volume = 1;
+          video.muted = true;
+          video.volume = 0;
           screen.classList.add('is-playing');
-          video.play().catch(() => {
-            filmStarted = false;
-            screen.classList.remove('is-playing');
-            document.querySelector('.sound-note').textContent = 'Sound could not start. Check your device volume.';
+          soundtrack.currentTime = video.currentTime;
+          Promise.allSettled([video.play(), soundtrack.play()]).then(([videoResult, soundtrackResult]) => {
+            if (videoResult.status === 'rejected') {
+              soundtrack.pause();
+              filmStarted = false;
+              screen.classList.remove('is-playing');
+              soundNote.textContent = 'The welcome video could not start. Please try again.';
+            } else if (soundtrackResult.status === 'rejected') {
+              soundNote.textContent = 'The welcome soundtrack could not start. Check your device volume.';
+            }
           });
         } else {
           window.location.href = '/home.html';

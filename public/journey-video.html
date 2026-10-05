@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071c1a" />
+  <title>The Journey Home | Arrive</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, sans-serif; background: #071c1a; color: #f7f5ed; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 1rem; }
+    main { width: min(100%, 1100px); }
+    h1 { margin: 0 0 1rem; color: #f7c872; font-size: clamp(1.25rem, 4vw, 2rem); }
+    .video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+    video { display: block; width: 100%; height: 100%; }
+    .play-overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem; background: rgb(0 0 0 / 60%); text-align: center; }
+    .play-overlay[hidden] { display: none; }
+    .play-button { border: 1px solid #f7c872; border-radius: 999px; padding: 1rem 1.5rem; background: #071c1a; color: #f7c872; font-size: 1rem; cursor: pointer; }
+    .play-button:hover, .play-button:focus-visible { background: #f7c872; color: #071c1a; }
+    .play-status { min-height: 1.5em; margin: .75rem 0 0; color: #f7f5ed; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Journey Home</h1>
+    <div class="video-frame">
+      <video id="journey-video" controls playsinline preload="auto" muted aria-label="The Art of Arrival welcome journey video">
+        <source src="/assets/welcome/art-of-arrival-ai-v8.mp4" type="video/mp4" />
+      </video>
+      <div class="play-overlay" id="play-overlay">
+        <button class="play-button" id="play-button" type="button">▶ Play video with sound</button>
+      </div>
+    </div>
+    <p class="play-status" id="play-status" role="status" aria-live="polite"></p>
+    <audio id="journey-soundtrack" preload="auto" src="/assets/welcome/art-of-arrival-ai-v8-audio.mp3"></audio>
+  </main>
+  <script>
+    (() => {
+      const video = document.getElementById('journey-video');
+      const soundtrack = document.getElementById('journey-soundtrack');
+      const overlay = document.getElementById('play-overlay');
+      const playButton = document.getElementById('play-button');
+      const status = document.getElementById('play-status');
+      video.volume = 0;
+
+      const startPlayback = async () => {
+        video.muted = true;
+        soundtrack.currentTime = video.currentTime;
+        const results = await Promise.allSettled([video.play(), soundtrack.play()]);
+        if (results.every(result => result.status === 'fulfilled')) {
+          overlay.hidden = true;
+          status.textContent = '';
+          return;
+        }
+        video.pause();
+        soundtrack.pause();
+        overlay.hidden = false;
+        status.textContent = 'Press Play video with sound to start both together.';
+      };
+
+      playButton.addEventListener('click', startPlayback);
+      video.addEventListener('play', () => {
+        if (soundtrack.paused) {
+          soundtrack.currentTime = video.currentTime;
+          soundtrack.play().catch(() => {
+            video.pause();
+            overlay.hidden = false;
+            status.textContent = 'Press Play video with sound to start both together.';
+          });
+        }
+      });
+      video.addEventListener('timeupdate', () => {
+        if (!soundtrack.paused && Math.abs(soundtrack.currentTime - video.currentTime) > 0.35) {
+          soundtrack.currentTime = video.currentTime;
+        }
+      });
+      video.addEventListener('pause', () => {
+        if (!video.ended) soundtrack.pause();
+      });
+      video.addEventListener('ended', () => soundtrack.pause());
+      soundtrack.addEventListener('error', () => {
+        status.textContent = 'The journey soundtrack could not be loaded.';
+      });
+
+      startPlayback();
+    })();
+  </script>
+</body>
+</html>

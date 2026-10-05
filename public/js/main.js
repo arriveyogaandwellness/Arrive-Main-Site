@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+  if (document.body.dataset.welcomeOnly === 'true') return;
   if (document.body.dataset.audioOnly === 'true') {
     initAudioAmbience();
     return;
@@ -205,10 +206,14 @@ function initAudioAmbience() {
     panel.className = 'audio-player-panel';
     panel.setAttribute('aria-label', 'Audio tracks');
     panel.setAttribute('aria-hidden', 'true');
+    const videoReplayMarkup = document.body.dataset.audioOnly === 'true'
+      ? ''
+      : '<a class="audio-player-video-link" href="/journey-video.html" target="_blank" rel="noopener noreferrer">Watch the welcome journey video again ↗</a>';
     panel.innerHTML = `
       <p class="audio-player-heading">Choose a track</p>
       <div class="audio-track-list" role="group" aria-label="Available tracks"></div>
       <audio class="audio-player-controls" controls preload="none"></audio>
+      ${videoReplayMarkup}
       <p class="audio-player-status" aria-live="polite"></p>
     `;
     dock.append(panel);
@@ -216,6 +221,7 @@ function initAudioAmbience() {
     const audio = panel.querySelector('audio');
     const trackList = panel.querySelector('.audio-track-list');
     const status = panel.querySelector('.audio-player-status');
+    const videoReplayLink = panel.querySelector('.audio-player-video-link');
     let selectedIndex = 0;
     let resumeState = null;
     let lastSavedAt = 0;
@@ -254,6 +260,11 @@ function initAudioAmbience() {
         savedAt: Date.now()
       }));
     };
+
+    videoReplayLink?.addEventListener('click', () => {
+      audio.pause();
+      savePlaybackState(false);
+    });
 
     const updateSelectedTrack = () => {
       trackList.querySelectorAll('button').forEach((trackButton, index) => {
