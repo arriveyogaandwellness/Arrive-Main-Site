@@ -1,11 +1,4 @@
-# Welcome film
+# Welcome assets
 
-Add the 15-second intro movie here as:
-
-`arrive-intro.mp4`
-
-Add the supplied welcome artwork here as:
-
-`welcome-background.png`
-
-The welcome screen uses this artwork as its full-screen background and video poster. It falls back to an existing sanctuary image until the PNG is added.
+The welcome screen uses `art-of-arrival-ai-v8.mp4` as its intro film and
+`welcome-background.png` as its full-screen background and video poster.
