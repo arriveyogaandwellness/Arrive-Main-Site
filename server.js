@@ -7,6 +7,20 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+function getPublicOrigin(req) {
+  const configuredBaseUrl = process.env.BASE_URL
+    || (process.env.RAILWAY_PUBLIC_DOMAIN && `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`);
+  const forwardedProtocol = req.get('x-forwarded-proto')?.split(',')[0].trim();
+  const protocol = ['http', 'https'].includes(forwardedProtocol) ? forwardedProtocol : req.protocol;
+  const publicUrl = new URL(configuredBaseUrl || `${protocol}://${req.get('host')}`);
+
+  if (!['http:', 'https:'].includes(publicUrl.protocol)) {
+    throw new Error('BASE_URL must use HTTP or HTTPS.');
+  }
+
+  return publicUrl.origin;
+}
+
 // Initialize Stripe if secret key is present
 let stripe = null;
 if (process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('sk_')) {
@@ -24,6 +38,15 @@ if (process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('s
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res, next) => {
+  const publicOrigin = getPublicOrigin(req);
+  fs.readFile(path.join(__dirname, 'public', 'index.html'), 'utf8', (err, html) => {
+    if (err) return next(err);
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+    res.type('html').send(html.replace(/__PUBLIC_ORIGIN__/g, publicOrigin));
+  });
+});
 
 // Serve static assets with no-cache headers for instant updates
 app.use(express.static(path.join(__dirname, 'public'), {
