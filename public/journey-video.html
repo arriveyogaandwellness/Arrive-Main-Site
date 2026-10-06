@@ -30,62 +30,43 @@
   <main>
     <h1>The Journey Home</h1>
     <div class="video-frame">
-      <video id="journey-video" controls playsinline preload="auto" muted aria-label="The Art of Arrival welcome journey video">
-        <source src="/assets/welcome/art-of-arrival-ai-v8.mp4" type="video/mp4" />
+      <video id="journey-video" controls playsinline preload="auto" aria-label="The Art of Arrival welcome journey video">
+        <source src="/assets/welcome/art-of-arrival-ai-v12.mp4?v=mp3-audio" type="video/mp4" />
       </video>
       <div class="play-overlay" id="play-overlay">
-        <button class="play-button" id="play-button" type="button">▶ Play video with sound</button>
+        <button class="play-button" id="play-button" type="button">▶ Play video</button>
       </div>
     </div>
     <p class="play-status" id="play-status" role="status" aria-live="polite"></p>
-    <audio id="journey-soundtrack" preload="auto" src="/assets/welcome/art-of-arrival-ai-v8-audio.mp3"></audio>
   </main>
   <script>
     (() => {
       const video = document.getElementById('journey-video');
-      const soundtrack = document.getElementById('journey-soundtrack');
       const overlay = document.getElementById('play-overlay');
       const playButton = document.getElementById('play-button');
       const status = document.getElementById('play-status');
-      video.volume = 0;
 
       const startPlayback = async () => {
-        video.muted = true;
-        soundtrack.currentTime = video.currentTime;
-        const results = await Promise.allSettled([video.play(), soundtrack.play()]);
-        if (results.every(result => result.status === 'fulfilled')) {
+        try {
+          await video.play();
           overlay.hidden = true;
           status.textContent = '';
-          return;
+        } catch {
+          overlay.hidden = false;
+          status.textContent = 'Press Play video to start.';
         }
-        video.pause();
-        soundtrack.pause();
-        overlay.hidden = false;
-        status.textContent = 'Press Play video with sound to start both together.';
       };
 
       playButton.addEventListener('click', startPlayback);
       video.addEventListener('play', () => {
-        if (soundtrack.paused) {
-          soundtrack.currentTime = video.currentTime;
-          soundtrack.play().catch(() => {
-            video.pause();
-            overlay.hidden = false;
-            status.textContent = 'Press Play video with sound to start both together.';
-          });
-        }
-      });
-      video.addEventListener('timeupdate', () => {
-        if (!soundtrack.paused && Math.abs(soundtrack.currentTime - video.currentTime) > 0.35) {
-          soundtrack.currentTime = video.currentTime;
-        }
+        overlay.hidden = true;
+        status.textContent = '';
       });
       video.addEventListener('pause', () => {
-        if (!video.ended) soundtrack.pause();
-      });
-      video.addEventListener('ended', () => soundtrack.pause());
-      soundtrack.addEventListener('error', () => {
-        status.textContent = 'The journey soundtrack could not be loaded.';
+        if (!video.ended) {
+          overlay.hidden = false;
+          status.textContent = 'Press Play video to continue.';
+        }
       });
 
       startPlayback();
