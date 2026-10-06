@@ -127,7 +127,7 @@
 <body data-welcome-only="true">
   <main class="welcome" id="welcome-screen">
     <div class="welcome-poster" aria-hidden="true"></div>
-    <video class="welcome-video" id="intro-video" preload="auto" playsinline poster="/assets/welcome/welcome-background.png" aria-label="Arrive sanctuary introduction">
+    <video class="welcome-video" id="intro-video" preload="auto" playsinline crossorigin="anonymous" poster="/assets/welcome/welcome-background.png" aria-label="Arrive sanctuary introduction">
       <source src="https://media.githubusercontent.com/media/arriveyogaandwellness/Arrive-Main-Site/main/public/assets/welcome/art-of-arrival-ai-v12.mp4?v=9cc1d7e" type="video/mp4" />
       <source src="/assets/welcome/art-of-arrival-ai-v12.mp4?v=mp3-audio" type="video/mp4" />
     </video>
@@ -191,8 +191,11 @@
       const screen = document.getElementById('welcome-screen');
       const video = document.getElementById('intro-video');
       const enterButton = document.getElementById('enter-button');
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       let filmStarted = false;
       let redirectTimeout = null;
+      let audioContext = null;
+      let videoAudioSource = null;
 
       video.addEventListener('canplay', () => video.classList.add('is-ready'));
       video.addEventListener('ended', () => {
@@ -209,8 +212,25 @@
           filmStarted = true;
           video.muted = false;
           video.volume = 1;
+          if (AudioContextClass) {
+            try {
+              if (!audioContext) {
+                audioContext = new AudioContextClass();
+                videoAudioSource = audioContext.createMediaElementSource(video);
+                videoAudioSource.connect(audioContext.destination);
+              }
+              if (audioContext.state === 'suspended') {
+                audioContext.resume().catch(error => {
+                  console.error('Unable to resume welcome video audio.', error);
+                });
+              }
+            } catch (error) {
+              console.error('Unable to route welcome video audio through Web Audio.', error);
+            }
+          }
           screen.classList.add('is-playing');
-          video.play().catch(() => {
+          video.play().catch(error => {
+            console.error('Unable to play the welcome video.', error);
             filmStarted = false;
             screen.classList.remove('is-playing');
             enterButton.innerHTML = '<span aria-hidden="true">↗</span> Try the intro again';
