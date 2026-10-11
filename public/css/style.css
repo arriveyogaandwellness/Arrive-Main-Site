@@ -365,6 +365,119 @@ body {
   border: 1px solid rgba(240, 180, 41, 0.45) !important;
 }
 
+/* ==========================================================================
+   Room photo carousels (accommodations / lodge page)
+   Theme-agnostic: white captions on dark gradient overlays, dark translucent
+   arrow buttons, and high-contrast dots read on any photo in any theme.
+   ========================================================================== */
+.room-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(226, 183, 116, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: #0a3f47;
+}
+.room-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.room-carousel-slide {
+  flex: 0 0 100%;
+  position: relative;
+  cursor: pointer;
+  min-width: 0;
+}
+.room-carousel-img {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.room-carousel-sm .room-carousel-img {
+  height: 16rem;
+}
+.room-carousel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.25rem 1rem 0.7rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.68), transparent);
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  pointer-events: none;
+}
+.room-carousel-btn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+.room-carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.72);
+}
+.room-carousel-prev {
+  left: 0.75rem;
+}
+.room-carousel-next {
+  right: 0.75rem;
+}
+.room-carousel-dots {
+  position: absolute;
+  top: 0.8rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  z-index: 2;
+}
+.room-carousel-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.room-carousel-dot.active {
+  background: #ffd972;
+  border-color: rgba(0, 0, 0, 0.35);
+  transform: scale(1.25);
+}
+@media (max-width: 640px) {
+  .room-carousel-img {
+    height: 14rem;
+  }
+  .room-carousel-sm .room-carousel-img {
+    height: 13rem;
+  }
+  .room-carousel-btn {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+}
+
 /* Peacock Lagoon: outline buttons get a dark pill so they read on light washes */
 [data-theme="peacock-lagoon"] .btn-outline-luxe {
   background: rgba(4, 38, 43, 0.92) !important;
