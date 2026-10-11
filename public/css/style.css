@@ -327,6 +327,21 @@ body {
 [data-theme="peacock-lagoon"] .luxe-input::placeholder,
 [data-theme="peacock-lagoon"] .luxe-select::placeholder { color: #9dbfb6; opacity: 1; }
 
+/* Peacock Lagoon, third legibility pass (2026-10-11, from live visual audit):
+   1. Bare (class-less) text inside light cards inherits a dark base color, so it can't
+      pick up a remapped light color from an ancestor and wash out on the light card
+      (seen on terms.html sections 01-08). The hero card is excluded — it is forced
+      dark below, so its bare text must stay light.
+   2. The hero manifesto card is forced dark under Peacock, so remapped text classes
+      inside it must stay light; these beat the light-container exceptions above via
+      higher specificity (seen on terms.html hero: dark subtitle on dark card).
+   3. Small body text in tinted callout boxes reads dim at text-xs — brighten it
+      (seen on terms.html "Notice to Guests" box). */
+[data-theme="peacock-lagoon"] :is(.bg-white,.bg-white\/70,.bg-white\/90,.bg-white\/92,.bg-white\/95,.bg-stone-50,.bg-stone-100,.bg-orange-50,.bg-amber-50,.bg-stone-50\/80,.paper-letter-body,[class*="from-white"],[class*="from-amber-50"],.bg-white\/80,.bg-pink-50,.bg-pink-100,.bg-rose-50,.bg-purple-50,.bg-purple-50\/60,.bg-purple-100,.bg-blue-50,.bg-blue-100,.bg-sky-50\/60,.bg-cyan-50,.bg-cyan-50\/60,.bg-cyan-100,.bg-teal-50,.bg-teal-100,.bg-emerald-50,.bg-emerald-50\/60,.bg-emerald-100,.bg-amber-100,.bg-amber-50\/50,.bg-orange-50\/50,.bg-orange-50\/60,.bg-orange-100):not(.hero-manifesto-card) { color: #44403c !important; }
+[data-theme="peacock-lagoon"] .hero-manifesto-card.hero-manifesto-card :is(.text-stone-900,.text-slate-900,.text-black) { color: #f2fbf8 !important; }
+[data-theme="peacock-lagoon"] .hero-manifesto-card.hero-manifesto-card :is(.text-stone-800,.text-stone-700,.text-stone-600,.text-stone-500,.text-slate-800,.text-slate-700,.text-slate-600,.text-slate-500,.text-amber-900,.text-amber-800,.text-emerald-800,.text-pink-800,.text-cyan-800,.text-rose-800) { color: #bcd9d2 !important; }
+[data-theme="peacock-lagoon"] .from-amber-500\/10 .text-stone-600 { color: #cfe6df !important; }
+
 /* Peacock Lagoon: outline buttons get a dark pill so they read on light washes */
 [data-theme="peacock-lagoon"] .btn-outline-luxe {
   background: rgba(4, 38, 43, 0.92) !important;
