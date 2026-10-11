@@ -480,18 +480,37 @@
 
     <!-- 1. Amapola House -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Amapola House Exterior" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Private Compound Veranda</span>
+      <div class="lg:col-span-7">
+        <div class="room-carousel" data-carousel>
+          <div class="room-carousel-track">
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-outside-1.jpg" data-lightbox-caption="Private Compound Veranda">
+              <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Amapola House Exterior" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Private Compound Veranda</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-upstairs.jpg" data-lightbox-caption="Upper Balcony Lounge">
+              <img src="/assets/pages/accommodations/amapola-upstairs.jpg" alt="Amapola Upstairs Suite" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Upper Balcony Lounge</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-artisan-bar.jpg" data-lightbox-caption="Artisan Bar">
+              <img src="/assets/pages/accommodations/amapola-artisan-bar.jpg" alt="Amapola Artisan Bar" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Artisan Bar</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-dining-table.png" data-lightbox-caption="Dining Salon">
+              <img src="/assets/pages/accommodations/amapola-dining-table.png" alt="Amapola Dining Salon" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Dining Salon</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-gourmet-kitchen.png" data-lightbox-caption="Gourmet Chef Kitchen">
+              <img src="/assets/pages/accommodations/amapola-gourmet-kitchen.png" alt="Amapola Gourmet Kitchen" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Gourmet Chef Kitchen</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-tropical-lounge.jpg" data-lightbox-caption="Tropical Lounge">
+              <img src="/assets/pages/accommodations/amapola-tropical-lounge.jpg" alt="Amapola Tropical Lounge" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Tropical Lounge</span></div>
+            </div>
           </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/amapola-upstairs.jpg" alt="Amapola Upstairs Suite" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Upper Balcony Lounge</span>
-          </div>
+          <button type="button" class="room-carousel-btn room-carousel-prev" aria-label="Previous photo"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+          <button type="button" class="room-carousel-btn room-carousel-next" aria-label="Next photo"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+          <div class="room-carousel-dots"></div>
         </div>
       </div>
       <div class="lg:col-span-5 space-y-4">
@@ -532,36 +551,62 @@
           </a>
         </div>
       </div>
-      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 lg:order-2">
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/toucan-villa-1.jpg" alt="Toucan Villa Bedroom" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Toucan Master Chamber</span>
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        <div class="room-carousel" data-carousel>
+          <div class="room-carousel-track">
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/toucan-villa-1.jpg" data-lightbox-caption="Toucan Master Chamber">
+              <img src="/assets/pages/accommodations/toucan-villa-1.jpg" alt="Toucan Villa Bedroom" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Toucan Master Chamber</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/toucan-villa-2.jpg" data-lightbox-caption="Rooftop Sky Terrace">
+              <img src="/assets/pages/accommodations/toucan-villa-2.jpg" alt="Toucan Villa Rooftop" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Rooftop Sky Terrace</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/home/toucan-villa-lounge.jpg" data-lightbox-caption="Villa Lounge">
+              <img src="/assets/pages/home/toucan-villa-lounge.jpg" alt="Toucan Villa Lounge" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Villa Lounge</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/home/toucan-villa-plunge-pool.jpg" data-lightbox-caption="Plunge Pool">
+              <img src="/assets/pages/home/toucan-villa-plunge-pool.jpg" alt="Toucan Villa Plunge Pool" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Plunge Pool</span></div>
+            </div>
           </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/toucan-villa-2.jpg" alt="Toucan Villa Rooftop" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Rooftop Sky Terrace</span>
-          </div>
+          <button type="button" class="room-carousel-btn room-carousel-prev" aria-label="Previous photo"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+          <button type="button" class="room-carousel-btn room-carousel-next" aria-label="Next photo"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+          <div class="room-carousel-dots"></div>
         </div>
       </div>
     </div>
 
     <!-- 3. Honeymoon Queen Suite -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/honeymoon-suite-1.jpg" alt="Honeymoon Queen Suite" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Honeymoon Bedroom Sanctuary</span>
+      <div class="lg:col-span-7">
+        <div class="room-carousel" data-carousel>
+          <div class="room-carousel-track">
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/honeymoon-suite-1.jpg" data-lightbox-caption="Honeymoon Bedroom Sanctuary">
+              <img src="/assets/pages/accommodations/honeymoon-suite-1.jpg" alt="Honeymoon Queen Suite" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Honeymoon Bedroom Sanctuary</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/honeymoon-bath.jpg" data-lightbox-caption="Spa Stone Bath">
+              <img src="/assets/pages/accommodations/honeymoon-bath.jpg" alt="Honeymoon Suite Bath" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Spa Stone Bath</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/honeymoon-couch.jpg" data-lightbox-caption="Sitting Lounge">
+              <img src="/assets/pages/accommodations/honeymoon-couch.jpg" alt="Honeymoon Suite Sitting Lounge" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Sitting Lounge</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/honeymoon-table.jpg" data-lightbox-caption="Breakfast Nook">
+              <img src="/assets/pages/accommodations/honeymoon-table.jpg" alt="Honeymoon Suite Breakfast Nook" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Breakfast Nook</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/home/honeymoon-master-suite.jpg" data-lightbox-caption="Master Suite">
+              <img src="/assets/pages/home/honeymoon-master-suite.jpg" alt="Honeymoon Master Suite" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Master Suite</span></div>
+            </div>
           </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-orange-200/60 shadow-sm bg-white cursor-pointer group" data-lightbox>
-          <img src="/assets/pages/accommodations/honeymoon-bath.jpg" alt="Honeymoon Suite Bath" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-          <div class="p-2.5 text-center bg-white">
-            <span class="text-xs font-serif text-stone-800 font-semibold">Spa Stone Bath</span>
-          </div>
+          <button type="button" class="room-carousel-btn room-carousel-prev" aria-label="Previous photo"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+          <button type="button" class="room-carousel-btn room-carousel-next" aria-label="Next photo"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+          <div class="room-carousel-dots"></div>
         </div>
       </div>
       <div class="lg:col-span-5 space-y-4">
@@ -586,8 +631,20 @@
     <!-- 4. Queen Suite & Family Studio Suite -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-4">
-        <div class="rounded-xl overflow-hidden border border-orange-200/40 group cursor-pointer" data-lightbox>
-          <img src="/assets/pages/accommodations/queen-suite-1.jpg" alt="Queen Suite" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
+        <div class="room-carousel room-carousel-sm" data-carousel>
+          <div class="room-carousel-track">
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/queen-suite-1.jpg" data-lightbox-caption="Queen Suite">
+              <img src="/assets/pages/accommodations/queen-suite-1.jpg" alt="Queen Suite" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Queen Suite</span></div>
+            </div>
+            <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/home/queen-suite-bedroom.jpg" data-lightbox-caption="Bedroom Retreat">
+              <img src="/assets/pages/home/queen-suite-bedroom.jpg" alt="Queen Suite Bedroom" class="room-carousel-img" />
+              <div class="room-carousel-caption"><span>Bedroom Retreat</span></div>
+            </div>
+          </div>
+          <button type="button" class="room-carousel-btn room-carousel-prev" aria-label="Previous photo"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+          <button type="button" class="room-carousel-btn room-carousel-next" aria-label="Next photo"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+          <div class="room-carousel-dots"></div>
         </div>
         <span class="tagline-pill">Retreat Standard</span>
         <h3 class="font-serif text-2xl text-stone-900 font-bold">Queen Suite</h3>
@@ -889,6 +946,55 @@
 
   <!-- Initialize Lucide Icons & Engine Scripts -->
   <script src="js/main.js?v=3.2"></script>
+  <script>
+    // Room photo carousels (lodge page): prev/next arrows, dots, touch swipe.
+    // Tapping a slide still opens the lightbox (wired via data-lightbox on slides).
+    document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+      const track = carousel.querySelector('.room-carousel-track');
+      const slides = Array.from(track.children);
+      const prevBtn = carousel.querySelector('.room-carousel-prev');
+      const nextBtn = carousel.querySelector('.room-carousel-next');
+      const dotsWrap = carousel.querySelector('.room-carousel-dots');
+      let index = 0;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'room-carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+        dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(i); });
+        dotsWrap.appendChild(dot);
+      });
+      const dots = Array.from(dotsWrap.children);
+
+      function goTo(i) {
+        index = (i + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach((d, di) => d.classList.toggle('active', di === index));
+      }
+
+      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(index - 1); });
+      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(index + 1); });
+
+      // Touch swipe; suppress the lightbox tap when a swipe happened.
+      let startX = 0;
+      let swiped = false;
+      carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        swiped = false;
+      }, { passive: true });
+      carousel.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientX - startX) > 10) swiped = true;
+      }, { passive: true });
+      carousel.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+      });
+      carousel.addEventListener('click', (e) => {
+        if (swiped) { e.stopPropagation(); e.preventDefault(); swiped = false; }
+      }, true);
+    });
+  </script>
   <script>
     if (window.lucide) {
       window.lucide.createIcons();
