@@ -395,6 +395,13 @@ body {
   display: block;
   pointer-events: none;
 }
+.room-carousel-video {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
 .room-carousel-sm .room-carousel-img {
   height: 16rem;
 }
@@ -467,6 +474,9 @@ body {
 }
 @media (max-width: 640px) {
   .room-carousel-img {
+    height: 14rem;
+  }
+  .room-carousel-video {
     height: 14rem;
   }
   .room-carousel-sm .room-carousel-img {
