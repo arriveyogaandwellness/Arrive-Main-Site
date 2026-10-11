@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 require('dotenv').config();
 
 const app = express();
@@ -36,7 +37,7 @@ if (process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('s
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '12mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res, next) => {
@@ -297,6 +298,118 @@ app.get('*', (req, res) => {
     return res.sendFile(reqPath + '.html');
   }
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+/* ==========================================================================
+   Photo Manager — drag & drop photo replacement (edit mode ?edit=1)
+   POST /api/admin/verify        { password } -> { ok, configured }
+   POST /api/admin/upload-photo  { password, targetPath, dataUrl } -> commits
+                                   the photo to GitHub; Railway redeploys it.
+   Requires env: ADMIN_PASSWORD, GITHUB_TOKEN (repo contents:write).
+   ========================================================================== */
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const GH_OWNER = 'arriveyogaandwellness';
+const GH_REPO = 'Arrive-Main-Site';
+
+function adminAuthed(body) {
+  const pw = body && body.password;
+  if (!ADMIN_PASSWORD || typeof pw !== 'string' || !pw) return false;
+  const a = Buffer.from(pw, 'utf8');
+  const b = Buffer.from(ADMIN_PASSWORD, 'utf8');
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
+app.post('/api/admin/verify', (req, res) => {
+  res.json({ ok: adminAuthed(req.body), configured: ADMIN_PASSWORD.length > 0 });
+});
+
+// Identify image bytes by magic numbers (not by extension).
+function detectImageType(buf) {
+  if (!buf || buf.length < 12) return null;
+  if (buf[0] === 0xFF && buf[1] === 0xD8 && buf[2] === 0xFF) return 'jpg';
+  if (buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4E && buf[3] === 0x47) return 'png';
+  if (buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') return 'webp';
+  const head = buf.toString('ascii', 0, 6);
+  if (head === 'GIF87a' || head === 'GIF89a') return 'gif';
+  if (buf.toString('ascii', 4, 8) === 'ftyp') {
+    const brand = buf.toString('ascii', 8, 12);
+    if (['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'hevm', 'hevs', 'mif1'].includes(brand)) return 'heic';
+  }
+  return null;
+}
+
+const famOf = (t) => (t === 'jpg' || t === 'jpeg' ? 'jpg' : t);
+
+app.post('/api/admin/upload-photo', async (req, res) => {
+  try {
+    if (!adminAuthed(req.body)) return res.status(401).json({ ok: false, error: 'Not authorized.' });
+
+    const { targetPath, dataUrl } = req.body || {};
+    // Strict path allow-list: only image files under public/assets/, no traversal.
+    if (
+      typeof targetPath !== 'string' ||
+      targetPath.includes('..') ||
+      !/^public\/assets\/[A-Za-z0-9_][A-Za-z0-9_\/.\-~]*\.(jpg|jpeg|png|webp|gif)$/i.test(targetPath)
+    ) {
+      return res.status(400).json({ ok: false, error: 'Invalid target path.' });
+    }
+
+    const m = /^data:image\/[a-zA-Z]+;base64,([A-Za-z0-9+/=]+)$/.exec(String(dataUrl || '').replace(/\s/g, ''));
+    if (!m) return res.status(400).json({ ok: false, error: 'Invalid image data.' });
+    let buf = Buffer.from(m[1], 'base64');
+    if (buf.length === 0 || buf.length > 8 * 1024 * 1024) {
+      return res.status(400).json({ ok: false, error: 'Photo must be under 8MB.' });
+    }
+
+    let type = detectImageType(buf);
+    if (!type) return res.status(400).json({ ok: false, error: 'Not a recognized photo (JPG, PNG, WebP, GIF, HEIC).' });
+
+    // iPhone HEIC -> JPEG so the slot keeps working everywhere.
+    if (type === 'heic') {
+      try {
+        const convert = require('heic-convert');
+        buf = Buffer.from(await convert({ buffer: buf, format: 'JPEG', quality: 0.92 }));
+        type = 'jpg';
+      } catch (e) {
+        return res.status(400).json({ ok: false, error: 'HEIC conversion is unavailable on the server right now.' });
+      }
+    }
+
+    const targetExt = targetPath.split('.').pop().toLowerCase();
+    if (famOf(type) !== famOf(targetExt)) {
+      return res.status(400).json({ ok: false, error: `This photo slot needs a ${targetExt.toUpperCase()} file.` });
+    }
+
+    if (!GITHUB_TOKEN) return res.status(500).json({ ok: false, error: 'Server is missing GITHUB_TOKEN.' });
+
+    const ghHeaders = {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'User-Agent': 'arrive-photo-manager',
+    };
+    const contentsUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${targetPath}`;
+    const curRes = await fetch(`${contentsUrl}?ref=main`, { headers: ghHeaders });
+    if (!curRes.ok) return res.status(502).json({ ok: false, error: 'Could not read the current photo from GitHub.' });
+    const cur = await curRes.json();
+
+    const putRes = await fetch(contentsUrl, {
+      method: 'PUT',
+      headers: { ...ghHeaders, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Photo update via drag-drop: ${targetPath}`,
+        content: buf.toString('base64'),
+        sha: cur.sha,
+        branch: 'main',
+      }),
+    });
+    if (!putRes.ok) return res.status(502).json({ ok: false, error: 'GitHub commit failed.' });
+    res.json({ ok: true });
+  } catch (e) {
+    console.error('upload-photo error:', e.message);
+    res.status(500).json({ ok: false, error: 'Server error.' });
+  }
 });
 
 // Start Server
