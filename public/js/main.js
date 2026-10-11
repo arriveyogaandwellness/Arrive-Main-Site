@@ -4,6 +4,16 @@
  * Location: Playa Hermosa, Costa Rica @ Amanti Sanctuary
  */
 
+// Photo Manager: drag & drop photo replacement (edit mode via ?edit=1).
+// Loads only in edit mode; the heavy UI lives in js/photo-manager.js.
+try {
+  if (new URLSearchParams(window.location.search).get('edit') === '1') {
+    var pmScript = document.createElement('script');
+    pmScript.src = 'js/photo-manager.js?v=1';
+    document.head.appendChild(pmScript);
+  }
+} catch (e) { /* edit mode unavailable */ }
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
