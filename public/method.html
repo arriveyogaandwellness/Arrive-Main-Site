@@ -61,6 +61,102 @@
         display: none !important;
       }
     }
+    #five-pillars {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f8faff 0%, #fff 58%, #fff8ed 100%);
+    }
+    #five-pillars::before,
+    #five-pillars::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+    }
+    #five-pillars::before {
+      background: url("/assets/welcome/welcome-background.png") center 42% / cover no-repeat;
+      opacity: .32;
+    }
+    #five-pillars::after {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.42), transparent 52%),
+        linear-gradient(180deg, rgba(248,250,255,.24), rgba(255,255,255,.46) 70%, rgba(255,248,237,.58));
+    }
+    #five-pillars .pillar-card {
+      overflow: hidden;
+      padding: 0;
+      border-color: rgba(194, 165, 112, .5);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 14px 32px -24px rgba(68, 74, 93, .5);
+    }
+    #five-pillars .pillar-sky {
+      position: relative;
+      height: 190px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(225,237,255,.12), rgba(255,250,240,.28)),
+        url("/assets/welcome/welcome-background.png") center 52% / cover no-repeat;
+    }
+    #five-pillars .pillar-sky { background-size: 100% 100%, 230% auto; }
+    #five-pillars .pillar-card:nth-of-type(1) .pillar-sky { background-position: 15% 52%; }
+    #five-pillars .pillar-card:nth-of-type(2) .pillar-sky { background-position: 34% 56%; }
+    #five-pillars .pillar-card:nth-of-type(3) .pillar-sky { background-position: 52% 44%; }
+    #five-pillars .pillar-card:nth-of-type(4) .pillar-sky { background-position: 72% 56%; }
+    #five-pillars .pillar-card:nth-of-type(5) .pillar-sky { background-position: 88% 52%; }
+    #five-pillars .pillar-sky::after {
+      position: absolute;
+      z-index: 0;
+      right: -22px;
+      bottom: -24px;
+      left: -22px;
+      height: 54px;
+      content: "";
+      background:
+        radial-gradient(ellipse 58px 24px at 10% 68%, rgba(255,255,255,.82) 0 62%, transparent 66%),
+        radial-gradient(ellipse 70px 30px at 28% 80%, rgba(255,255,255,.78) 0 62%, transparent 66%),
+        radial-gradient(ellipse 62px 26px at 49% 70%, rgba(255,255,255,.82) 0 62%, transparent 66%),
+        radial-gradient(ellipse 68px 29px at 71% 82%, rgba(255,255,255,.79) 0 62%, transparent 66%),
+        radial-gradient(ellipse 58px 24px at 92% 68%, rgba(255,255,255,.84) 0 62%, transparent 66%);
+      filter: blur(3px);
+    }
+    #five-pillars .pillar-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #five-pillars .pillar-copy {
+      position: relative;
+      z-index: 1;
+      min-height: 190px;
+      padding: 1.5rem;
+      background: rgba(255,255,255,.93);
+    }
+    #five-pillars .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      #five-pillars .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      #five-pillars .pillar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1280px) {
+      #five-pillars .pillar-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    }
+    #five-pillars .pillar-card:nth-of-type(1) .pillar-copy { border-top: 2px solid rgba(205, 154, 166, .48); }
+    #five-pillars .pillar-card:nth-of-type(2) .pillar-copy { border-top: 2px solid rgba(211, 174, 101, .48); }
+    #five-pillars .pillar-card:nth-of-type(3) .pillar-copy { border-top: 2px solid rgba(109, 157, 145, .48); }
+    #five-pillars .pillar-card:nth-of-type(4) .pillar-copy { border-top: 2px solid rgba(110, 145, 189, .48); }
+    #five-pillars .pillar-card:nth-of-type(5) .pillar-copy { border-top: 2px solid rgba(147, 121, 179, .48); }
+    @media (max-width: 639px) {
+      #five-pillars .pillar-sky { height: 190px; }
+      #five-pillars .pillar-copy { min-height: 0; }
+    }
   </style>
 
   <script>
@@ -413,56 +509,140 @@
   <!-- =========================================================================
        3. FOUNDATIONAL PHILOSOPHY: FIVE PILLARS OF TRUTH
        ========================================================================= -->
-  <section class="section-wrapper border-b border-orange-200/40">
-    <div class="max-w-5xl mx-auto space-y-10">
+  <section id="five-pillars" class="section-wrapper border-b border-orange-200/40 bg-gradient-to-b from-sky-50/70 via-white to-amber-50/40">
+    <div class="max-w-7xl mx-auto space-y-10">
       <div class="text-center space-y-3">
         <span class="tagline-pill">Foundational Philosophy</span>
         <h2 class="font-serif text-3xl sm:text-4xl text-stone-900">Five Pillars of Truth</h2>
         <p class="text-stone-600 font-light text-base max-w-xl mx-auto">At its core, the Arrive Yoga Method is anchored upon five immutable truths:</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-3">
-          <span class="text-pink-700 font-mono text-xs uppercase font-bold block">01. The Body Stores Experience</span>
-          <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-            Emotions, trauma, habits, and beliefs live within connective tissues and fascia. Mindful movement is the true gateway to physical and emotional healing.
-          </p>
-        </div>
+      <svg aria-hidden="true" class="absolute h-0 w-0 overflow-hidden">
+        <defs>
+          <linearGradient id="pillar-marble" x1="0" x2="1">
+            <stop offset="0" stop-color="#c5b392"/>
+            <stop offset=".18" stop-color="#fffdf5"/>
+            <stop offset=".48" stop-color="#e9dfcb"/>
+            <stop offset=".72" stop-color="#fffdf5"/>
+            <stop offset="1" stop-color="#c4b18d"/>
+          </linearGradient>
+          <linearGradient id="pillar-gold" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#fff2cf"/>
+            <stop offset=".45" stop-color="#c4a66e"/>
+            <stop offset="1" stop-color="#f7e6bc"/>
+          </linearGradient>
+          <linearGradient id="pillar-vine" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#95b984"/>
+            <stop offset=".55" stop-color="#527858"/>
+            <stop offset="1" stop-color="#2e5d4b"/>
+          </linearGradient>
+          <radialGradient id="pillar-halo">
+            <stop stop-color="#fff9e9" stop-opacity=".96"/>
+            <stop offset=".45" stop-color="#fff9e9" stop-opacity=".38"/>
+            <stop offset="1" stop-color="#fff9e9" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="pillar-shadow" x="-.4" y="-.2" width="1.8" height="1.6">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dy="3"/>
+            <feComponentTransfer><feFuncA type="linear" slope=".24"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <symbol id="ethereal-pillar-art" viewBox="0 0 320 176">
+            <ellipse cx="160" cy="91" rx="101" ry="88" fill="url(#pillar-halo)"/>
+            <g fill="#fff" opacity=".82">
+              <path d="m62 28 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+              <path d="m255 43 1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z"/>
+              <circle cx="91" cy="57" r="1.4"/><circle cx="231" cy="23" r="1.5"/>
+              <circle cx="272" cy="75" r="1.2"/><circle cx="47" cy="78" r="1.2"/>
+            </g>
+            <g filter="url(#pillar-shadow)">
+              <ellipse cx="160" cy="160" rx="57" ry="8" fill="#76684f" opacity=".18"/>
+              <path d="M130 62h60v86h-60z" fill="url(#pillar-marble)" stroke="#b69b68" stroke-width="1.3"/>
+              <path d="M137 65v80m8-80v80m8-80v80m8-80v80m8-80v80m8-80v80" stroke="#b99f70" stroke-opacity=".42" stroke-width="1"/>
+              <path d="M126 57h68v6h-68zM120 52h80v5h-80zM115 46h90v6h-90z" fill="url(#pillar-gold)" stroke="#ae915a" stroke-width="1"/>
+              <path d="M124 46c1-8 7-11 13-8 1-8 10-11 17-5 4-9 14-9 18 0 7-6 16-3 17 5 6-3 12 0 13 8z" fill="url(#pillar-gold)" stroke="#ad905b" stroke-width="1.1"/>
+              <path d="M137 44c-8-6-6-13 1-14 6 1 7 7 1 10m44 4c8-6 6-13-1-14-6 1-7 7-1 10" fill="none" stroke="#9c7c49" stroke-width="2"/>
+              <path d="M144 45c-3-9 1-15 6-17 4 5 3 11-1 17m7 0c-1-12 3-19 7-21 5 7 3 14-2 21m8 0c2-9 6-14 11-14 2 6-1 11-6 14" fill="#819b71" stroke="#617a59" stroke-width="1"/>
+              <path d="M150 42l1-9m10 10 2-12m8 12 4-8" stroke="#dfe5c6" stroke-width=".8" opacity=".9"/>
+              <path d="M126 148h68v5h-68zM120 153h80v6h-80zM113 159h94v6h-94z" fill="url(#pillar-gold)" stroke="#ae915a" stroke-width="1"/>
+              <path d="M127 153c-9-1-12-5-10-9 5-1 10 2 12 7m64 2c9-1 12-5 10-9-5-1-10 2-12 7" fill="none" stroke="#9c7c49" stroke-width="1.5"/>
+            </g>
+            <g fill="none" stroke="url(#pillar-vine)" stroke-linecap="round" stroke-width="2.4">
+              <path d="M54 176c23-9 17-26 33-34-8-13 5-20 17-24-6-15 9-22 20-29 1-10 7-17 13-22"/>
+              <path d="M266 176c-23-9-17-26-33-34 8-13-5-20-17-24 6-15-9-22-20-29-1-10-7-17-13-22"/>
+              <path d="M101 174c29-8 20-25 40-33-18-12-5-22 15-26-11-13 1-21 18-26-11-13 1-22 13-29"/>
+            </g>
+            <g fill="url(#pillar-vine)" stroke="#527858" stroke-width=".7">
+              <path d="M79 153c-13 1-18-7-17-15 11 0 18 5 17 15Zm21-20c-12-5-13-14-8-21 10 5 14 12 8 21Zm22-26c-10-8-8-16-2-21 8 8 9 15 2 21Zm-44 47c-1 10-8 14-16 12 1-9 7-14 16-12Z"/>
+              <path d="M241 153c13 1 18-7 17-15-11 0-18 5-17 15Zm-21-20c12-5 13-14 8-21-10 5-14 12-8 21Zm-22-26c10-8 8-16 2-21-8 8-9 15-2 21Zm44 47c1 10 8 14 16 12-1-9-7-14-16-12Z"/>
+              <path d="M129 151c-12-3-15-11-10-18 10 3 14 9 10 18Zm13-24c-10-6-9-14-3-19 8 6 10 12 3 19Zm27-9c-3-11 3-17 11-16 2 10-2 16-11 16Zm16-25c-1-11 6-16 13-13 0 10-5 15-13 13Z"/>
+              <path d="M72 140c4-5 8-8 13-10m15-1c3-5 7-8 11-10m21-21 5-10m111 42c-4-5-8-8-13-10m-15-1c-3-5-7-8-11-10m-21-21-5-10" fill="none" stroke="#d6e0bd" stroke-width=".8"/>
+            </g>
+            <g fill="#fff" opacity=".78">
+              <path d="M0 155c13-9 24-8 34 0 12-10 28-7 35 2 10-6 23-3 29 5H0z"/>
+              <path d="M222 162c9-8 20-7 27 0 11-9 25-7 32 1 10-6 24-3 31 5h-98z"/>
+            </g>
+          </symbol>
+        </defs>
+      </svg>
 
-        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-3">
-          <span class="text-amber-700 font-mono text-xs uppercase font-bold block">02. The Voice Is Part of Practice</span>
-          <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-            Self-expression is essential to lasting transformation. Vocal resonance, reflective journaling, and group dialogue are woven into every single session.
-          </p>
-        </div>
+      <div class="pillar-grid">
+        <article class="pillar-card bg-white/95 border rounded-2xl shadow-sm">
+          <div class="pillar-sky" aria-hidden="true">
+            <svg class="pillar-art"><use href="#ethereal-pillar-art"></use></svg>
+          </div>
+          <div class="pillar-copy p-7 space-y-3">
+            <span class="text-pink-700 font-mono text-xs uppercase font-bold block">01. The Body Stores Experience</span>
+            <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">Emotions, trauma, habits, and beliefs live within connective tissues and fascia. Mindful movement is the true gateway to physical and emotional healing.</p>
+          </div>
+        </article>
 
-        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-3">
-          <span class="text-teal-700 font-mono text-xs uppercase font-bold block">03. Discomfort Is a Teacher</span>
-          <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-            When approached with curiosity and consent, challenge becomes growth rather than anxiety. We build resilience by feeling, not numbing.
-          </p>
-        </div>
+        <article class="pillar-card bg-white/95 border rounded-2xl shadow-sm">
+          <div class="pillar-sky" aria-hidden="true">
+            <svg class="pillar-art"><use href="#ethereal-pillar-art"></use></svg>
+          </div>
+          <div class="pillar-copy p-7 space-y-3">
+            <span class="text-amber-700 font-mono text-xs uppercase font-bold block">02. The Voice Is Part of Practice</span>
+            <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">Self-expression is essential to lasting transformation. Vocal resonance, reflective journaling, and group dialogue are woven into every single session.</p>
+          </div>
+        </article>
 
-        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-3">
-          <span class="text-blue-700 font-mono text-xs uppercase font-bold block">04. Presence Creates Power</span>
-          <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-            Autonomic regulation and body awareness are the twin foundations of unshakable confidence, clarity, and sovereign leadership in the world.
-          </p>
-        </div>
+        <article class="pillar-card bg-white/95 border rounded-2xl shadow-sm">
+          <div class="pillar-sky" aria-hidden="true">
+            <svg class="pillar-art"><use href="#ethereal-pillar-art"></use></svg>
+          </div>
+          <div class="pillar-copy p-7 space-y-3">
+            <span class="text-teal-700 font-mono text-xs uppercase font-bold block">03. Discomfort Is a Teacher</span>
+            <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">When approached with curiosity and consent, challenge becomes growth rather than anxiety. We build resilience by feeling, not numbing.</p>
+          </div>
+        </article>
 
-        <div class="p-8 bg-white/90 border border-orange-200/60 rounded-2xl shadow-sm space-y-3">
-          <span class="text-purple-700 font-mono text-xs uppercase font-bold block">05. Healing Creates Leaders</span>
-          <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-            Personal sovereignty naturally blossoms into compassionate, ethical leadership. When we heal ourselves, our families and communities thrive.
-          </p>
-        </div>
+        <article class="pillar-card bg-white/95 border rounded-2xl shadow-sm">
+          <div class="pillar-sky" aria-hidden="true">
+            <svg class="pillar-art"><use href="#ethereal-pillar-art"></use></svg>
+          </div>
+          <div class="pillar-copy p-7 space-y-3">
+            <span class="text-blue-700 font-mono text-xs uppercase font-bold block">04. Presence Creates Power</span>
+            <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">Autonomic regulation and body awareness are the twin foundations of unshakable confidence, clarity, and sovereign leadership in the world.</p>
+          </div>
+        </article>
 
-        <div class="p-8 bg-gradient-to-br from-amber-500/10 via-pink-500/10 to-teal-500/10 border border-orange-200/60 rounded-2xl shadow-sm space-y-3 flex flex-col justify-center">
-          <span class="text-pink-700 font-mono text-xs uppercase font-bold block">Our Universal Creed</span>
-          <p class="text-stone-900 font-serif italic text-sm sm:text-base leading-relaxed">
-            "Every Body Is A Yoga Body; Think For Yourself &amp; Question Everything To Be The Change You Wish To See In The World."
-          </p>
-        </div>
+        <article class="pillar-card bg-white/95 border rounded-2xl shadow-sm">
+          <div class="pillar-sky" aria-hidden="true">
+            <svg class="pillar-art"><use href="#ethereal-pillar-art"></use></svg>
+          </div>
+          <div class="pillar-copy p-7 space-y-3">
+            <span class="text-purple-700 font-mono text-xs uppercase font-bold block">05. Healing Creates Leaders</span>
+            <p class="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">Personal sovereignty naturally blossoms into compassionate, ethical leadership. When we heal ourselves, our families and communities thrive.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="max-w-5xl mx-auto p-8 bg-gradient-to-br from-amber-500/10 via-pink-500/10 to-teal-500/10 border border-orange-200/60 rounded-2xl shadow-sm space-y-3 flex flex-col justify-center">
+        <span class="text-pink-700 font-mono text-xs uppercase font-bold block">Our Universal Creed</span>
+        <p class="text-stone-900 font-serif italic text-sm sm:text-base leading-relaxed">
+          "Every Body Is A Yoga Body; Think For Yourself &amp; Question Everything To Be The Change You Wish To See In The World."
+        </p>
       </div>
 
       <!-- Visual Method Showcase -->
