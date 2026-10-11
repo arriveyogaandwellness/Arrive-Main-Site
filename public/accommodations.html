@@ -483,6 +483,12 @@
       <div class="lg:col-span-7">
         <div class="room-carousel" data-carousel>
           <div class="room-carousel-track">
+            <div class="room-carousel-slide" data-video-slide>
+              <video class="room-carousel-video" preload="metadata" playsinline controls poster="/assets/pages/accommodations/amapola-tour-poster.jpg">
+                <source src="/assets/pages/accommodations/amapola-tour.mp4" type="video/mp4" />
+              </video>
+              <div class="room-carousel-caption"><span>▶ Video Tour — Amapola House</span></div>
+            </div>
             <div class="room-carousel-slide" data-lightbox data-lightbox-src="/assets/pages/accommodations/amapola-outside-1.jpg" data-lightbox-caption="Private Compound Veranda">
               <img src="/assets/pages/accommodations/amapola-outside-1.jpg" alt="Amapola House Exterior" class="room-carousel-img" />
               <div class="room-carousel-caption"><span>Private Compound Veranda</span></div>
@@ -971,6 +977,11 @@
         index = (i + slides.length) % slides.length;
         track.style.transform = 'translateX(-' + (index * 100) + '%)';
         dots.forEach((d, di) => d.classList.toggle('active', di === index));
+        // pause any video not on the current slide
+        slides.forEach((s, si) => {
+          var v = s.querySelector('video');
+          if (v && si !== index && !v.paused) v.pause();
+        });
       }
 
       prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(index - 1); });
